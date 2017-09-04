@@ -51,8 +51,8 @@
 			<properties>
 				<jdbc.driver>org.h2.Driver</jdbc.driver>
 				<jdbc.url>jdbc:h2:mem:test</jdbc.url>
-				<jdbc.user>pizzeriadb</jdbc.user>
-				<jdbc.pass>pizzeriadb</jdbc.pass>
+				<jdbc.user>sirh-db</jdbc.user>
+				<jdbc.pass>sirh-db</jdbc.pass>
 				<jpa.hibernate.ddl>create-drop</jpa.hibernate.ddl>
 				<jdbc.dialect>org.hibernate.dialect.H2Dialect</jdbc.dialect>
 				<jdbc.connections.max.active>5</jdbc.connections.max.active>
