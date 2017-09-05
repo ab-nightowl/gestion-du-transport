@@ -30,9 +30,11 @@
   },
   "dependencies": {
     "angular": "^1.6.4",
+    "angular-google-places-autocomplete": "^0.2.9",
     "angular-route": "^1.6.4",
     "bootstrap": "^3.3.7",
     "fullcalendar": "^3.5.0",
+    "google_directions": "^0.6.0",
     "lodash": "^4.17.4",
     "uuid": "^3.0.1"
   }

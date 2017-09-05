@@ -1,0 +1,87 @@
+<body>     
+        <link rel="stylesheet" type="text/css" href="../node_modules/angular-google-places-autocomplete/src/autocomplete.css">
+        <a href="#">Retour à la liste </a>
+        
+        <div class="container">
+            <div class="row">
+                <h1>Publier une annonce</h1>
+            </div>
+            
+            <form name="itineraire" novalidate>
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                Itinéraire
+                            </h4>
+                        </div>
+                        <div id="collapse1" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class='col-xs-12'>
+                                    Adresse de départ* : <input type="text" size="60" g-places-autocomplete required ng-model="$ctrl.adresseDepart" name="adresseDepart">
+                                    <div ng-show="itineraire.adresseDepart.$dirty && itineraire.adresseDepart.$error.required">Veuillez saisir une adresse de départ.</div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class='col-xs-12'>
+                                    Adresse d'arriver* : <input ng-change="$ctrl.calculate()" type="text" size="60" g-places-autocomplete required ng-model="$ctrl.adresseArriver" name="adresseArriver">
+                                    <div ng-show="itineraire.adresseArriver.$dirty && itineraire.adresseArriver.$error.required">Veuillez saisir une adresse d'arriver.</div>
+                                </div> 
+                                <br>
+                                <pre ng-show="itineraire.adresseArriver.$dirty" id="panel"></pre>
+                                                          
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                Véhicule
+                            </h4>
+                        </div>
+                        <div id="collapse1" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class='col-xs-12'>
+                                    Immatriculation* : <input type="text" size="60"  required ng-model="$ctrl.immatriculation" name="immatriculation">
+                                    <div ng-show="itineraire.immatriculation.$dirty && itineraire.immatriculation.$error.required">Veuillez saisir l'immatriculation de votre véhicule.</div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class='col-xs-12'>
+                                    Marque* : <input type="text"  size="60"  required ng-model="$ctrl.marque" name="marque">
+                                    <div ng-show="itineraire.marque.$dirty && itineraire.marque.$error.required">Veuillez saisir la marque de votre véhicule.</div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class='col-xs-12'>
+                                    Modele* : <input type="text"  size="60"  required ng-model="$ctrl.modele" name="modele">
+                                    <div ng-show="itineraire.modele.$dirty && itineraire.modele.$error.required">Veuillez saisir le modèle de votre véhicule.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+                <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    Date et heure
+                                </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    Date / heure*
+                                    <input type="date" name="" id="">
+                                    <input type="time">
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                    <input type="button" value="Publier" class="btn btn-success pull-right" >
+            </form>
+        </div>
+        <br>
+
+        </body>
