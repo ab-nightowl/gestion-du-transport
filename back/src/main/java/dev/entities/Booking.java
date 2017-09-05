@@ -20,6 +20,16 @@ public class Booking {
 	@ManyToOne
 	private User driver;
 
+	private AdvertStatut statut;
+
+	public AdvertStatut getStatut() {
+		return statut;
+	}
+
+	public void setStatut(AdvertStatut statut) {
+		this.statut = statut;
+	}
+
 	public LocalDateTime getDateFirst() {
 		return dateFirst;
 	}

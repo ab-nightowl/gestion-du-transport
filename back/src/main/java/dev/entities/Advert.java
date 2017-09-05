@@ -31,6 +31,15 @@ public class Advert {
 	private String brand;
 	private String model;
 	private Integer capacity;
+	private AdvertStatut statut;
+
+	public AdvertStatut getStatut() {
+		return statut;
+	}
+
+	public void setStatut(AdvertStatut statut) {
+		this.statut = statut;
+	}
 
 	public LocalDateTime getDateFirst() {
 		return dateFirst;
