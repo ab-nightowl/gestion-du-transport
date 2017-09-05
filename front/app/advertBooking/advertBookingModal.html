@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <h5>Réservation d'un covoiturage</h5>
+</div>
+<modal-body>
+    <table>
+        <tr>
+            <div class="col-xs-6">Départ </div>
+            <div class="col-xs-6">{{$ctrl.addressDeparture}}</div>
+        </tr>
+        <tr>
+            <div class="col-xs-6">Destination </div>
+            <div class="col-xs-6">{{$ctrl.addressArrival}}</div>
+        </tr>
+        <tr>
+            <div class="col-xs-6">Date/heure </div>
+            <div class="col-xs-6">{{$ctrl.dateFirst}}</div>
+        </tr>
+        <tr>
+            <div class="col-xs-6">Véhicule </div>
+            <div class="col-xs-6">{{$ctrl.brand}} {{$ctrl.model}}</div>
+        </tr>
+        <tr>
+            <div class="col-xs-6">Chauffeur </div>
+            <div class="col-xs-6">{{$ctrl.driver}}</div>
+        </tr>
+</modal-body>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="$ctrl.confirm()">Confirmer</button>
+    <button class="btn" ng-click="$ctrl.cancel()">Annuler</button>
+</div>
