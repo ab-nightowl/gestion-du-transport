@@ -1,0 +1,125 @@
+<style>
+img{
+    width:500px; height:250px;
+    margin-left: 460px;
+}
+
+.buttonMove{
+  margin-left: 650px;
+  margin-bottom: 38px;
+  margin-top: 20px;
+}
+
+#buttonNext{
+  float: right;
+  margin-right: 850px;
+  margin-top: 180px;
+}
+
+#buttonPrevious{
+  float: left;
+  margin-left: -270px;
+  margin-top: 179px;
+
+
+}
+
+.zoneInfosVehicle{
+  margin-top: 30px;
+  margin-left: 650px;
+}
+</style>
+<div>
+
+  <meta charset="utf-8"/>
+  <h1>Reserve a company vehicle</h1>
+
+ <div ng-controller="bookVehicleController as bookingCtrl">
+<div class="container">
+  <div class="row">
+      <div class='col-sm-4'>
+          <div class="form-group">
+              <div class='input-group date' id='datetimepicker1'>
+                  <input type='text' class="form-control" placeholder="Date de départ"/>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+          </div>
+      </div>
+
+
+      <div class='col-sm-4'>
+          <div class="form-group">
+              <div class='input-group date' id='datetimepicker1'>
+                  <input type='text' class="form-control" placeholder="Date de retour"/>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+  <div class="row">
+      <div class='col-sm-4'>
+          <div class="form-group">
+              <div class='input-group date' id='datetimepicker1'>
+                  <input type='text' class="form-control" placeholder="Heure de départ"/>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+          </div>
+      </div>
+
+
+      <div class='col-sm-4'>
+          <div class="form-group">
+              <div class='input-group date' id='datetimepicker1'>
+                  <input type='text' class="form-control" placeholder="Heure de retour"/>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<h3>Our Vehicles : </h3>
+
+<div class="buttonMove">
+  <div id="buttonNext">
+    <button class="btn btn-primary btn-success" ng-click="bookingCtrl.next()"> >> </button>
+  </div>
+  <div id="buttonPrevious">
+    <button class="btn btn-primary btn-success" ng-click="bookingCtrl.previous()"> << </button>
+  </div>
+
+</div>
+
+<img ng-src="{{bookingCtrl.vehicles[bookingCtrl.currentId].urlImg}}"/><br />
+
+<div class="zoneInfosVehicle">
+
+<span>Matricule: {{bookingCtrl.vehicles[bookingCtrl.currentId].licensePlate}}</span><br />
+<span>Marque: {{bookingCtrl.vehicles[bookingCtrl.currentId].brand}}</span><br />
+<span>Model: {{bookingCtrl.vehicles[bookingCtrl.currentId].model}}</span><br />
+<span>Capacité: {{bookingCtrl.vehicles[bookingCtrl.currentId].capacity}}</span><br />
+<span>Status: {{bookingCtrl.vehicles[bookingCtrl.currentId].status}}</span><br />
+
+</div>
+
+
+<div class="reservation">
+<button class="btn btn-primary btn-success">Réserver</button>
+</div>
+
+
+
+
+</div>
+
+</div>

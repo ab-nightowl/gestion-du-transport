@@ -7,7 +7,7 @@ export function route ($routeProvider, $locationProvider) {
         template: '<accueil></accueil>'
     })
     .otherwise({
-        redirectTo: '/'
+        redirectTo: '/collab/book/create'
     });
 
 }
