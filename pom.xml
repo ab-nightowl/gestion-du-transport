@@ -85,7 +85,7 @@
 				<jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
 				<jdbc.url>jdbc:mysql://localhost:3306/sirh-db</jdbc.url>
 				<jdbc.user>root</jdbc.user>
-				<jdbc.pass></jdbc.pass>
+				<jdbc.pass>250193</jdbc.pass>
 				<jpa.hibernate.ddl>create-drop</jpa.hibernate.ddl>
 				<jdbc.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</jdbc.dialect>
 				<jdbc.connections.max.active>5</jdbc.connections.max.active>
