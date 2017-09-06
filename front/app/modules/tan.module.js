@@ -2,8 +2,10 @@ import collabBookVehicleSocietyComponent from '../components/collab.book.vehicle
 
 import bookVehicleService from '../services/book.vehicle.service'
 import bookVehicleController from '../controllers/book.vehicle.controller'
-import urlsService from '../services/urls.service';
- import UiBootrap from 'angular-ui-bootstrap'
+import urlsService from '../services/urls.service'
+import UiBootrap from 'angular-ui-bootstrap'
+// import momentPicker from 'angular-moment-picker'
+// import moment from 'moment'
 
 const tanModule = angular.module('tanModule',[UiBootrap])
 

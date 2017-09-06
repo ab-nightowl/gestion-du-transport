@@ -7,7 +7,6 @@ import UiBootrap from 'angular-ui-bootstrap'
 
  import tanModule from './modules/tan.module'
 
-
 angular.module('app', [RouteModule, 'tanModule'])
 
 .value( 'apiUrl', API_URL)

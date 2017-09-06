@@ -1,3 +1,4 @@
+
 export default class bookVehicleController {
 
   constructor($scope,$http, $log, bookVehicleService){
@@ -32,6 +33,17 @@ export default class bookVehicleController {
     previous(){
         this.currentId == 0 ? this.currentId = this.vehicles.length - 1 : this.currentId--;
     }
+
+    reserveVehicleSociety(vehicleLicensePlate, booking){
+      this.bookVehicleService.reserveVehicleSociety(vehicleLicensePlate, booking)
+      .then((res)=>{
+        this.$log.log("Réservé OK! ");
+
+      },(err)=>{
+        this.$log.log("Réservé failed ! " + err.statusText);
+      })
+    }
+
 
 }
 

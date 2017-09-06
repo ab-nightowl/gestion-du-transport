@@ -29,18 +29,22 @@ img{
   margin-left: 650px;
 }
 </style>
+
 <div>
 
   <meta charset="utf-8"/>
   <h1>Reserve a company vehicle</h1>
+
+
 
  <div ng-controller="bookVehicleController as bookingCtrl">
 <div class="container">
   <div class="row">
       <div class='col-sm-4'>
           <div class="form-group">
+            <span>Date/Heure de départ</span>
               <div class='input-group date' id='datetimepicker1'>
-                  <input type='text' class="form-control" placeholder="Date de départ"/>
+                  <input type='datetime-local' class="form-control" placeholder="Date de départ" ng-model='booking.dateFirst'/>
                   <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
                   </span>
@@ -51,8 +55,9 @@ img{
 
       <div class='col-sm-4'>
           <div class="form-group">
+            <span>Date/Heure de retour</span>
               <div class='input-group date' id='datetimepicker1'>
-                  <input type='text' class="form-control" placeholder="Date de retour"/>
+                  <input type='datetime-local' class="form-control" placeholder="Date de retour" ng-model='booking.dateLast'/>
                   <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
                   </span>
@@ -61,31 +66,8 @@ img{
       </div>
 
   </div>
+<span>{{booking}}</span>
 
-  <div class="row">
-      <div class='col-sm-4'>
-          <div class="form-group">
-              <div class='input-group date' id='datetimepicker1'>
-                  <input type='text' class="form-control" placeholder="Heure de départ"/>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-          </div>
-      </div>
-
-
-      <div class='col-sm-4'>
-          <div class="form-group">
-              <div class='input-group date' id='datetimepicker1'>
-                  <input type='text' class="form-control" placeholder="Heure de retour"/>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-          </div>
-      </div>
-  </div>
 </div>
 
 <h3>Our Vehicles : </h3>
@@ -104,21 +86,20 @@ img{
 
 <div class="zoneInfosVehicle">
 
-<span>Matricule: {{bookingCtrl.vehicles[bookingCtrl.currentId].licensePlate}}</span><br />
-<span>Marque: {{bookingCtrl.vehicles[bookingCtrl.currentId].brand}}</span><br />
-<span>Model: {{bookingCtrl.vehicles[bookingCtrl.currentId].model}}</span><br />
-<span>Capacité: {{bookingCtrl.vehicles[bookingCtrl.currentId].capacity}}</span><br />
-<span>Status: {{bookingCtrl.vehicles[bookingCtrl.currentId].status}}</span><br />
+  <span >Matricule: {{bookingCtrl.vehicles[bookingCtrl.currentId].licensePlate}}</span><br />
+  <span >Marque: {{bookingCtrl.vehicles[bookingCtrl.currentId].brand}}</span><br />
+  <span >Model: {{bookingCtrl.vehicles[bookingCtrl.currentId].model}}</span><br />
+  <span >Capacité: {{bookingCtrl.vehicles[bookingCtrl.currentId].capacity}}</span><br />
+  <span >Status: {{bookingCtrl.vehicles[bookingCtrl.currentId].status}}</span><br />
 
 </div>
 
 
 <div class="reservation">
-<button class="btn btn-primary btn-success">Réserver</button>
+<button class="btn btn-primary btn-success"
+ng-click='bookingCtrl.reserveVehicleSociety(bookingCtrl.vehicles[bookingCtrl.currentId].licensePlate, booking)'>
+Réserver</button>
 </div>
-
-
-
 
 </div>
 
