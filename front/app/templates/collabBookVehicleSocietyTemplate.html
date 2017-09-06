@@ -1,46 +1,57 @@
 <style>
+.container{
+  background: #e0d6d6;
+}
+
 img{
     width:500px; height:250px;
-    margin-left: 460px;
+    margin-left: 300px;
 }
 
 .buttonMove{
-  margin-left: 650px;
-  margin-bottom: 38px;
-  margin-top: 20px;
+    margin-top: 80px;
 }
 
 #buttonNext{
   float: right;
-  margin-right: 850px;
-  margin-top: 180px;
+  margin-left: -20px
 }
 
 #buttonPrevious{
   float: left;
-  margin-left: -270px;
-  margin-top: 179px;
 
 
+
+}
+#buttonReserver{
+  margin-left: 540px;
+  margin-top: 50px;
 }
 
 .zoneInfosVehicle{
-  margin-top: 30px;
-  margin-left: 650px;
+  margin-left: 500px;
+font-size: 20px;
+margin-top: 20px;
 }
+
+
+#result{
+    margin-top: 20px;
+}
+
+
 </style>
 
 <div>
 
   <meta charset="utf-8"/>
-  <h1>Reserve a company vehicle</h1>
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
  <div ng-controller="bookVehicleController as bookingCtrl">
 <div class="container">
+  <h1>Reserve a company vehicle</h1><br />
   <div class="row">
-      <div class='col-sm-4'>
+      <div class='col col-lg-4 col-lg-offset-2'>
           <div class="form-group">
             <span>Date/Heure de départ</span>
               <div class='input-group date' id='datetimepicker1'>
@@ -53,7 +64,7 @@ img{
       </div>
 
 
-      <div class='col-sm-4'>
+      <div class='col col-lg-4'>
           <div class="form-group">
             <span>Date/Heure de retour</span>
               <div class='input-group date' id='datetimepicker1'>
@@ -66,9 +77,6 @@ img{
       </div>
 
   </div>
-<span>{{booking}}</span>
-
-</div>
 
 <h3>Our Vehicles : </h3>
 
@@ -96,11 +104,19 @@ img{
 
 
 <div class="reservation">
-<button class="btn btn-primary btn-success"
-ng-click='bookingCtrl.reserveVehicleSociety(bookingCtrl.vehicles[bookingCtrl.currentId].licensePlate, booking)'>
-Réserver</button>
-</div>
+  <button id="buttonReserver" class="btn btn-primary btn-success"
+  ng-click='bookingCtrl.reserveVehicleSociety(bookingCtrl.vehicles[bookingCtrl.currentId].licensePlate, booking)'>
+  Réserver</button>
+
+
+  <div id="result" class="alert alert-success" ng-if='bookingCtrl.result != null'>
+    <strong>Info!</strong> {{bookingCtrl.result}}
+  </div>
+
+
 
 </div>
 
+</div>
+</div>
 </div>

@@ -37,10 +37,13 @@ export default class bookVehicleController {
     reserveVehicleSociety(vehicleLicensePlate, booking){
       this.bookVehicleService.reserveVehicleSociety(vehicleLicensePlate, booking)
       .then((res)=>{
-        this.$log.log("Réservé OK! ");
 
+          this.result = "Votre réservation est bien enregistré :)"
+
+        this.$log.log("Réservé OK ! ");
       },(err)=>{
         this.$log.log("Réservé failed ! " + err.statusText);
+        this.result = "Votre réservation est échouée :("
       })
     }
 

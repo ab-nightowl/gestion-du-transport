@@ -20,6 +20,7 @@ import dev.repository.BookingRepository;
 import dev.repository.UserRepository;
 import dev.repository.VehicleRepository;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/collab/booking/vehicle")
 public class VehicleController {
@@ -32,6 +33,9 @@ public class VehicleController {
 	
 	@Autowired
 	BookingRepository bookingRepo;
+	
+	
+	
 	
 	public void initDateVehicle(){
 		Vehicle v1 = new Vehicle("Abc123", "Mercedes", "Model1", "categ1", "../statique/img/car1.png", 4, VehicleStatus.REPARATION);
@@ -51,7 +55,7 @@ public class VehicleController {
 		
 	}
 	
-	@CrossOrigin(origins = "http://localhost:9000")
+
 	@GetMapping
 	public List<Vehicle> listVehicles() {
 		initDateVehicle();
@@ -61,7 +65,7 @@ public class VehicleController {
 	
 	
 	
-	@CrossOrigin(origins = "http://localhost:9000")
+
 	@RequestMapping(
 			value = "/{licensePlat}",
 			method= RequestMethod.PUT,  
