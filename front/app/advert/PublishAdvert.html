@@ -1,13 +1,11 @@
 <body>     
-        <link rel="stylesheet" type="text/css" href="../node_modules/angular-google-places-autocomplete/src/autocomplete.css">
-        <a href="#">Retour à la liste </a>
-        
+        <a href="#">Retour à la liste </a>           
         <div class="container">
             <div class="row">
                 <h1>Publier une annonce</h1>
             </div>
             
-            <form name="itineraire" novalidate>
+            <form name="itineraire" novalidate method="post">
                 <div class="panel-group" id="accordion">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -44,21 +42,27 @@
                         <div id="collapse1" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 <div class='col-xs-12'>
-                                    Immatriculation* : <input type="text" size="60"  required ng-model="$ctrl.immatriculation" name="immatriculation">
-                                    <div ng-show="itineraire.immatriculation.$dirty && itineraire.immatriculation.$error.required">Veuillez saisir l'immatriculation de votre véhicule.</div>
+                                    Immatriculation* : <input type="text" size="60"  required ng-model="licensePlate" name="licensePlate">
+                                    <div ng-show="itineraire.licensePlate.$dirty && itineraire.licensePlate.$error.required">Veuillez saisir l'immatriculation de votre véhicule.</div>
                                 </div>
                                 <br>
                                 <br>
                                 <div class='col-xs-12'>
-                                    Marque* : <input type="text"  size="60"  required ng-model="$ctrl.marque" name="marque">
-                                    <div ng-show="itineraire.marque.$dirty && itineraire.marque.$error.required">Veuillez saisir la marque de votre véhicule.</div>
+                                    Marque* : <input type="text"  size="60"  required ng-model="brand" name="brand">
+                                    <div ng-show="itineraire.brand.$dirty && itineraire.brand.$error.required">Veuillez saisir la marque de votre véhicule.</div>
                                 </div>
                                 <br>
                                 <br>
                                 <div class='col-xs-12'>
-                                    Modele* : <input type="text"  size="60"  required ng-model="$ctrl.modele" name="modele">
-                                    <div ng-show="itineraire.modele.$dirty && itineraire.modele.$error.required">Veuillez saisir le modèle de votre véhicule.</div>
+                                    Modele* : <input type="text"  size="60"  required ng-model="model" name="model">
+                                    <div ng-show="itineraire.model.$dirty && itineraire.model.$error.required">Veuillez saisir le modèle de votre véhicule.</div>
                                 </div>
+                                <br>
+                                <br>
+                                <div class='col-xs-12'>
+                                        Nombre de places disponibles* : <input type="number" min=1 max=20  size="60"  required ng-model="capacity" name="capacity">
+                                        <div ng-show="(itineraire.capacity.$dirty  && itineraire.capacity.$error.required) || itineraire.capacity.$invalid">Veuillez saisir le nombre entre 1 et 20 de place dans votre véhicule</div>
+                                    </div>
                             </div>
                         </div>
                     </div>   
@@ -72,16 +76,21 @@
                             </div>
                             <div id="collapse1" class="panel-collapse collapse in">
                                 <div class="panel-body">
-                                    Date / heure*
-                                    <input type="date" name="" id="">
-                                    <input type="time">
+                                    Date / heure* 
+                                    <div class="col-md-6">
+                                        <p class="input-group">
+                                          <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.date" is-open="$ctrl.popup.opened" datepicker-options="$ctrl.dateOptions" ng-required="true" close-text="Close" />
+                                          <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="$ctrl.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                          </span>
+                                        </p>
+                                      </div>
+                                   
                                 </div>
                             </div>
                         </div>   
                     </div>
-                    <input type="button" value="Publier" class="btn btn-success pull-right" >
+                    <button ng-disabled="!itineraire.$valid" type="submit" class='btn btn-success pull-right' ng-click="$ctrl.save()">Publier</button>
             </form>
         </div>
-        <br>
-
         </body>
