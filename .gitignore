@@ -4,3 +4,4 @@
 target
 .springBeans
 *.iml
+front/npm-debug.log

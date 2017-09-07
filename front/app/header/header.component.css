@@ -1,0 +1,57 @@
+
+#header{
+height: 179px;
+background-image: url("/statique/img/headerBackground.jpg");
+
+}
+.zoneMenu{
+
+background: #181f3f !important;
+display: block;
+}
+
+.menu{
+display: block;
+    background: #FECC0B;
+    padding: 14px;
+
+    margin-right: 3px;
+    text-align: center;
+
+}
+
+.zoneAuthentif{
+
+	display: block;
+
+
+}
+.authentif{
+    background: #248925;
+    padding: 20px;
+    color: white;
+    margin-right: 3px;
+	color: white;
+	text-align: center;
+
+}
+
+.authentif a{
+	color: white;
+
+
+}
+
+.zoneLogo img{
+	     width: 210px;
+    height: 179px;
+}
+
+a div:hover{
+	border: 2px dotted #3a7999;
+	background: rgba(0,0,0,0);
+	color: white;
+	font-size: 17px;
+	font-weight: bold;
+	font-family: "Times New Roman", Times, serif;
+}

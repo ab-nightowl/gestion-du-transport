@@ -33,8 +33,16 @@ public class Advert {
 	private Integer capacity;
 	private AdvertStatut statut;
 
+	public Advert() {
+
+	}
+
 	public AdvertStatut getStatut() {
 		return statut;
+	}
+
+	public Integer getId() {
+		return id;
 	}
 
 	public void setStatut(AdvertStatut statut) {
