@@ -14,7 +14,7 @@ import tanModule from './modules/tan.module'
 
 import headerComponent  from './header/header.component'
 
-angular.module('app', [RouteModule, 'tanModule'])
+angular.module('app', [RouteModule, 'tanModule',advertModule.name,google,date])
 
 .value( 'apiUrl', API_URL)
 .component('accueil', AccueilComponent)
