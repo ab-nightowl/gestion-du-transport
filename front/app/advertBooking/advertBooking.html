@@ -7,75 +7,57 @@
                 <h5 ng-click="isOpen = !isOpen">Covoiturage</h5>
             </div>
             <div id="collapse" ng-show="isOpen">
-                <h5 class="col-xs-offset-1" align="left">Critères</h5>
-                <div class="panel-body col-xs-12">
-                    <div class='col-xs-4'>
-                        Adresse de départ* : <input type="text" g-places-autocomplete required ng-model="$ctrl.adresseDepart"
-                            name="adresseDepart">
-                        <div ng-show="itineraire.adresseDepart.$dirty && itineraire.adresseDepart.$error.required">Veuillez saisir une adresse de départ.</div>
+                <h5 class="col-sm-offset-1" align="left">Critères</h5>
+                <div class="panel-body col-sm-12">
+                    <div name="departure" class='col-sm-5'>
+                        Adresse de départ* : <input type="text" g-places-autocomplete required ng-model="$ctrl.addressDeparture"
+                            name="addressDeparture" id="addressDeparture">
+                        <div ng-show="$ctrl.addressDeparture.$dirty && $ctrl.addressDeparture.$error.required">Veuillez saisir une adresse de départ.</div>
                     </div>
-                    <div class='col-xs-4'>
-                        Adresse d'arriver : <input type="text" g-places-autocomplete required ng-model="$ctrl.adresseArriver"
-                            name="adresseArriver">
-                        <div ng-show="itineraire.adresseArriver.$dirty && itineraire.adresseArriver.$error.required">Veuillez saisir une adresse d'arriver.</div>
+                    <div class='col-sm-4'>
+                        Adresse d'arrivée : <input type="text" g-places-autocomplete required ng-model="$ctrl.addressArrival"
+                            name="adresseArrival">
+                        <div ng-show="$ctrl.addressArrival.$dirty && $ctrl.addressArrival.$error.required">Veuillez saisir une adresse d'arrivée'.</div>
                     </div>
-                    <label class="col-xs-4" for="duree">Durée du trajet: </label>
                 </div>
                 <div>
                     <div class="container">
                         <div class="row">
-                            <div class='col-sm-6'>
-                                <div class="form-group">
-                                    <label for="departureDate">Date de départ: </label>
-                                    <div class='input-group date' id='datetimepicker' required>
-                                        <input type='text' class="form-control" />
-                                        <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    </div>
-                                </div>
+                            <div class="col-sm-4">
+                                <p class="input-group">
+                                    <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.dt" is-open="$ctrl.popup.opened" datepicker-options="$ctrl.dateOptions"
+                                        ng-required="true" close-text="Close" />
+                                    <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="$ctrl.openDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
                             </div>
-                            <script type="text/javascript">
-                                $(function () {
-                                    $('#datetimepicker').datetimepicker({
-                                        defaultDate: "11/1/2013",
-                                        disabledDates: [
-                                            moment("12/25/2013"),
-                                            new Date(2013, 11 - 1, 21),
-                                            "11/22/2013 00:53"
-                                        ]
-                                    });
-                                });
-                            </script>
-                            <label for="distance">Distance: </label>
                         </div>
                     </div>
                 </div>
                 <h5>Covoiturages</h5>
-                <div>
-                    <table>
-                        <tr>
-                            <td class="col-md-2 col-sm-2">Date/heure</td>
-                            <td class="col-md-1 col-sm-1">Départ</td>
-                            <td class="col-md-2 col-sm-2">Destination</td>
-                            <td class="col-md-1 col-sm-1">Véhicule</td>
-                            <td class="col-md-2 col-sm-2">Chauffeur</td>
-                            <td class="col-md-2 col-sm-2">Places disponibles</td>
-                            <td class="col-md-2 col-sm-2"></td>
-                        </tr>
-                        <tr ng-repeat="advert in $ctrl.adverts">
-                            <td class="col-md-2 col-sm-2">advert.dateFirst</td>
-                            <td class="col-md-1 col-sm-1">advert.addressDeparture</td>
-                            <td class="col-md-2 col-sm-2">advert.addressArrival</td>
-                            <td class="col-md-1 col-sm-1">advert.brand advert.model</td>
-                            <td class="col-md-2 col-sm-2">advert.driver</td>
-                            <td class="col-md-2 col-sm-2">advert.capacity</td>
-                            <td class="col-md-2 col-sm-2"><button class="btn" ng-click="$ctrl.open()">Réserver</button></td>
-                        </tr>
-                    </table>
-                </div>
+                <table>
+                    <tr>
+                        <td class="col-sm-2 col-sm-2">Date/heure</td>
+                        <td class="col-sm-1 col-sm-1">Départ</td>
+                        <td class="col-sm-2 col-sm-2">Destination</td>
+                        <td class="col-sm-1 col-sm-1">Véhicule</td>
+                        <td class="col-sm-2 col-sm-2">Chauffeur</td>
+                        <td class="col-sm-2 col-sm-2">Places disponibles</td>
+                        <td class="col-sm-2 col-sm-2"></td>
+                    </tr>
+                    <tr ng-repeat="advert in $ctrl.adverts | addressFilter:$ctrl.addressDeparture:$ctrl.addressArrival | filter: $ctrl.dt">
+                        <td class="col-sm-2 col-sm-2">{{advert.dateFirst}}</td>
+                        <td class="col-sm-1 col-sm-1">{{advert.addressDeparture}}</td>
+                        <td class="col-sm-2 col-sm-2">{{advert.addressArrival}}</td>
+                        <td class="col-sm-1 col-sm-1">{{advert.brand}} {{advert.model}}</td>
+                        <td class="col-sm-2 col-sm-2">{{advert.driver}}</td>
+                        <td class="col-sm-2 col-sm-2">{{advert.capacity}}</td>
+                        <td class="col-sm-2 col-sm-2"><button class="btn" ng-click="$ctrl.open(advert)" ng-disabled="$ctrl.checkCapacity({{advert.capacity}})">Réserver</button></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
-    <button class="btn" ng-click="$ctrl.open()">test modal</button>
+    </div>
 </section>

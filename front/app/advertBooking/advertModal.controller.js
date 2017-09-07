@@ -1,15 +1,26 @@
 export default class AdvertModalCtrl {
-  constructor(AdvertBookingService) {
-    this.AdvertModalService = AdvertBookingService;
+  constructor(
+    AdvertModalService,
+    AdvertBookingService,
+    $uibModalInstance,
+    $location
+  ) {
+    this.AdvertModalService = AdvertModalService;
+    this.AdvertBookingService = AdvertBookingService;
+    this.$uibModalInstance = $uibModalInstance;
+    this.$location = $location;
+    this.advert = AdvertModalService.advert;
   }
 
   confirm() {
-      console.log("test confirm");
-    $uibModalInstance.close(this.advert);
+    this.AdvertBookingService.confirm(this.advert);
+    this.$uibModalInstance.close();
+    this.$location.url(
+      "gestion-du-transport/collaborateur/collaborateur/annonces/"
+    );
   }
 
   cancel() {
-      console.log("test cancel");
-    $uibModalInstance.dismiss("cancel");
+    this.$uibModalInstance.dismiss("cancel");
   }
 }

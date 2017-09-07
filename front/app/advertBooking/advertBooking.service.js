@@ -1,26 +1,18 @@
 export default class AdvertBookingService {
-  constructor($uibModal, apiUrl, $resource) {
+  constructor($uibModal, apiUrl, $http) {
     this.$uibModal = $uibModal;
     this.apiUrl = apiUrl;
-    this.$resource = $resource;
-    this.advertResource = this.$resource(
-      this.apiUrl + ":advertId",
-      {
-        compteId: "@id"
-      },
-      {
-        update: { method: "PUT" },
-        query: {
-          method: "GET",
-          params: { data: "advert" },
-          isArray: true
-        },
-        save: { method: "POST" }
-      }
-    );
+    this.$http = $http;
   }
 
-  findAdvertByDeparture() {}
-  
-  book() {}
+  findAll() {
+    return this.$http.get(this.apiUrl + "/advert");
+  }
+
+  confirm(advert) {
+    this.advert = advert;
+    let user = sessionStorage.getItem('user')
+    this.advert.passengers.push(user)
+    this.$http.patch(this.apiUrl + "/advert/book", this.advert);
+  }
 }
