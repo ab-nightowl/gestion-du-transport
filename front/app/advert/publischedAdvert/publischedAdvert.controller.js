@@ -62,7 +62,7 @@ export default class AdvertController{
 
 
             var request = {
-                origin      : this.adresseDepart.formatted_address,
+                origin      : this.addressDeparture.formatted_address,
                 destination : this.adresseArriver.formatted_address,
                 travelMode  : google.maps.DirectionsTravelMode.DRIVING, // Type de transport
             }
@@ -76,15 +76,15 @@ export default class AdvertController{
         }
         save(){
             this.resultDate = new Date()
-            this.resultDate.setFullYear(this.date.getFullYear())
             this.resultDate.setMonth(this.date.getMonth())
             this.resultDate.setDate(this.date.getDate())
             this.resultDate.setHours(this.mytime.getHours())
             this.resultDate.setMinutes(this.mytime.getMinutes())
-
+            console.log(this.resultDate);
+            
             this.advert = {
                 'driver': {registrationNumber:"test", role: "DRIVER"  },
-                'addressDeparture':  0,
+                'addressDeparture':  this.addressDeparture.formatted_address,
                 'addressArrival':  this.adresseArriver.formatted_address,
                 'licensePlate': this.licensePlate,
                 'brand':this.brand,

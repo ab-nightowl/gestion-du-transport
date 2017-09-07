@@ -1,4 +1,4 @@
-import advertController from './advert.controller'
+import advertController from './publischedAdvert.controller'
 import publischedAdvert from './PublishAdvert.html'
 
 const publischedAdvertComponent = {
