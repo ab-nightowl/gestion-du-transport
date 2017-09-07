@@ -1,9 +1,10 @@
 package dev.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,12 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 import dev.entities.Advert;
 import dev.entities.AdvertStatut;
 import dev.repository.AdvertRepository;
+import dev.services.AdvertService;
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/advert")
 public class AdvertController {
 
+	private AdvertService advertService;
 	@Autowired
 	private AdvertRepository advertRepo;
 
@@ -30,6 +32,17 @@ public class AdvertController {
 		advert.setStatut(AdvertStatut.INPROGRESS);
 		advertRepo.save(advert);
 		return new ResponseEntity<Advert>(advert, HttpStatus.CREATED);
-
+		
 	}
+	
+	@RequestMapping
+	public List<Advert> listAdvert() {
+		return advertService.findAll();
+	}
+
+	@RequestMapping(value = "/book", method = RequestMethod.PATCH)
+	public void bookAdvert(@RequestBody Advert advert) {
+		advertService.bookAdvert(advert);
+	}
+
 }
