@@ -1,7 +1,7 @@
 
 #header{
 height: 179px;
-background-image: url("/statique/img/headerBackground.jpg");
+background-image: url("/statique/img/blahblahcar.jpg");
 
 }
 .zoneMenu{
@@ -38,8 +38,6 @@ display: block;
 
 .authentif a{
 	color: white;
-
-
 }
 
 .zoneLogo img{
