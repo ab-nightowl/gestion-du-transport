@@ -1,0 +1,98 @@
+<body>    
+    <br> 
+        <a href="collaborateur/annonces"><input type="button" class="btn btn-primary" value="<< Retour à la liste"></a>           
+        <div class="container">
+            <div class="row">
+                <h1>Publier une annonce</h1>
+            </div>
+            
+            <form name="itineraire" novalidate method="post">
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                Itinéraire
+                            </h4>
+                        </div>
+                        <div id="collapse1" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class='col-xs-12'>
+                                    Adresse de départ* : <input ng-change="$ctrl.calculate()" type="text" size="60" g-places-autocomplete required ng-model="$ctrl.addressDeparture" name="addressDeparture">
+                                    <div ng-show="itineraire.addressDeparture.$dirty && itineraire.addressDeparture.$error.required">Veuillez saisir une adresse de départ.</div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class='col-xs-12'>
+                                    Adresse d'arriver* : <input ng-change="$ctrl.calculate()" type="text" size="60" g-places-autocomplete required ng-model="$ctrl.adresseArriver" name="adresseArriver">
+                                    <div ng-show="itineraire.adresseArriver.$dirty && itineraire.adresseArriver.$error.required">Veuillez saisir une adresse d'arriver.</div>
+                                </div> 
+                                <br>
+                                <pre ng-show="itineraire.adresseArriver.$dirty" id="panel"></pre>
+                                                          
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                Véhicule
+                            </h4>
+                        </div>
+                        <div id="collapse1" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class='col-xs-12'>
+                                    Immatriculation* : <input type="text" size="60"  required ng-model="$ctrl.licensePlate" name="licensePlate">
+                                    <div ng-show="itineraire.licensePlate.$dirty && itineraire.licensePlate.$error.required">Veuillez saisir l'immatriculation de votre véhicule.</div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class='col-xs-12'>
+                                    Marque* : <input type="text"  size="60"  required ng-model="$ctrl.brand" name="brand">
+                                    <div ng-show="itineraire.brand.$dirty && itineraire.brand.$error.required">Veuillez saisir la marque de votre véhicule.</div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class='col-xs-12'>
+                                    Modele* : <input type="text"  size="60"  required ng-model="$ctrl.model" name="model">
+                                    <div ng-show="itineraire.model.$dirty && itineraire.model.$error.required">Veuillez saisir le modèle de votre véhicule.</div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class='col-xs-12'>
+                                        Nombre de places disponibles* : <input type="number" min=1 max=20  size="60"  required ng-model="$ctrl.capacity" name="capacity">
+                                        <div ng-show="(itineraire.capacity.$dirty  && itineraire.capacity.$error.required) || itineraire.capacity.$invalid">Veuillez saisir le nombre entre 1 et 20 de place dans votre véhicule</div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+                <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    Date et heure
+                                </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse in">
+                                <div class="panel-body" >   
+                                    <div class="col-md-6">
+                                        <p class="input-group">
+                                          <input type="text" class="form-control" uib-datepicker-popup={{$ctrl.format}} ng-model="$ctrl.date" is-open="$ctrl.popup.opened" datepicker-options="$ctrl.dateOptions" ng-required="true" close-text="Close" />
+                                          <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="$ctrl.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            <div uib-timepicker ng-model="$ctrl.mytime" ng-change="$ctrl.changed()" hour-step="$ctrl.hstep" minute-step="$ctrl.mstep" show-meridian="$ctrl.ismeridian"></div>
+                                          </span>
+                                          
+                                        </p>
+                                    </div>                                           
+                                     
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                    <button ng-disabled="!itineraire.$valid" type="submit" class='btn btn-success pull-right' ng-click="$ctrl.save()">Publier</button>
+            </form>
+        </div>
+        </body>

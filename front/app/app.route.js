@@ -9,6 +9,9 @@ export function route ($routeProvider, $locationProvider) {
     .when('/collaborateur/annonces/creer',{
         template : '<advert-publisched></advert-publisched>'
     })
+    .when('/collaborateur/annonces',{
+        template: '<advert-list></advert-list>'
+    })
     .otherwise({
         redirectTo: '/home'
     });
