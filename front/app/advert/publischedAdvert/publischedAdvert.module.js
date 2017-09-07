@@ -1,7 +1,7 @@
-import advertService from './advert.service'
+import advertService from './publischedAdvert.service'
 import publischedAdvertComponent from './publichedAdvert.component'
-import advertController from './advert.controller'
-import { route } from '../app.route'
+import advertController from './publischedAdvert.controller'
+import { route } from '../../app.route'
 
 const advertModule = angular.module('advertModule',[])
 .component('advertPublisched',publischedAdvertComponent)

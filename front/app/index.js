@@ -7,14 +7,13 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { route } from './app.route';
 import { AccueilComponent } from './accueil/accueil.component';
 import './common/input.css'
-import advertModule from './advert/advert.module'
+import advertModule from './advert/publischedAdvert/publischedAdvert.module'
 import UiBootrap from 'angular-ui-bootstrap'
 import tanModule from './modules/tan.module'
-
-
+import advertBookingModule from "./advertBooking/advertBooking.module";
+import advertListModule from './advert/advertList/advertList.module'
 import headerComponent  from './header/header.component'
-
-angular.module('app', [RouteModule, 'tanModule'])
+angular.module('app', [RouteModule, 'tanModule',advertBookingModule.name,advertModule.name,google,date,advertListModule.name])
 
 .value( 'apiUrl', API_URL)
 .component('accueil', AccueilComponent)

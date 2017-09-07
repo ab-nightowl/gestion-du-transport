@@ -1,4 +1,5 @@
-export function route ($routeProvider, $locationProvider) {
+export function route($routeProvider, $locationProvider) {
+  $locationProvider.html5Mode(true);
 
     $locationProvider.html5Mode(true);
 
@@ -9,8 +10,13 @@ export function route ($routeProvider, $locationProvider) {
     .when('/collaborateur/annonces/creer',{
         template : '<advert-publisched></advert-publisched>'
     })
+    .when('/collaborateur/annonces',{
+        template: '<advert-list></advert-list>'
+    })
+    .when("/collaborateur/reservations/creer", {
+      template: "<advert-booking-cmp></advert-booking-cmp>"
+    })
     .otherwise({
         redirectTo: '/home'
     });
-
 }
