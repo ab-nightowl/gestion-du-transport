@@ -8,8 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+
 @Entity
-public class Booking {
+public class Booking{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -22,6 +23,7 @@ public class Booking {
 
 	private AdvertStatut statut;
 
+	
 	public AdvertStatut getStatut() {
 		return statut;
 	}
@@ -35,6 +37,7 @@ public class Booking {
 	}
 
 	public void setDateFirst(LocalDateTime dateFirst) {
+		
 		this.dateFirst = dateFirst;
 	}
 
@@ -65,5 +68,6 @@ public class Booking {
 	public Integer getId() {
 		return id;
 	}
+
 
 }

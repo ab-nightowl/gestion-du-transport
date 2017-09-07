@@ -17,6 +17,8 @@ public class Vehicle {
 	@Enumerated(EnumType.STRING)
 	private VehicleStatus status;
 
+	
+	
 	public VehicleStatus getStatus() {
 		return status;
 	}
@@ -65,12 +67,30 @@ public class Vehicle {
 		this.urlImg = urlImg;
 	}
 
+	
+
 	public Integer getCapacity() {
 		return capacity;
 	}
 
 	public void setCapacity(Integer capacity) {
 		this.capacity = capacity;
+	}
+	
+	public Vehicle(){
+		
+	}
+	
+	public Vehicle(String licensePlate, String brand, String model, String category, String urlImg, Integer capacity,
+			VehicleStatus status) {
+		super();
+		this.licensePlate = licensePlate;
+		this.brand = brand;
+		this.model = model;
+		this.category = category;
+		this.urlImg = urlImg;
+		this.capacity = capacity;
+		this.status = status;
 	}
 
 }

@@ -1,0 +1,122 @@
+<style>
+.container{
+  background: #e0d6d6;
+}
+
+img{
+    width:500px; height:250px;
+    margin-left: 300px;
+}
+
+.buttonMove{
+    margin-top: 80px;
+}
+
+#buttonNext{
+  float: right;
+  margin-left: -20px
+}
+
+#buttonPrevious{
+  float: left;
+
+
+
+}
+#buttonReserver{
+  margin-left: 540px;
+  margin-top: 50px;
+}
+
+.zoneInfosVehicle{
+  margin-left: 500px;
+font-size: 20px;
+margin-top: 20px;
+}
+
+
+#result{
+    margin-top: 20px;
+}
+
+
+</style>
+
+<div>
+
+  <meta charset="utf-8"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+ <div ng-controller="bookVehicleController as bookingCtrl">
+<div class="container">
+  <h1>Reserve a company vehicle</h1><br />
+  <div class="row">
+      <div class='col col-lg-4 col-lg-offset-2'>
+          <div class="form-group">
+            <span>Date/Heure de départ</span>
+              <div class='input-group date' id='datetimepicker1'>
+                  <input type='datetime-local' class="form-control" placeholder="Date de départ" ng-model='booking.dateFirst'/>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+          </div>
+      </div>
+
+
+      <div class='col col-lg-4'>
+          <div class="form-group">
+            <span>Date/Heure de retour</span>
+              <div class='input-group date' id='datetimepicker1'>
+                  <input type='datetime-local' class="form-control" placeholder="Date de retour" ng-model='booking.dateLast'/>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+<h3>Our Vehicles : </h3>
+
+<div class="buttonMove">
+  <div id="buttonNext">
+    <button class="btn btn-primary btn-success" ng-click="bookingCtrl.next()"> >> </button>
+  </div>
+  <div id="buttonPrevious">
+    <button class="btn btn-primary btn-success" ng-click="bookingCtrl.previous()"> << </button>
+  </div>
+
+</div>
+
+<img ng-src="{{bookingCtrl.vehicles[bookingCtrl.currentId].urlImg}}"/><br />
+
+<div class="zoneInfosVehicle">
+
+  <span >Matricule: {{bookingCtrl.vehicles[bookingCtrl.currentId].licensePlate}}</span><br />
+  <span >Marque: {{bookingCtrl.vehicles[bookingCtrl.currentId].brand}}</span><br />
+  <span >Model: {{bookingCtrl.vehicles[bookingCtrl.currentId].model}}</span><br />
+  <span >Capacité: {{bookingCtrl.vehicles[bookingCtrl.currentId].capacity}}</span><br />
+  <span >Status: {{bookingCtrl.vehicles[bookingCtrl.currentId].status}}</span><br />
+
+</div>
+
+
+<div class="reservation">
+  <button id="buttonReserver" class="btn btn-primary btn-success"
+  ng-click='bookingCtrl.reserveVehicleSociety(bookingCtrl.vehicles[bookingCtrl.currentId].licensePlate, booking)'>
+  Réserver</button>
+
+
+  <div id="result" class="alert alert-success" ng-if='bookingCtrl.result != null'>
+    <strong>Info!</strong> {{bookingCtrl.result}}
+  </div>
+
+
+
+</div>
+
+</div>
+</div>
+</div>

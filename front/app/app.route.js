@@ -10,7 +10,7 @@ export function route ($routeProvider, $locationProvider) {
         template : '<advert-publisched></advert-publisched>'
     })
     .otherwise({
-        redirectTo: '/'
+        redirectTo: '/collab/book/create'
     });
 
 }

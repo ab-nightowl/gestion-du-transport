@@ -8,9 +8,10 @@ import { route } from './app.route';
 import { AccueilComponent } from './accueil/accueil.component';
 import './common/input.css'
 import advertModule from './advert/advert.module'
-angular.module('app', [RouteModule,advertModule.name,google,date])
+import UiBootrap from 'angular-ui-bootstrap'
+import tanModule from './modules/tan.module'
+
+angular.module('app', [RouteModule, 'tanModule',advertModule.name,google,date])
 .value( 'apiUrl', API_URL)
 .component('accueil', AccueilComponent)
 .config(route)
-
-
