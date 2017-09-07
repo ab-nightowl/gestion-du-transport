@@ -1,4 +1,4 @@
-export default class AdvertService{
+export default class AdvertPublischedService{
     constructor($http, apiUrl){
         this.$http = $http
         this.apiUrl = apiUrl

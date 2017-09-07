@@ -1,6 +1,7 @@
 export default class AdvertController{
-    constructor(advertService){
+    constructor(AdvertPublischedService,AdvertPublischedModalService){
         this.today()
+        this.AdvertPublischedModalService = AdvertPublischedModalService
         this.inlineOptions = {
             customClass: getDayClass,
             minDate: new Date(),
@@ -34,7 +35,7 @@ export default class AdvertController{
               status: 'partially'
             }
           ];
-          this.advertService = advertService
+          this.AdvertPublischedService = AdvertPublischedService
 
 
     }
@@ -53,7 +54,10 @@ export default class AdvertController{
           this.hstep = 1
           this.mstep = 10
           this.ismeridian = false
-
+    }
+    openModal(advert) {
+      this.advert = advert;
+      this.AdvertPublischedModalService.open(this.advert);
     }
 
     calculate(){
@@ -79,9 +83,7 @@ export default class AdvertController{
             this.resultDate.setMonth(this.date.getMonth())
             this.resultDate.setDate(this.date.getDate())
             this.resultDate.setHours(this.mytime.getHours())
-            this.resultDate.setMinutes(this.mytime.getMinutes())
-            console.log(this.resultDate);
-            
+            this.resultDate.setMinutes(this.mytime.getMinutes())            
             this.advert = {
                 'driver': {registrationNumber:"test", role: "DRIVER"  },
                 'addressDeparture':  this.addressDeparture.formatted_address,
@@ -93,7 +95,7 @@ export default class AdvertController{
                 'dateFirst' : this.resultDate
             }
             localStorage['Vehicule'] = JSON.stringify(this.advert)
-            this.advertService.saveAdvert(this.advert)
+           this.openModal(this.advert)
         }
         today() {
             this.date = new Date();
@@ -141,4 +143,4 @@ export default class AdvertController{
             return mode === 'day' &&   (date.getDay() === 0 || date.getDay() === 6);
           }
 
-    AdvertController['$inject'] = ['AdvertService']
+    AdvertController['$inject'] = ['AdvertPublischedService','AdvertPublischedModalService']

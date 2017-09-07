@@ -21,7 +21,7 @@ import dev.services.AdvertService;
 @RestController
 @RequestMapping("/advert")
 public class AdvertController {
-
+	@Autowired
 	private AdvertService advertService;
 	@Autowired
 	private AdvertRepository advertRepo;

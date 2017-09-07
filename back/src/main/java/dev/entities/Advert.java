@@ -35,7 +35,6 @@ public class Advert {
 
 	public Advert() {
 	}
-
 	public Advert(ZonedDateTime dateFirst, User driver, List<User> passengers, String addressDeparture,
 			String addressArrival, String licensePlate, String brand, String model, Integer capacity,
 			AdvertStatut statut) {
