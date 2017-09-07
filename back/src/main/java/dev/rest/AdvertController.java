@@ -16,11 +16,13 @@ import dev.entities.AdvertStatut;
 import dev.entities.User;
 import dev.repository.AdvertRepository;
 import dev.repository.UserRepository;
+import dev.services.AdvertService;
 
 @RestController
 @RequestMapping("/advert")
 public class AdvertController {
 
+	private AdvertService advertService;
 	@Autowired
 	private AdvertRepository advertRepo;
 
@@ -40,6 +42,16 @@ public class AdvertController {
 
 	}
 
+	@RequestMapping
+	public List<Advert> listAdvert() {
+		return advertService.findAll();
+	}
+
+	@RequestMapping(value = "/book", method = RequestMethod.PATCH)
+	public void bookAdvert(@RequestBody Advert advert) {
+		advertService.bookAdvert(advert);
+	}
+
 	@RequestMapping(value = "/{user}", method = RequestMethod.GET)
 	public ResponseEntity<List<Advert>> getAllAdvert(@PathVariable("user") String registrationNumber) {
 		User user = new User();
@@ -47,5 +59,4 @@ public class AdvertController {
 		List<Advert> adverts = advertRepo.findAllByDriver(user);
 		return new ResponseEntity<List<Advert>>(adverts, HttpStatus.OK);
 	}
-
 }
