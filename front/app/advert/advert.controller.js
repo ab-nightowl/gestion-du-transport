@@ -1,6 +1,5 @@
 export default class AdvertController{
-    constructor($http){
-        this.$http = $http
+    constructor(advertService){
         this.today()
         this.inlineOptions = {
             customClass: getDayClass,
@@ -35,7 +34,28 @@ export default class AdvertController{
               status: 'partially'
             }
           ];
+          this.advertService = advertService
+
+          
     }
+    $onInit(){
+        if (!localStorage.getItem('Vehicule') == null || !localStorage.getItem('Vehicule') ==[]) {
+            this.before = JSON.parse(localStorage['Vehicule'])
+            this.licensePlate = this.before.licensePlate
+            this.brand = this.before.brand
+            this.model = this.before.model
+            this.capacity = this.before.capacity
+        }
+        var d = new Date();
+            d.setHours( 0 );
+            d.setMinutes( 0 );
+          this.mytime = d;
+          this.hstep = 1
+          this.mstep = 10
+          this.ismeridian = false
+
+    }
+
     calculate(){
       var map;
       var panel = document.querySelector("#panel");
@@ -55,23 +75,25 @@ export default class AdvertController{
             }});
         }
         save(){
-            this.dateAdvert = new Date(this.date.getFullYear(),this.date.getMonth(),this.date.getDay())
-            console.log(this.dateAdvert);
-            
+            this.resultDate = new Date()
+            this.resultDate.setFullYear(this.date.getFullYear())
+            this.resultDate.setMonth(this.date.getMonth())
+            this.resultDate.setDate(this.date.getDate())
+            this.resultDate.setHours(this.mytime.getHours())
+            this.resultDate.setMinutes(this.mytime.getMinutes())
+             
             this.advert = {
                 'driver': {registrationNumber:"test", role: "DRIVER"  },
-                'addressDeparture':  this.adresseDepart.formatted_address,
+                'addressDeparture':  0s,
                 'addressArrival':  this.adresseArriver.formatted_address,
                 'licensePlate': this.licensePlate,
                 'brand':this.brand,
                 'model':this.model,
                 'capacity' : this.capacity,
-                'dateFirst' : this.date
-            }           
-
-        this.$http.post('http://localhost:8080/addNew',this.advert).then(()=>{
-            alert('ok')
-        })
+                'dateFirst' : this.resultDate
+            }                 
+            localStorage['Vehicule'] = JSON.stringify(this.advert) 
+            this.advertService.saveAdvert(this.advert)    
         }
         today() {
             this.date = new Date();
@@ -94,7 +116,7 @@ export default class AdvertController{
           setDate(year, month, day) {
             this.date = new Date(year, month, day);
           }
-        }
+    }
 
           function getDayClass(data) {
             var date = data.date,
@@ -114,16 +136,12 @@ export default class AdvertController{
             return '';
           }
           function disabled(data) {
-              
-              
             var date = data.date,
               mode = data.mode;
-              console.log(date.getDay());
-                            
             return mode === 'day' &&   (date.getDay() === 0 || date.getDay() === 6);
           }
         
-    AdvertController['$inject'] = ['$http']
+    AdvertController['$inject'] = ['AdvertService']
 
 
     

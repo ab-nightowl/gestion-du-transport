@@ -42,25 +42,25 @@
                         <div id="collapse1" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 <div class='col-xs-12'>
-                                    Immatriculation* : <input type="text" size="60"  required ng-model="licensePlate" name="licensePlate">
+                                    Immatriculation* : <input type="text" size="60"  required ng-model="$ctrl.licensePlate" name="licensePlate">
                                     <div ng-show="itineraire.licensePlate.$dirty && itineraire.licensePlate.$error.required">Veuillez saisir l'immatriculation de votre véhicule.</div>
                                 </div>
                                 <br>
                                 <br>
                                 <div class='col-xs-12'>
-                                    Marque* : <input type="text"  size="60"  required ng-model="brand" name="brand">
+                                    Marque* : <input type="text"  size="60"  required ng-model="$ctrl.brand" name="brand">
                                     <div ng-show="itineraire.brand.$dirty && itineraire.brand.$error.required">Veuillez saisir la marque de votre véhicule.</div>
                                 </div>
                                 <br>
                                 <br>
                                 <div class='col-xs-12'>
-                                    Modele* : <input type="text"  size="60"  required ng-model="model" name="model">
+                                    Modele* : <input type="text"  size="60"  required ng-model="$ctrl.model" name="model">
                                     <div ng-show="itineraire.model.$dirty && itineraire.model.$error.required">Veuillez saisir le modèle de votre véhicule.</div>
                                 </div>
                                 <br>
                                 <br>
                                 <div class='col-xs-12'>
-                                        Nombre de places disponibles* : <input type="number" min=1 max=20  size="60"  required ng-model="capacity" name="capacity">
+                                        Nombre de places disponibles* : <input type="number" min=1 max=20  size="60"  required ng-model="$ctrl.capacity" name="capacity">
                                         <div ng-show="(itineraire.capacity.$dirty  && itineraire.capacity.$error.required) || itineraire.capacity.$invalid">Veuillez saisir le nombre entre 1 et 20 de place dans votre véhicule</div>
                                     </div>
                             </div>
@@ -75,17 +75,18 @@
                                 </h4>
                             </div>
                             <div id="collapse1" class="panel-collapse collapse in">
-                                <div class="panel-body">
-                                    Date / heure* 
+                                <div class="panel-body" >   
                                     <div class="col-md-6">
                                         <p class="input-group">
                                           <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.date" is-open="$ctrl.popup.opened" datepicker-options="$ctrl.dateOptions" ng-required="true" close-text="Close" />
                                           <span class="input-group-btn">
                                             <button type="button" class="btn btn-default" ng-click="$ctrl.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            <div uib-timepicker ng-model="$ctrl.mytime" ng-change="$ctrl.changed()" hour-step="$ctrl.hstep" minute-step="$ctrl.mstep" show-meridian="$ctrl.ismeridian"></div>
                                           </span>
+                                          
                                         </p>
-                                      </div>
-                                   
+                                    </div>                                           
+                                     
                                 </div>
                             </div>
                         </div>   

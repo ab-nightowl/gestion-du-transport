@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * Application démarrée via Spring Boot.
  */
 @SpringBootApplication
-@CrossOrigin(origins = "http://localhost:9000")
+@CrossOrigin(origins = "*")
 public class App {
 
 	/**
