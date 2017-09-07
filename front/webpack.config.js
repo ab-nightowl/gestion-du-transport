@@ -36,7 +36,7 @@ module.exports = {
                     }]]
                 }
             },
-
+           
             {
                 test: /\.css$/,
                 loaders: ['style-loader', 'css-loader']
@@ -54,6 +54,7 @@ module.exports = {
             },
 
         ]
+        
     },
 
     plugins: [

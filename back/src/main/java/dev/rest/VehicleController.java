@@ -20,7 +20,7 @@ import dev.repository.BookingRepository;
 import dev.repository.UserRepository;
 import dev.repository.VehicleRepository;
 
-@CrossOrigin(origins = "*")
+
 @RestController
 @RequestMapping("/collab/booking/vehicle")
 public class VehicleController {
