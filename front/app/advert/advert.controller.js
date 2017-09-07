@@ -84,7 +84,7 @@ export default class AdvertController{
              
             this.advert = {
                 'driver': {registrationNumber:"test", role: "DRIVER"  },
-                'addressDeparture':  0s,
+                'addressDeparture':  0,
                 'addressArrival':  this.adresseArriver.formatted_address,
                 'licensePlate': this.licensePlate,
                 'brand':this.brand,
