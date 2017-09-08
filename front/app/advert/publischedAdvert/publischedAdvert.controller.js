@@ -4,7 +4,7 @@ export default class AdvertController {
     this.AdvertPublischedModalService = AdvertPublischedModalService
     this.inlineOptions = {
       customClass: getDayClass,
-      minDate: new Date(),
+      minDate: this.today(),
       showWeeks: true
     };
 
@@ -58,7 +58,7 @@ export default class AdvertController {
   openModal(advert) {
     this.advert = advert;
     this.AdvertPublischedModalService.open(this.advert);
-   
+    
   }
 
   calculate() {
