@@ -8,4 +8,7 @@ export default class AdvertListService{
         this.user = "test"
         return this.$http.get(this.apiUrl+'/advert/'+this.user)
     }
+    cancelledAdvert(idAdvert){
+        console.log(idAdvert);
+    }
 }

@@ -1,4 +1,4 @@
-export default class AdvertModalCtrl {
+export default class PublischedAdvertModalCtrl {
   constructor(
     AdvertPublischedModalService,
     AdvertPublischedService,
@@ -25,4 +25,4 @@ export default class AdvertModalCtrl {
     this.$uibModalInstance.dismiss("cancel");
   }
 }
-AdvertModalCtrl['$inject'] = ['AdvertPublischedModalService','AdvertPublischedService','$uibModalInstance','$location']
+PublischedAdvertModalCtrl['$inject'] = ['AdvertPublischedModalService','AdvertPublischedService','$uibModalInstance','$location']
