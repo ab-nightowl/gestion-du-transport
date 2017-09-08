@@ -19,7 +19,9 @@ import dev.services.AdvertService;
 @RequestMapping("/advert")
 public class AdvertController {
 
+	@Autowired
 	private AdvertService advertService;
+	
 	@Autowired
 	private AdvertRepository advertRepo;
 
@@ -35,7 +37,7 @@ public class AdvertController {
 		
 	}
 	
-	@RequestMapping
+	@RequestMapping(method = RequestMethod.GET)
 	public List<Advert> listAdvert() {
 		return advertService.findAll();
 	}
