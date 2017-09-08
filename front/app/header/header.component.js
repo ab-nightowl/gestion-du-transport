@@ -8,13 +8,6 @@ class headerController {
     }
 }
 
-// const headerComponent = {
-// 	headerTemplate,
-// 	headerController,
-//   bindings : {}
-// }
-
-
 const headerComponent = {
 	template : headerTemplate,
 	headerController

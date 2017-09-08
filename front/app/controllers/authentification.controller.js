@@ -1,40 +1,13 @@
 export default class authentificationController {
 
-  constructor($scope,$http, $log, authentificationService, $sessionStorage, $uibModal, $document){
+  constructor($scope,$http, $log, authentificationService, $sessionStorage){
     this.$scope = $scope;
     this.$http = $http
     this.$log = $log
     this.authentificationService = authentificationService;
     this.$sessionStorage = $sessionStorage;
-    this.$uibModal = $uibModal;
-    this.$document = $document;
-
-    this.items = ['item1', 'item2', 'item3'];
-     this.animationsEnabled = true;
+    
 }
-
-
- // open(size, parentSelector) {
- //   var parentElem = parentSelector ?
- //     angular.element($document[0].querySelector('.modal-demo ' + parentSelector)) : undefined;
- //   var modalInstance = this.$uibModal.open({
- //     animation: this.animationsEnabled,
- //     ariaLabelledBy: 'modal-title',
- //     ariaDescribedBy: 'modal-body',
- //     template: '<h1>Hello modal</h1>',
- //     controller: 'ModalInstanceCtrl',
- //     controllerAs: 'this',
- //     size: size,
- //     appendTo: parentElem,
- //     resolve: {
- //       this.items {
- //         return this.items;
- //       }
- //     }
- //   });
-
-
-
 
 
   login(user){
@@ -49,6 +22,7 @@ export default class authentificationController {
         if( (user.email === e.email) && (user.password === e.password) ){
             this.foundUser = true;
             user.nom = e.nom;
+            this.role = e.role;
         }
       })
 
@@ -74,4 +48,4 @@ export default class authentificationController {
 
 }
 
-authentificationController['$inject'] = ['$scope','$http', '$log', 'authentificationService', '$sessionStorage', '$uibModal', '$document'];
+authentificationController['$inject'] = ['$scope','$http', '$log', 'authentificationService', '$sessionStorage'];
