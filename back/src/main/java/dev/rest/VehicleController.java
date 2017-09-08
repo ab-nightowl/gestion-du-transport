@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +18,6 @@ import dev.entities.VehicleStatus;
 import dev.repository.BookingRepository;
 import dev.repository.UserRepository;
 import dev.repository.VehicleRepository;
-
 
 @RestController
 @RequestMapping("/collab/booking/vehicle")
@@ -60,9 +58,8 @@ public class VehicleController {
 	public List<Vehicle> listVehicles() {
 		initDateVehicle();
 		return vehicleRepo.findAll();
-	}	
+	}
 
-	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/{licensePlat}", method = RequestMethod.PUT, consumes = { "application/json" })
 	public void reserverVehicleSociety(@PathVariable String licensePlat, @RequestBody Booking bookingFromClient) {
 
