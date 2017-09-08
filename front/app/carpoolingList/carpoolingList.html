@@ -8,18 +8,18 @@
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>Date / heure de départ</th>
-                    <th>Départ</th>
-                    <th>Dstination</th>
-                    <th></th>
+                    <th class="col-sm-3">Date / heure de départ</th>
+                    <th class="col-sm-3">Départ</th>
+                    <th class="col-sm-3">Destination</th>
+                    <th class="col-sm-3"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="advert in $ctrl.list">
-                    <td>{{advert.dateFirst}}</td>
-                    <td>{{advert.addressDeparture}}</td>
-                    <td>{{advert.addressArrival}}</td>
-                    <td></td>
+                    <td class="col-sm-3">{{advert.dateFirst}}</td>
+                    <td class="col-sm-3">{{advert.addressDeparture}}</td>
+                    <td class="col-sm-3">{{advert.addressArrival}}</td>
+                    <td class="col-sm-3"></td>
                 </tr>
             </tbody>
         </table>
@@ -27,18 +27,18 @@
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>Date / heure de départ</th>
-                    <th>Départ</th>
-                    <th>Dstination</th>
-                    <th></th>
+                    <th class="col-sm-3">Date / heure de départ</th>
+                    <th class="col-sm-3">Départ</th>
+                    <th class="col-sm-3">Destination</th>
+                    <th class="col-sm-3"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="advert in $ctrl.listEnd">
-                    <td class="col-sm-2">{{advert.dateFirst}}</td>
-                    <td>{{advert.addressDeparture}}</td>
-                    <td>{{advert.addressArrival}}</td>
-                    <td><button class="btn" ng-click="$ctrl.open(advert)">Détails</button></td>
+                    <td class="col-sm-3">{{advert.dateFirst}}</td>
+                    <td class="col-sm-3">{{advert.addressDeparture}}</td>
+                    <td class="col-sm-3">{{advert.addressArrival}}</td>
+                    <td class="col-sm-3"><button class="btn" ng-click="$ctrl.open(advert)">Détails</button></td>
                 </tr>
             </tbody>
         </table>
