@@ -17,11 +17,9 @@ export default class AdvertModalCtrl {
     this.$uibModalInstance.close();
     this.$location.path(
       "collaborateur/annonces/creer"
-    );
-    this.itineraire ={}
+    );   
     
-    
-  }
+  } 
 
   cancel() {
     this.$uibModalInstance.dismiss("cancel");

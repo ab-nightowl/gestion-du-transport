@@ -1,6 +1,6 @@
 package dev.entities;
 
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -17,7 +17,7 @@ public class Advert {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private ZonedDateTime dateFirst;
+	private LocalDateTime dateFirst;
 
 	@ManyToOne
 	private User driver;
@@ -35,7 +35,8 @@ public class Advert {
 
 	public Advert() {
 	}
-	public Advert(ZonedDateTime dateFirst, User driver, List<User> passengers, String addressDeparture,
+
+	public Advert(LocalDateTime dateFirst, User driver, List<User> passengers, String addressDeparture,
 			String addressArrival, String licensePlate, String brand, String model, Integer capacity,
 			AdvertStatut statut) {
 		super();
@@ -63,11 +64,11 @@ public class Advert {
 		this.statut = statut;
 	}
 
-	public ZonedDateTime getDateFirst() {
+	public LocalDateTime getDateFirst() {
 		return dateFirst;
 	}
 
-	public void setDateFirst(ZonedDateTime dateFirst) {
+	public void setDateFirst(LocalDateTime dateFirst) {
 		this.dateFirst = dateFirst;
 	}
 
