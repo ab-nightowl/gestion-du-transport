@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import dev.repository.AdvertRepository;
 import dev.repository.UserRepository;
 import dev.services.AdvertService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/advert")
 public class AdvertController {
@@ -41,6 +43,15 @@ public class AdvertController {
 
 	}
 
+	@RequestMapping(path = "/cancelled/{id}", method = RequestMethod.PATCH)
+	public ResponseEntity<Advert> cancelledAdvert(@PathVariable("id") Integer id) {
+		Advert advert = new Advert();
+		advert = advertRepo.findOneById(id);
+		advert.setStatut(AdvertStatut.CANCELED);
+		advertRepo.save(advert);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
 	@RequestMapping
 	public List<Advert> listAdvert() {
 		return advertService.findAll();
@@ -57,5 +68,6 @@ public class AdvertController {
 		user = userRepo.findByRegistrationNumber(registrationNumber);
 		List<Advert> adverts = advertRepo.findAllByDriver(user);
 		return new ResponseEntity<List<Advert>>(adverts, HttpStatus.OK);
+
 	}
 }

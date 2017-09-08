@@ -1,4 +1,4 @@
-export default class AdvertController {
+export default class AdvertPublischedController {
   constructor(AdvertPublischedService, AdvertPublischedModalService) {
     this.today()
     this.AdvertPublischedModalService = AdvertPublischedModalService
@@ -145,4 +145,4 @@ function disabled(data) {
   return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
 }
 
-AdvertController['$inject'] = ['AdvertPublischedService', 'AdvertPublischedModalService']
+AdvertPublischedController['$inject'] = ['AdvertPublischedService', 'AdvertPublischedModalService']

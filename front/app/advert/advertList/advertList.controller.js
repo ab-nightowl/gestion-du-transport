@@ -1,32 +1,32 @@
-export default class AdvertListController{
-    constructor(advertListService,AdvertListModalService){
+export default class AdvertListController {
+    constructor(advertListService, AdvertListModalService, $route) {
         this.advertListService = advertListService
         this.AdvertListModalService = AdvertListModalService
         this.config = {
-          itemsPerPage: 5,
-          fillLastPage: true
+            itemsPerPage: 5,
+            fillLastPage: true
         }
-        this.list=[]
-        this.listEnd=[]
+        this.list = []
+        this.listEnd = []
+        this.$route = $route
     }
-    $onInit(){
-        this.advertListService.getAdvertHistory().then(res=>{
-            res.data.forEach(function(element) {
-                
-                if(element.statut === "INPROGRESS"){
+    $onInit() {
+        this.advertListService.getAdvertHistory().then(res => {
+            res.data.forEach(function (element) {
+                if (element.statut === "INPROGRESS") {
                     this.list.push(element)
                 }
-                else{
+                else {
                     this.listEnd.push(element)
                 }
             }, this);
         })
-        console.log(this.list);
-        
     }
-    cancelled(id){
-        this.AdvertListModalService.open(id);
+    cancelled(id) {
+        this.AdvertListModalService.open(id)
+     
+        
     }
 }
 
-AdvertListController['$inject'] = ['AdvertListService','AdvertListModalService']
+AdvertListController['$inject'] = ['AdvertListService', 'AdvertListModalService', '$route']

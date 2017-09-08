@@ -1,6 +1,5 @@
 import AdvertPublischedService from './publischedAdvert.service'
 import publischedAdvertComponent from './publichedAdvert.component'
-import advertController from './publischedAdvert.controller'
 import { route } from '../../app.route'
 import AdvertPublischedModalService from './publischedAdvertModal.service'
 import AdvertModalCtrl from './publischedAdvertModal.controller'
