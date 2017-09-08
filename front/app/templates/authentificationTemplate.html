@@ -1,0 +1,137 @@
+<style>
+
+#myBorder{
+background: #33304e;
+width: 510px;
+height: auto;
+
+}
+#myForm{
+padding-top: 33px;
+}
+#labelNewCollab{
+
+padding: 5px 9px;
+display: inline-block;
+color: #111;
+font-family: 'Helvetica Neue', sans-serif;
+font-size: 20px;
+font-weight: bold;
+letter-spacing: -1px;
+line-height: 1;
+text-align: center;
+background: #e6c304;
+}
+
+#buttonCreate{
+padding: 8px 95px;
+margin-top: 20px;
+text-transform: uppercase;
+font-weight: bold;
+font-family: 'open sans',sans-serif;
+background: white;
+margin-bottom: 11px;
+}
+
+#labelMessage{
+
+margin-bottom: 63px;
+margin-top: -30px;
+
+}
+
+#iconCheckOk img{
+height: 40px;
+float: right;
+
+}
+
+.zoneAcc{
+  font-family: 'open sans',sans-serif;
+  font-size: 12px;
+  text-decoration: none;
+  float: right;
+
+  margin-right: 99px;
+}
+
+.zoneAcc div button a{
+  color: black;
+}
+
+
+.zoneAcc button{
+  margin-top: : 20px;
+}
+
+.acc{
+  padding: 7px;
+margin-top: -4px;
+margin-right: -17px;
+}
+
+.container{
+  margin-top: 20px;
+}
+#zoneConnexion{
+  margin-top: 35px;
+}
+</style>
+
+<div>
+<div class="container">
+
+<div id="bg" class="well">
+
+			<div id="myBorder"  class="col-lg-offset-3" >
+				<span id="labelNewCollab" class="label label-default ">Connexion</span>
+       <span ng-if='$ctrl.result != null' id="labelNewCollab">{{$ctrl.result}}</span>
+
+        <div class="zoneAcc">
+
+        <div class="acc" class="row">
+         <div class="col-lg-offset-9 " >
+          <button  ng-click='$ctrl.changePage("newAccount")' class="btn btn-sm btn-info btn-outline-info">Nouveau compte</button>
+         </div>
+
+       </div>
+
+       <div class="acc" class="row">
+        <div class="col-lg-offset-9 " >
+         <button ng-click='$ctrl.changePage("forgottenPasswords")' class="btn btn-sm btn-danger btn-outline-danger">Passwords oublié</button>
+        </div>
+
+      </div>
+
+    </div>
+
+				<div id="myForm">
+
+					<form  accept-charset="UTF-8"   >
+
+						<div id="zoneConnexion" class="row" >
+							<div class="col-lg-5 col-lg-offset-1 " >
+								<input ng-model='user.email' type="text" name="email" placeholder="Votre email" class="form-control" >
+							</div>
+							<div class="col-lg-5  " >
+								<input ng-model='user.password' type="password" name="password" placeholder="Votre passwords" class="form-control">
+							</div>
+						</div>
+						<br>
+
+							<div class="row">
+								<div class="col-lg-offset-3 " >
+
+									<input ng-click='$ctrl.login(user)' id="buttonCreate" class="btn btn-default  " type="submit" name="" value="Se connecter">
+
+								</div>
+              </div>
+
+
+					</form>
+				</div>
+		</div>
+
+  </div>
+  </div>
+  </div>

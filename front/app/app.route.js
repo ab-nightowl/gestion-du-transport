@@ -13,6 +13,9 @@ export function route($routeProvider, $locationProvider) {
     .when("/collaborateur/reservations", {
       template: "<carpooling-list-cmp></carpooling-list-cmp>"
     })
+    .when('/collaborateur/annonces',{
+        template: '<advert-list></advert-list>'
+    })
     .when("/collaborateur/reservations/creer", {
       template: "<advert-booking-cmp></advert-booking-cmp>"
     })

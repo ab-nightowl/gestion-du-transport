@@ -7,23 +7,24 @@ import "bootstrap/dist/css/bootstrap.css";
 import { route } from "./app.route";
 import { AccueilComponent } from "./accueil/accueil.component";
 import "./common/input.css";
-import advertModule from "./advert/advert.module";
+import advertModule from "./advert/publischedAdvert/publischedAdvert.module";
 import UiBootrap from "angular-ui-bootstrap";
 import tanModule from "./modules/tan.module";
 import advertBookingModule from "./advertBooking/advertBooking.module";
-import carpoolingListModule from "./carpoolingList/carpoolingList.module";
-
+import advertListModule from "./advert/advertList/advertList.module";
 import headerComponent from "./header/header.component";
+import carpoolingListModule from "./carpoolingList/carpoolingList.module";
 
 angular
   .module("app", [
     RouteModule,
     "tanModule",
-    advertModule.name,
     advertBookingModule.name,
-    carpoolingListModule.name,
+    advertModule.name,
     google,
-    date
+    date,
+    advertListModule.name,
+    carpoolingListModule.name
   ])
   .value("apiUrl", API_URL)
   .component("accueil", AccueilComponent)

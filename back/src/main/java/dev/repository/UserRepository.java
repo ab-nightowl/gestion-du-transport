@@ -6,4 +6,6 @@ import dev.entities.User;
 
 public interface UserRepository extends JpaRepository<User, String> {
 
+	User findByRegistrationNumber(String registrationNumber);
+
 }
