@@ -1,6 +1,6 @@
 export default class CarpoolingListCtrl {
-  constructor(carpoolingListService) {
-    this.carpoolingListService = carpoolingListService;
+  constructor(CarpoolingListService) {
+    this.CarpoolingListService = CarpoolingListService;
 
     this.config = {
       itemsPerPage: 5,
@@ -11,7 +11,7 @@ export default class CarpoolingListCtrl {
   }
   
   $onInit() {
-    this.carpoolingListService.getCarpoolingHistory().then(res => {
+    this.CarpoolingListService.getCarpoolingHistory().then(res => {
       res.data.forEach(function(element) {
         if (element.statut === "INPROGRESS") {
           this.list.push(element);

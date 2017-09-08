@@ -11,7 +11,8 @@ export default class AdvertBookingService {
 
   confirm(advert) {
     this.advert = advert;
-    let user = sessionStorage.getItem('user')
+    // let user = sessionStorage.getItem('user')
+    let user = "test"
     this.advert.passengers.push(user)
     this.$http.patch(this.apiUrl + "/advert/book", this.advert);
   }

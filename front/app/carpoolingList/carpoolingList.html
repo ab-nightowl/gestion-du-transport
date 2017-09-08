@@ -35,10 +35,10 @@
             </thead>
             <tbody>
                 <tr ng-repeat="advert in $ctrl.listEnd">
-                    <td>{{advert.dateFirst}}</td>
+                    <td class="col-sm-2">{{advert.dateFirst}}</td>
                     <td>{{advert.addressDeparture}}</td>
                     <td>{{advert.addressArrival}}</td>
-                    <td></td>
+                    <td><button class="btn" ng-click="$ctrl.open(advert)">Détails</button></td>
                 </tr>
             </tbody>
         </table>

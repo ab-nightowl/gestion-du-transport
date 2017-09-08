@@ -1,6 +1,6 @@
 import CarpoolingModalCtrl from "./carpoolingModal.controller";
 import template from "./carpoolingListModal.html";
-export default class CarpoolongModalService {
+export default class CarpoolingModalService {
   constructor($uibModal) {
     this.$uibModal = $uibModal;
   }

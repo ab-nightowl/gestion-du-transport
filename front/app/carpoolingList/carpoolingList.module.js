@@ -1,15 +1,15 @@
-import carpoolingListService from "./carpoolingList.service";
+import CarpoolingListService from "./carpoolingList.service";
 import carpoolingListCmp from "./carpoolingList.component";
-import carpoolingModalService from "./carpoolingModal.service";
-import carpoolingModalCtrl from "./carpoolingModal.controller";
+import CarpoolingModalService from "./carpoolingModal.service";
+import CarpoolingModalCtrl from "./carpoolingModal.controller";
 import { route } from "../app.route";
 
 const carpoolingListModule = angular
-.module("advertListModule", [])
+.module("carpoolingListModule", [])
 .component("carpoolingListCmp", carpoolingListCmp)
-.controller(carpoolingModalCtrl.name, carpoolingModalCtrl)
-.service(carpoolingListService.name, carpoolingListService)
-.service(carpoolingModalService.name, carpoolingModalService)
+.controller(CarpoolingModalCtrl.name, CarpoolingModalCtrl)
+.service(CarpoolingListService.name, CarpoolingListService)
+.service(CarpoolingModalService.name, CarpoolingModalService)
 .config(route);
 
 export default carpoolingListModule;

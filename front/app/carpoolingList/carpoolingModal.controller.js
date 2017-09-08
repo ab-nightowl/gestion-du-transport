@@ -1,15 +1,15 @@
-export default class AdvertModalCtrl {
+export default class CarpoolingModalCtrl {
   constructor(
-    carpoolingModalService,
-    carpoolingListService,
+    CarpoolingModalService,
+    CarpoolingListService,
     $uibModalInstance,
     $location
   ) {
-    this.carpoolingModalService = carpoolingModalService;
-    this.carpoolingListService = carpoolingListService;
+    this.CarpoolingModalService = CarpoolingModalService;
+    this.CarpoolingListService = CarpoolingListService;
     this.$uibModalInstance = $uibModalInstance;
     this.$location = $location;
-    this.advert = carpoolingModalService.advert;
+    this.advert = CarpoolingModalService.advert;
   }
 
   close() {
