@@ -13,6 +13,7 @@
                     <th>Lieu de départ</th>
                     <th>Lieu de d'arriver</th>
                     <th>Nombre de voyageurs</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -21,6 +22,7 @@
                     <td>{{advert.addressDeparture}}</td>
                     <td>{{advert.addressArrival}}</td>
                     <td>{{advert.passengers.length}}</td>
+                    <td> <input type="button" ng-click="$ctrl.cancelled(advert.id)" class="btn btn-danger" value="Annuler">
                 </tr>
             </tbody>
         </table>

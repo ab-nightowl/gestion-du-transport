@@ -1,4 +1,4 @@
-import AdvertModalCtrl from "./publischedAdvertModal.controller";
+import PublischedAdvertModalCtrl from "./publischedAdvertModal.controller";
 import template from "./publischedAdvertModal.html";
 export default class AdvertPublischedModalService {
   constructor($uibModal) {
@@ -9,7 +9,7 @@ export default class AdvertPublischedModalService {
     this.advert = advert;
     let modalInstance = this.$uibModal.open({
       template: template,
-      controller: AdvertModalCtrl.name,
+      controller: PublischedAdvertModalCtrl.name,
       controllerAs: "$ctrl",
       resolve: {
         advert: () => {

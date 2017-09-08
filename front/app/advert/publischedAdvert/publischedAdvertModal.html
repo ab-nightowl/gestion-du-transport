@@ -1,39 +1,41 @@
-<div class="modal-header" id="modal-header">
-    <h5>Réservation d'un covoiturage</h5>
-</div>
-<div class="modal-body" id="modal-body">
-    <table>
-        <tr>
-            <div class="col-xs-6">Départ </div>
-            <div class="col-xs-6">{{$ctrl.advert.addressDeparture}}</div>
-        </tr>
-        <tr>
-            <div class="col-xs-6">Destination </div>
-            <div class="col-xs-6">{{$ctrl.advert.addressArrival}}</div>
-        </tr>
-        <tr>
-            <div class="col-xs-6">Immatriculation </div>
-            <div class="col-xs-6">{{$ctrl.advert.licensePlate}}</div>
-        </tr>
-        <tr>
-            <div class="col-xs-6">Marque </div>
-            <div class="col-xs-6">{{$ctrl.advert.brand}}</div>
-        </tr>
-        <tr>
-            <div class="col-xs-6">Modele </div>
-            <div class="col-xs-6">{{$ctrl.advert.model}}</div>
-        </tr>
-        <tr>
-            <div class="col-xs-6">Nombre de place disponible </div>
-            <div class="col-xs-6">{{$ctrl.advert.capacity}}</div>
-        </tr>
-        <tr>
-            <div class="col-xs-6">Date/heure </div>
-            <div class="col-xs-6">{{$ctrl.advert.dateFirst}}</div>
-        </tr>
-</div>
-<br>
-<div class="modal-footer" id="modal-footer">
-    <button class="btn btn-primary" ng-click="$ctrl.confirm()">Confirmer</button>
-    <button class="btn" ng-click="$ctrl.cancel()">Annuler</button>
+<div id="myModal">
+    <div class="modal-header" id="modal-header">
+        <h5>Réservation d'un covoiturage</h5>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <table>
+            <tr>
+                <div class="col-xs-6">Départ </div>
+                <div class="col-xs-6">{{$ctrl.advert.addressDeparture}}</div>
+            </tr>
+            <tr>
+                <div class="col-xs-6">Destination </div>
+                <div class="col-xs-6">{{$ctrl.advert.addressArrival}}</div>
+            </tr>
+            <tr>
+                <div class="col-xs-6">Immatriculation </div>
+                <div class="col-xs-6">{{$ctrl.advert.licensePlate}}</div>
+            </tr>
+            <tr>
+                <div class="col-xs-6">Marque </div>
+                <div class="col-xs-6">{{$ctrl.advert.brand}}</div>
+            </tr>
+            <tr>
+                <div class="col-xs-6">Modele </div>
+                <div class="col-xs-6">{{$ctrl.advert.model}}</div>
+            </tr>
+            <tr>
+                <div class="col-xs-6">Nombre de place disponible </div>
+                <div class="col-xs-6">{{$ctrl.advert.capacity}}</div>
+            </tr>
+            <tr>
+                <div class="col-xs-6">Date/heure </div>
+                <div class="col-xs-6">{{$ctrl.advert.dateFirst}}</div>
+            </tr>
+    </div>
+    <br>
+    <div class="modal-footer" id="modal-footer">
+        <button class="btn btn-primary" ng-click="$ctrl.confirm()">Confirmer</button>
+        <button class="btn" ng-click="$ctrl.cancel()">Annuler</button>
+    </div>
 </div>

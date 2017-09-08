@@ -1,7 +1,7 @@
 export default class AdvertListController{
-    constructor(advertListService){
+    constructor(advertListService,AdvertListModalService){
         this.advertListService = advertListService
-       
+        this.AdvertListModalService = AdvertListModalService
         this.config = {
           itemsPerPage: 5,
           fillLastPage: true
@@ -24,6 +24,9 @@ export default class AdvertListController{
         console.log(this.list);
         
     }
+    cancelled(id){
+        this.AdvertListModalService.open(id);
+    }
 }
 
-AdvertListController['$inject'] = ['AdvertListService']
+AdvertListController['$inject'] = ['AdvertListService','AdvertListModalService']
