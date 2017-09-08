@@ -6,6 +6,6 @@ export default class CarpoolingListService {
 
   getCarpoolingHistory() {
     this.user = sessionStorage.getItem("user");
-    return this.$http.get(this.apiUrl + "/advert/" + this.user);
+    return this.$http.get(this.apiUrl + "/advert/passenger/" + this.user);
   }
 }
