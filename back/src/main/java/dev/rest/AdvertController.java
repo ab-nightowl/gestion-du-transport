@@ -34,7 +34,6 @@ public class AdvertController {
 		if (advert.getCapacity() > 20 || advert.getCapacity() < 1) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		System.out.println(advert.getDateFirst());
 		advert.setPassengers(null);
 		advert.setStatut(AdvertStatut.INPROGRESS);
 		advertRepo.save(advert);

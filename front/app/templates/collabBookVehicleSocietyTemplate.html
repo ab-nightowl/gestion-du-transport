@@ -1,11 +1,12 @@
 <style>
 .container{
-  background: #e0d6d6;
+  background: #fefade;
 }
 
 img{
-    width:500px; height:250px;
-    margin-left: 300px;
+    /*width:500px; height:250px;*/
+    /*margin-left: 300px;*/
+    width:1050px;
 }
 
 .buttonMove{
@@ -38,14 +39,16 @@ margin-top: 20px;
 #result{
     margin-top: 20px;
 }
-
+.container{
+  margin-top: 20px;
+}
 
 </style>
 
 <div>
 
   <meta charset="utf-8"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 <div ng-controller="bookVehicleController as bookingCtrl">
 <div class="container">
@@ -105,7 +108,8 @@ margin-top: 20px;
 
 <div class="reservation">
   <button id="buttonReserver" class="btn btn-primary btn-success"
-  ng-click='bookingCtrl.reserveVehicleSociety(bookingCtrl.vehicles[bookingCtrl.currentId].licensePlate, booking)'>
+
+   class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
   Réserver</button>
 
 
@@ -117,6 +121,97 @@ margin-top: 20px;
 
 </div>
 
+<!---->
+<div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Réservation d'un véhicule</h4>
+        </div>
+        <div class="modal-body">
+          <p>Date/heure de réservation : {{booking.dateFirst}}</p>
+          <p>Date/heure de retour : {{booking.dateLast}}</p>
+          <p>Immatriculation: {{bookingCtrl.vehicles[bookingCtrl.currentId].licensePlate}}</p>
+          <p>Marque: {{bookingCtrl.vehicles[bookingCtrl.currentId].brand}}</p>
+          <p>Modèle: {{bookingCtrl.vehicles[bookingCtrl.currentId].model}}</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary btn-success"
+          ng-click='bookingCtrl.reserveVehicleSociety(bookingCtrl.vehicles[bookingCtrl.currentId].licensePlate, booking)'
+          data-dismiss="modal">
+          Réserver</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!---->
+
+<!--test DAte-->
+
+<!-- <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    Date et heure de réservation
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse in">
+                <div class="panel-body" >
+                    <div class="col-md-6">
+                        <p class="input-group">
+                          <input type="text" class="form-control" uib-datepicker-popup={{$ctrl.format}} ng-model="$ctrl.dateReservation.depart" is-open="$ctrl.popup.opened" datepicker-options="$ctrl.dateOptions" ng-required="true" close-text="Close" />
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="$ctrl.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                            <div uib-timepicker ng-model="$ctrl.mytimeReservation.depart" ng-change="$ctrl.changed()" hour-step="$ctrl.hstep" minute-step="$ctrl.mstep" show-meridian="$ctrl.ismeridian"></div>
+                          </span>
+
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <span>date départ: {{$ctrl.dateReservation.depart}}</span>
+
+    </div>
+
+
+
+    <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        Date et heure de retour
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <div class="panel-body" >
+                        <div class="col-md-6">
+                            <p class="input-group">
+                              <input type="text" class="form-control" uib-datepicker-popup={{$ctrl.format}} ng-model="$ctrl.dateReservation.retour" is-open="$ctrl.popup.opened" datepicker-options="$ctrl.dateOptions" ng-required="true" close-text="Close" />
+                              <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="$ctrl.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                <div uib-timepicker ng-model="$ctrl.mytimeReservation.retour" ng-change="$ctrl.changed()" hour-step="$ctrl.hstep" minute-step="$ctrl.mstep" show-meridian="$ctrl.ismeridian"></div>
+                              </span>
+
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <span>date retour: {{$ctrl.dateReservation.retour}}</span><br />
+            <button ng-click='$ctrl.save()'>Save</button>
+        </div> -->
+
+<!---->
 </div>
 </div>
 </div>

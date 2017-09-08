@@ -58,6 +58,7 @@ export default class AdvertController{
     openModal(advert) {
       this.advert = advert;
       this.AdvertPublischedModalService.open(this.advert);
+      this.itineraire ={}
     }
 
     calculate(){

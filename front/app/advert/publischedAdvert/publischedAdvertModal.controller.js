@@ -16,8 +16,11 @@ export default class AdvertModalCtrl {
     this.AdvertPublischedService.saveAdvert(this.advert);
     this.$uibModalInstance.close();
     this.$location.path(
-      "collaborateur/annonces"
+      "collaborateur/annonces/creer"
     );
+    this.itineraire ={}
+    
+    
   }
 
   cancel() {

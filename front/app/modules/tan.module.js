@@ -12,8 +12,8 @@ import urlsService from '../services/urls.service'
 import UiBootrap from 'angular-ui-bootstrap'
 
 import ngSessionStorage from 'angular-sessionstorage'
-// import momentPicker from 'angular-moment-picker'
-// import moment from 'moment'
+// import uiBootstrapDatetimePicker from 'angular-ui-bootstrap-datetimepicker'
+require('angular-ui-bootstrap-datetimepicker')
 
 const tanModule = angular.module('tanModule',[UiBootrap,ngSessionStorage])
 .constant('urlsService', urlsService)
