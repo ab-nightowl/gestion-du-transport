@@ -21,7 +21,7 @@ export default class AdvertBookingCtrl {
 
     this.inlineOptions = {
       customClass: getDayClass,
-      minDate: new Date(),
+      minDate: this.today(),
       showWeeks: true
     };
 

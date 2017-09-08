@@ -15,8 +15,8 @@ export default class AdvertModalCtrl {
   confirm() {
     this.AdvertBookingService.confirm(this.advert);
     this.$uibModalInstance.close();
-    this.$location.url(
-      "gestion-du-transport/collaborateur/collaborateur/annonces/"
+    this.$location.path(
+      "collaborateur/reservations"
     );
   }
 
