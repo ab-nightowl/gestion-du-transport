@@ -12,4 +12,5 @@ public interface AdvertRepository extends JpaRepository<Advert, String> {
 
 	Advert findOneById(Integer id);
 
+	List<Advert> findAllByPassengers(User user);
 }
