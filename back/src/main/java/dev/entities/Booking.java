@@ -21,6 +21,7 @@ public class Booking{
 	@ManyToOne
 	private User driver;
 
+	private boolean withDriver;
 	private AdvertStatut statut;
 
 	
@@ -47,6 +48,14 @@ public class Booking{
 
 	public void setDateLast(LocalDateTime dateLast) {
 		this.dateLast = dateLast;
+	}
+
+	public boolean isWithDriver() {
+		return withDriver;
+	}
+
+	public void setWithDriver(boolean withDriver) {
+		this.withDriver = withDriver;
 	}
 
 	public Vehicle getVehicle() {

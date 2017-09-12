@@ -6,9 +6,18 @@ export default class authentificationService{
     this.$sessionStorage = $sessionStorage;
   }
 
-
   getAllUser(){
-    return this.$http.get(this.urlsService.users)
+    return this.$http.get(this.urlsService.usersFromRessourcesAtelier)
 }
+
+
+  setRole(users){
+    return this.$http.put(this.urlsService.role, users)
+  }
+
+  getRole(email){
+    return this.$http.get(this.urlsService.role+ '/' + email)
+  }
+
 
 }

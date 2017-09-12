@@ -6,12 +6,29 @@ export default class authentificationController {
     this.$log = $log
     this.authentificationService = authentificationService;
     this.$sessionStorage = $sessionStorage;
-    
+
 }
 
+  $onInit(){
+    this.getAllUsers();
+  }
+
+
+  getAllUsers(){
+    this.authentificationService.getAllUser()
+    .then((res)=>{
+      this.authentificationService.setRole(res.data)
+      .then((res)=>{
+        this.$log.log(res.statusText)
+      },(err)=>{
+        this.$log.log(err.statusText)
+      })
+    },(err)=>{
+      this.$log.log('err: '+ err.statusText)
+    })
+  }
 
   login(user){
-
     if(user != null){
 
     this.authentificationService.getAllUser()
@@ -22,7 +39,14 @@ export default class authentificationController {
         if( (user.email === e.email) && (user.password === e.password) ){
             this.foundUser = true;
             user.nom = e.nom;
-            this.role = e.role;
+            //this.role = e.role;
+            this.authentificationService.getRole(user.email)
+            .then((res)=>{
+              this.role = res.data
+              this.$log.log("role: " + res.data)
+            },(err)=>{
+              this.$log.log(err.statusText)
+            })
         }
       })
 
