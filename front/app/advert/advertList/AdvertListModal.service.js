@@ -17,9 +17,9 @@ export default class AdvertListModalService {
         }
       }
     });
-
+    
     modalInstance.result.then(selectedItem => {
       this.selected = selectedItem;
-    });
+    })
   }
 }

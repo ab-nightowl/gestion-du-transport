@@ -9,4 +9,8 @@ import dev.entities.User;
 
 public interface AdvertRepository extends JpaRepository<Advert, String> {
 	List<Advert> findAllByDriver(User user);
+
+	Advert findOneById(Integer id);
+
+	List<Advert> findAllByPassengers(User user);
 }

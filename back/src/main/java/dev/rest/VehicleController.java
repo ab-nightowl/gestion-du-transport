@@ -21,7 +21,6 @@ import dev.repository.BookingRepository;
 import dev.repository.UserRepository;
 import dev.repository.VehicleRepository;
 
-
 @RestController
 @RequestMapping("/collab/booking/vehicle")
 public class VehicleController {
@@ -61,9 +60,8 @@ public class VehicleController {
 	public List<Vehicle> listVehicles() {
 		initDateVehicle();
 		return vehicleRepo.findAll();
-	}	
+	}
 
-	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/{licensePlat}", method = RequestMethod.PUT, consumes = { "application/json" })
 	public void reserverVehicleSociety(@PathVariable String licensePlat, @RequestBody Booking bookingFromClient) {
 

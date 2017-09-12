@@ -51,7 +51,7 @@
                         <td class="col-sm-1 col-sm-1">{{advert.addressDeparture}}</td>
                         <td class="col-sm-2 col-sm-2">{{advert.addressArrival}}</td>
                         <td class="col-sm-1 col-sm-1">{{advert.brand}} {{advert.model}}</td>
-                        <td class="col-sm-2 col-sm-2">{{advert.driver}}</td>
+                        <td class="col-sm-2 col-sm-2">{{advert.driver.nom}} {{advert.driver.prenom}}</td>
                         <td class="col-sm-2 col-sm-2">{{advert.capacity}}</td>
                         <td class="col-sm-2 col-sm-2"><button class="btn" ng-click="$ctrl.open(advert)" ng-disabled="$ctrl.checkCapacity({{advert.capacity}})">Réserver</button></td>
                     </tr>

@@ -1,14 +1,19 @@
 export default class AdvertListService{
-    constructor($http, apiUrl){
+    constructor($http, apiUrl,$route){
         this.$http = $http
         this.apiUrl = apiUrl
+        this.$route = $route
     }
     
     getAdvertHistory(){
         this.user = "test"
-        return this.$http.get(this.apiUrl+'/advert/'+this.user)
+        this.result = this.$http.get(this.apiUrl+'/advert/'+this.user)
+        return this.result
     }
     cancelledAdvert(idAdvert){
-        console.log(idAdvert);
+        this.$http.patch(this.apiUrl+'/advert/cancelled/'+idAdvert).then(res=>{
+            this.$route.reload()
+        })
     }
 }
+
