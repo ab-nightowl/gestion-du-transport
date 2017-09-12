@@ -37,4 +37,10 @@ export default class CarpoolingListCtrl {
     this.carpooling = carpooling;
     this.CarpoolingModalService.open(this.carpooling);
   }
+
+  cancel(carpoolingId) {
+    this.carpoolingId = carpoolingId;
+    this.CarpoolingModalService.cancel(this.carpoolingId);
+  }
+
 }

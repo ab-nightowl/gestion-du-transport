@@ -15,11 +15,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="advert in $ctrl.list">
-                    <td class="col-sm-3">{{advert.dateFirst}}</td>
-                    <td class="col-sm-3">{{advert.addressDeparture}}</td>
-                    <td class="col-sm-3">{{advert.addressArrival}}</td>
-                    <td class="col-sm-3"></td>
+                <tr ng-repeat="carpooling in $ctrl.list">
+                    <td class="col-sm-3">{{carpooling.dateFirst}}</td>
+                    <td class="col-sm-3">{{carpooling.addressDeparture}}</td>
+                    <td class="col-sm-3">{{carpooling.addressArrival}}</td>
+                    <td class="col-sm-3 text-center"><button class="btn" ng-click="$ctrl.open(carpooling)">Détails</button>
+                        <button class="btn btn-danger" ng-click="$ctrl.cancel(carpooling.id)">Annuler</button></td>
                 </tr>
             </tbody>
         </table>
@@ -34,14 +35,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="advert in $ctrl.listEnd | orderBy:'dateFirst':true | limitTo:$ctrl.itemsPerPage:$ctrl.itemsPerPage*($ctrl.currentPage-1)">
-                    <td class="col-sm-3">{{advert.dateFirst}}</td>
-                    <td class="col-sm-3">{{advert.addressDeparture}}</td>
-                    <td class="col-sm-3">{{advert.addressArrival}}</td>
-                    <td class="col-sm-3"><button class="btn" ng-click="$ctrl.open(advert)">Détails</button></td>
+                <tr ng-repeat="carpooling in $ctrl.listEnd | orderBy:'dateFirst':true | limitTo:$ctrl.itemsPerPage:$ctrl.itemsPerPage*($ctrl.currentPage-1)">
+                    <td class="col-sm-3">{{carpooling.dateFirst}}</td>
+                    <td class="col-sm-3">{{carpooling.addressDeparture}}</td>
+                    <td class="col-sm-3">{{carpooling.addressArrival}}</td>
+                    <td class="col-sm-3"><button class="btn center-block" ng-click="$ctrl.open(carpooling)">Détails</button></td>
                 </tr>
             </tbody>
         </table>
-        <ul uib-pagination total-items="$ctrl.totalItems" ng-model="$ctrl.currentPage" max-size="$ctrl.maxSize" items-per-page="$ctrl.itemsPerPage" class="pagination-sm pull-right" boundary-link-numbers="true"></ul>
+        <ul uib-pagination total-items="$ctrl.totalItems" ng-model="$ctrl.currentPage" max-size="$ctrl.maxSize" items-per-page="$ctrl.itemsPerPage"
+            class="pagination-sm pull-right" boundary-link-numbers="true"></ul>
     </div>
 </div>

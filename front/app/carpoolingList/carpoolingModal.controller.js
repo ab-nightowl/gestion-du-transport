@@ -9,10 +9,15 @@ export default class CarpoolingModalCtrl {
     this.CarpoolingListService = CarpoolingListService;
     this.$uibModalInstance = $uibModalInstance;
     this.$location = $location;
-    this.carpooling = CarpoolingModalService.carpooling;
+    this.carpoolingId = CarpoolingModalService.carpoolingId;
   }
 
   close() {
+    this.$uibModalInstance.close();
+  }
+
+  cancel() {
+    this.CarpoolingListService.cancel(this.carpoolingId);
     this.$uibModalInstance.close();
   }
 }

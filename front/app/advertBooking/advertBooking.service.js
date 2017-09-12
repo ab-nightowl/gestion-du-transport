@@ -13,6 +13,6 @@ export default class AdvertBookingService {
     this.advert = advert;
     this.user = sessionStorage.getItem("user");
     this.advert.passengers.push(this.user);
-    this.$http.patch(this.apiUrl + "/advert/book", this.advert);
+    this.$http.patch(this.apiUrl + "/advert/book/" + this.user, this.advert);
   }
 }

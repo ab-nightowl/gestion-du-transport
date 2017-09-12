@@ -1,5 +1,6 @@
 import CarpoolingModalCtrl from "./carpoolingModal.controller";
-import template from "./carpoolingListModal.html";
+import details from "./carpoolingListModal.html";
+import cancel from "./carpoolingCancelModal.html";
 export default class CarpoolingModalService {
   constructor($uibModal) {
     this.$uibModal = $uibModal;
@@ -8,7 +9,7 @@ export default class CarpoolingModalService {
   open(carpooling) {
     this.carpooling = carpooling;
     let modalInstance = this.$uibModal.open({
-      template: template,
+      template: details,
       controller: CarpoolingModalCtrl.name,
       controllerAs: "$ctrl",
       resolve: {
@@ -20,6 +21,20 @@ export default class CarpoolingModalService {
 
     modalInstance.result.then(selectedItem => {
       this.selected = selectedItem;
+    });
+  }
+
+  cancel(carpoolingId) {
+    this.carpoolingId = carpoolingId;
+    let modalInstance = this.$uibModal.open({
+      template: cancel,
+      controller: CarpoolingModalCtrl.name,
+      controllerAs: "$ctrl",
+      resolve: {
+        carpoolingId: () => {
+          return this.carpoolingId;
+        }
+      }
     });
   }
 }

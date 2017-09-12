@@ -1,6 +1,7 @@
 package dev.rest;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -58,7 +59,7 @@ public class AdvertController {
 		return new ResponseEntity<List<Advert>>(adverts, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/book/{user}", method = RequestMethod.PATCH, consumes = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/book/{user}", method = RequestMethod.PATCH)
 	public void bookAdvert(@RequestBody Advert advert) {
 		advertService.bookAdvert(advert);
 	}
@@ -67,15 +68,23 @@ public class AdvertController {
 	public ResponseEntity<List<Advert>> getAllAdvert(@PathVariable("user") String registrationNumber) {
 		User user = new User();
 		user = userRepo.findByRegistrationNumber(registrationNumber);
-		List<Advert> adverts = advertRepo.findAllByDriver(user);
+		List<Advert> adverts = advertService.findAllByDriver(user);
 		return new ResponseEntity<List<Advert>>(adverts, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/passenger/{user}", method = RequestMethod.GET)
 	public ResponseEntity<List<Advert>> getAllPassengerAdvert(@PathVariable("user") String registrationNumber) {
-		User user = new User();
-		user = userRepo.findByRegistrationNumber(registrationNumber);
-		List<Advert> adverts = advertRepo.findAllByPassengers(user);
+		User user = userRepo.findByRegistrationNumber(registrationNumber);
+		List<Advert> adverts = advertService.findAllByPassengers(user);
 		return new ResponseEntity<List<Advert>>(adverts, HttpStatus.OK);
+	}
+
+	@RequestMapping(path = "/passenger/cancelled/{id}", method = RequestMethod.PATCH)
+	public ResponseEntity<Advert> cancelledAdvert(@PathVariable("id") Integer id,
+			@RequestBody String registrationNumber) {
+		Advert advert = advertService.findOneById(id);
+		advert.setPassengers(advert.getPassengers().stream()
+				.filter(p -> !p.getRegistrationNumber().equals(registrationNumber)).collect(Collectors.toList()));
+		return new ResponseEntity<Advert>(HttpStatus.OK);
 	}
 }
