@@ -143,7 +143,7 @@ today() {
               this.result = "Votre réservation est enregistré avec succèss :)"
               this.$timeout(()=>{
 			        this.$window.location.reload();;
-            }, 1200);
+            }, 1500);
 
             this.$log.log("Réservation avec succèss :) ");
           },(err)=>{

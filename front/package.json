@@ -33,16 +33,17 @@
   },
   "dependencies": {
     "angular": "^1.6.4",
+    "angular-font-awesome": "^2.0.3",
     "angular-google-places-autocomplete": "^0.2.9",
     "angular-route": "^1.6.4",
     "angular-sessionstorage": "^1.1.5",
     "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-bootstrap-datetimepicker": "^2.5.0",
     "bootstrap": "^3.3.7",
+    "css-loader": "^0.28.1",
     "fullcalendar": "^3.5.0",
     "google_directions": "^0.6.0",
     "lodash": "^4.17.4",
-    "css-loader": "^0.28.1",
     "uuid": "^3.0.1"
   }
 }
