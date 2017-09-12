@@ -155,19 +155,24 @@ a .profil:hover{
           <div class="modal-body">
             <h3>{{$ctrl.result}}</h3>
             <div ng-if='$ctrl.role === "ADMINISTRATOR"'>
-              <a href="#"><div class="profil">Profil Administrator</div></a>
-              <a href="#"><div class="profil">Profil DRIVER</div></a>
-            <a href="#"><div class="profil">Profil COWORKER</div></a>
+              <div class="row">
+                  <a href="#"><div class="profil col col-lg-3 col-lg-offset-1 ">Profil Administrator</div></a>
+                  <a href="#"><div class="profil col col-lg-3 col-lg-offset-1">Profil DRIVER</div></a>
+                  <a href="#"><div class="profil col col-lg-3 col-lg-offset-1">Profil COWORKER</div></a>
+              </div>
             </div>
 
             <div ng-if='$ctrl.role === "COWORKER"'>
-              <a href="#"><div class="profil">Profil Collaborateur</div></a>
-
+              <div class="row">
+                <a href="#"><div class="profil col-lg-3 col-lg-offset-5 ">Profil Collaborateur</div></a>
+              </div>
             </div>
 
             <div ng-if='$ctrl.role === "DRIVER"'>
-              <a href="#"><div class="profil">Profil Chauffeur</div></a>
-              <a href="#"><div class="profil">Profil Collaborateur</div></a>
+              <div class="row">
+                <a href="#"><div class="profil col-lg-3 col-lg-offset-1">Profil Chauffeur</div></a>
+                <a href="#"><div class="profil col-lg-3 col-lg-offset-1">Profil Collaborateur</div></a>
+              </div>
             </div>
 
           </div>
