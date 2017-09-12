@@ -1,5 +1,5 @@
-<body>    
-    <br> 
+<section>
+    <br>
         <a href="collaborateur/annonces" class="col-xs-offset-1"><input type="button" class="btn btn-primary" value="<< Retour à la liste"></a>           
         <div class="container">
             <div class="row">
@@ -17,15 +17,16 @@
                         <div id="collapse1" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 <div class='col-xs-12'>
-                                    Adresse de départ* : <input ng-change="$ctrl.calculate()" type="text" size="60" g-places-autocomplete required ng-model="$ctrl.addressDeparture" name="addressDeparture">
-                                    <div ng-show="itineraire.addressDeparture.$dirty && itineraire.addressDeparture.$error.required">Veuillez saisir une adresse de départ.</div>
+                                    Adresse de départ* : <input ng-class="{error:!$ctrl.addressDeparture.place_id}" ng-change="$ctrl.calculate()" type="text" size="60"   g-places-autocomplete required ng-model="$ctrl.addressDeparture" name="addressDeparture">
+                                    <div ng-show="$ctrl.adressDepartureError() || (itineraire.addressDeparture.$dirty && itineraire.addressDeparture.$error.required)">Veuillez saisir une adresse de départ.</div>
                                 </div>
                                 <br>
                                 <br>
                                 <div class='col-xs-12'>
-                                    Adresse d'arriver* : <input ng-change="$ctrl.calculate()" type="text" size="60" g-places-autocomplete required ng-model="$ctrl.adresseArriver" name="adresseArriver">
-                                    <div ng-show="itineraire.adresseArriver.$dirty && itineraire.adresseArriver.$error.required">Veuillez saisir une adresse d'arriver.</div>
+                                    Adresse d'arriver* : <input ng-class="{error:!$ctrl.adresseArriver.place_id}" ng-change="$ctrl.calculate()" type="text" size="60"  g-places-autocomplete required ng-model="$ctrl.adresseArriver" name="adresseArriver">
+                                    <div  ng-show="$ctrl.adresseArriverError() || (itineraire.adresseArriver.$dirty && itineraire.adresseArriver.$error.required)">Veuillez saisir une adresse d'arriver.</div>
                                 </div> 
+                                <br>
                                 <br>
                                 <pre ng-show="itineraire.adresseArriver.$dirty" id="panel"></pre>
                                                           
@@ -92,7 +93,7 @@
                             </div>
                         </div>   
                     </div>
-                    <button ng-disabled="!itineraire.$valid" type="submit" class='btn btn-success pull-right' ng-click="$ctrl.save()">Publier</button>
+                    <button ng-disabled="!itineraire.$valid || !$ctrl.addressDeparture.place_id || !$ctrl.adresseArriver.place_id " type="submit" class='btn btn-success pull-right' ng-click="$ctrl.save()">Publier</button>
             </form>
         </div>
-        </body>
+</section>
