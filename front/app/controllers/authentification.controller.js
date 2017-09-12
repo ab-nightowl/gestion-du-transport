@@ -11,6 +11,7 @@ export default class authentificationController {
 
   $onInit(){
     this.getAllUsers();
+    this.getUserConnected();
   }
 
 
@@ -39,7 +40,6 @@ export default class authentificationController {
         if( (user.email === e.email) && (user.password === e.password) ){
             this.foundUser = true;
             user.nom = e.nom;
-            //this.role = e.role;
             this.authentificationService.getRole(user.email)
             .then((res)=>{
               this.role = res.data
@@ -69,6 +69,12 @@ export default class authentificationController {
   this.result = 'Enter your ID ! ';
   this.$log.log("Please enter your ID ! ");
 }
+
+  getUserConnected(){
+      this.userConnected = this.authentificationService.getUserConnected();
+      this.$log.log('userConnected: '+ this.userConnected)
+  }
+
 
 }
 

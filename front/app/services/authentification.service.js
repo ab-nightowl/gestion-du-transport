@@ -19,5 +19,8 @@ export default class authentificationService{
     return this.$http.get(this.urlsService.role+ '/' + email)
   }
 
+  getUserConnected(){
+    return this.$sessionStorage.get("userConnected");
+  }
 
 }
