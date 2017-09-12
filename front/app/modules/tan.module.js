@@ -29,7 +29,7 @@ const tanModule = angular.module('tanModule',[UiBootrap,ngSessionStorage])
 .config(($routeProvider)=>{
 	$routeProvider
 
-	.when('/collab/book/create',{
+	.when('/collaborateur/reservation/societe/creer',{
 		template : '<collab-book-vehicle-society-component></collab-book-vehicle-society-component>',
 	})
 

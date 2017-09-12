@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import dev.entities.AdvertStatut;
 import dev.entities.Booking;
 import dev.entities.Vehicle;
 import dev.entities.VehicleStatus;
@@ -79,11 +80,29 @@ public class VehicleController {
 					bookingFromClient.getDateLast().getHour(), bookingFromClient.getDateLast().getMinute(),
 					bookingFromClient.getDateLast().getSecond()));
 
+			booking.setStatut(AdvertStatut.COMPLETED);
 			booking.setVehicle(v);
 
 			bookingRepo.save(booking);
 		}
 
 	}
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(method = RequestMethod.GET, path="/check/{licensePlat}")
+	public boolean checkDispoVehicleSociety(@PathVariable String licensePlat){
+		boolean busyVehicle = false;
+		List<Booking> listBooking = bookingRepo.findAll();
+		for (Booking b : listBooking) {
+			if(b.getVehicle().getLicensePlate().equalsIgnoreCase(licensePlat)){
+				busyVehicle = true;
+			}
+		}
+		
+		
+		return busyVehicle;
+	}
+	
+	
 
 }
