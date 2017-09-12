@@ -14,7 +14,6 @@ import advertBookingModule from "./advertBooking/advertBooking.module";
 import advertListModule from "./advert/advertList/advertList.module";
 import headerComponent from "./header/header.component";
 import carpoolingListModule from "./carpoolingList/carpoolingList.module";
-
 angular
   .module("app", [
     RouteModule,
@@ -24,7 +23,7 @@ angular
     google,
     date,
     advertListModule.name,
-    carpoolingListModule.name
+    carpoolingListModule.name,
   ])
   .value("apiUrl", API_URL)
   .component("accueil", AccueilComponent)
