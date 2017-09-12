@@ -34,28 +34,19 @@ export default class AdvertBookingCtrl {
     };
     this.today();
     this.toggleMin();
+    this.list = [];
+    
   }
 
   $onInit() {
-    this.findAll().then(res => {
+    this.AdvertBookingService.findAll().then(res => {
       res.data.forEach(function(element) {
         if (element.statut === "INPROGRESS") {
           this.list.push(element);
         }
-      });
+      }, this);
     });
-    this.popup = { opened: false };
-  }
-
-  findAll() {
-    this.AdvertBookingService.findAll().then(
-      res => {
-        return (this.adverts = res.data);
-      },
-      err => {
-        console.log(err.statusText);
-      }
-    );
+    this.popup = false;
   }
 
   checkCapacity(capacity) {
@@ -69,15 +60,15 @@ export default class AdvertBookingCtrl {
   }
 
   today() {
-    this.dt = new Date();
+    this.dateFirst = new Date();
   }
 
   clear() {
-    this.dt = null;
+    this.dateFirst = null;
   }
 
   openDate() {
-    this.popup.opened = true;
+    this.popup = true;
   }
 
   setDate(year, month, day) {

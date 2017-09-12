@@ -1,6 +1,8 @@
-<section>
-    <a href="/collaborateur/reservations"> Retour à la liste </a>
-    <h3>Réserver un véhicule</h3>
+<div class="col-xs-offset-1 col-xs-10">
+    <div>
+        <a href="collaborateur/reservations/"><input type="button" class="btn btn-primary" value="Retour à la liste"></a>
+    </div>
+    <h3 >Réserver un véhicule</h3>
     <div class="panel-group" id="accordion">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -25,7 +27,7 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <p class="input-group">
-                                    <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.dt" is-open="$ctrl.popup.opened" datepicker-options="$ctrl.dateOptions"
+                                    <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.dateFirst" is-open="$ctrl.popup" datepicker-options="$ctrl.dateOptions"
                                         ng-required="true" close-text="Close" />
                                     <span class="input-group-btn">
                                             <button type="button" class="btn btn-default" ng-click="$ctrl.openDate()"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -46,7 +48,7 @@
                         <td class="col-sm-2 col-sm-2">Places disponibles</td>
                         <td class="col-sm-2 col-sm-2"></td>
                     </tr>
-                    <tr ng-repeat="advert in $ctrl.adverts | addressFilter:$ctrl.addressDeparture:$ctrl.addressArrival | filter: $ctrl.dt">
+                    <tr ng-repeat="advert in $ctrl.list | addressFilter:$ctrl.addressDeparture:$ctrl.addressArrival | filter: $ctrl.dateFirst">
                         <td class="col-sm-2 col-sm-2">{{advert.dateFirst}}</td>
                         <td class="col-sm-1 col-sm-1">{{advert.addressDeparture}}</td>
                         <td class="col-sm-2 col-sm-2">{{advert.addressArrival}}</td>
@@ -59,5 +61,4 @@
             </div>
         </div>
     </div>
-    </div>
-</section>
+</div>

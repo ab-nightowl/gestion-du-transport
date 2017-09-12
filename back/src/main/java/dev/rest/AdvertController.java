@@ -58,7 +58,7 @@ public class AdvertController {
 		return new ResponseEntity<List<Advert>>(adverts, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/book", method = RequestMethod.PATCH, consumes = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/book/{user}", method = RequestMethod.PATCH, consumes = "application/json;charset=UTF-8")
 	public void bookAdvert(@RequestBody Advert advert) {
 		advertService.bookAdvert(advert);
 	}
@@ -69,7 +69,6 @@ public class AdvertController {
 		user = userRepo.findByRegistrationNumber(registrationNumber);
 		List<Advert> adverts = advertRepo.findAllByDriver(user);
 		return new ResponseEntity<List<Advert>>(adverts, HttpStatus.OK);
-
 	}
 
 	@RequestMapping(value = "/passenger/{user}", method = RequestMethod.GET)
@@ -78,6 +77,5 @@ public class AdvertController {
 		user = userRepo.findByRegistrationNumber(registrationNumber);
 		List<Advert> adverts = advertRepo.findAllByPassengers(user);
 		return new ResponseEntity<List<Advert>>(adverts, HttpStatus.OK);
-
 	}
 }
