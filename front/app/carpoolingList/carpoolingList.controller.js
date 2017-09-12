@@ -1,6 +1,7 @@
 export default class CarpoolingListCtrl {
-  constructor(CarpoolingListService) {
+  constructor(CarpoolingListService, CarpoolingModalService) {
     this.CarpoolingListService = CarpoolingListService;
+    this.CarpoolingModalService = CarpoolingModalService;
 
     this.config = {
       itemsPerPage: 5,
@@ -9,7 +10,7 @@ export default class CarpoolingListCtrl {
     this.list = [];
     this.listEnd = [];
   }
-  
+
   $onInit() {
     this.CarpoolingListService.getCarpoolingHistory().then(res => {
       res.data.forEach(function(element) {
@@ -20,5 +21,10 @@ export default class CarpoolingListCtrl {
         }
       }, this);
     });
+  }
+
+  open(carpooling) {
+    this.carpooling = carpooling;
+    this.CarpoolingModalService.open(this.carpooling);
   }
 }

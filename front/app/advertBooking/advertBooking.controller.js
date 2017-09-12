@@ -37,7 +37,13 @@ export default class AdvertBookingCtrl {
   }
 
   $onInit() {
-    this.findAll();
+    this.findAll().then(res => {
+      res.data.forEach(function(element) {
+        if (element.statut === "INPROGRESS") {
+          this.list.push(element);
+        }
+      });
+    });
     this.popup = { opened: false };
   }
 
@@ -83,8 +89,6 @@ export default class AdvertBookingCtrl {
     this.dateOptions.minDate = this.inlineOptions.minDate;
   }
 }
-
-
 
 function disabled(data) {
   let date = data.date,
