@@ -1,5 +1,5 @@
 <section>
-    <a href="/home"> Retour à la liste </a>
+    <a href="/collaborateur/reservations"> Retour à la liste </a>
     <h3>Réserver un véhicule</h3>
     <div class="panel-group" id="accordion">
         <div class="panel panel-default">
@@ -38,22 +38,22 @@
                 <h5>Covoiturages</h5>
                 <table>
                     <tr>
-                        <td class="col-sm-2">Date/heure</td>
-                        <td class="col-sm-1">Départ</td>
-                        <td class="col-sm-2">Destination</td>
-                        <td class="col-sm-1">Véhicule</td>
-                        <td class="col-sm-2">Chauffeur</td>
-                        <td class="col-sm-2">Places disponibles</td>
-                        <td class="col-sm-2"></td>
+                        <td class="col-sm-2 col-sm-2">Date/heure</td>
+                        <td class="col-sm-1 col-sm-1">Départ</td>
+                        <td class="col-sm-2 col-sm-2">Destination</td>
+                        <td class="col-sm-1 col-sm-1">Véhicule</td>
+                        <td class="col-sm-2 col-sm-2">Chauffeur</td>
+                        <td class="col-sm-2 col-sm-2">Places disponibles</td>
+                        <td class="col-sm-2 col-sm-2"></td>
                     </tr>
                     <tr ng-repeat="advert in $ctrl.adverts | addressFilter:$ctrl.addressDeparture:$ctrl.addressArrival | filter: $ctrl.dt">
-                        <td class="col-sm-2">{{advert.dateFirst}}</td>
-                        <td class="col-sm-1">{{advert.addressDeparture}}</td>
-                        <td class="col-sm-2">{{advert.addressArrival}}</td>
-                        <td class="col-sm-1">{{advert.brand}} {{advert.model}}</td>
-                        <td class="col-sm-2">{{advert.driver.nom}} {{advert.driver.prenom}}</td>
-                        <td class="col-sm-2">{{advert.capacity}}</td>
-                        <td class="col-sm-2"><button class="btn" ng-click="$ctrl.open(advert)" ng-disabled="$ctrl.checkCapacity({{advert.capacity}})">Réserver</button></td>
+                        <td class="col-sm-2 col-sm-2">{{advert.dateFirst}}</td>
+                        <td class="col-sm-1 col-sm-1">{{advert.addressDeparture}}</td>
+                        <td class="col-sm-2 col-sm-2">{{advert.addressArrival}}</td>
+                        <td class="col-sm-1 col-sm-1">{{advert.brand}} {{advert.model}}</td>
+                        <td class="col-sm-2 col-sm-2">{{advert.driver.nom}} {{advert.driver.prenom}}</td>
+                        <td class="col-sm-2 col-sm-2">{{advert.capacity}}</td>
+                        <td class="col-sm-2 col-sm-2"><button class="btn" ng-click="$ctrl.open(advert)" ng-disabled="$ctrl.checkCapacity({{advert.capacity}})">Réserver</button></td>
                     </tr>
                 </table>
             </div>

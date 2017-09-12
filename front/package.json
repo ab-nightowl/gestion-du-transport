@@ -8,7 +8,7 @@
     "dev:server": "webpack-dev-server --open",
     "dev:api": "json-server db.json -w",
     "std": "standard \"app/*.js\"",
-    "build": "cross-env NODE_ENV=production webpack -p"
+    "build": "cross-env NODE_ENV=production webpack"
   },
   "keywords": [],
   "author": "",
@@ -19,8 +19,9 @@
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.4.0",
     "cross-env": "^5.0.0",
-    "css-loader": "^0.28.1",
     "file-loader": "^0.11.1",
+    "html-loader": "^0.5.1",
+    "image-webpack-loader": "^3.4.2",
     "json-server": "^0.10.0",
     "moment": "^2.18.1",
     "npm-run-all": "^4.0.2",
@@ -41,6 +42,7 @@
     "fullcalendar": "^3.5.0",
     "google_directions": "^0.6.0",
     "lodash": "^4.17.4",
+    "css-loader": "^0.28.1",
     "uuid": "^3.0.1"
   }
 }
