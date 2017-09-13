@@ -39,7 +39,25 @@ const tanModule = angular.module('tanModule',[UiBootrap,ngSessionStorage])
 		template : '<authentification-component></authentification-component>',
 	})
 })
+// .run(['$rootScope']){
+//
+// }
 
+
+// app.run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Auth) {
+//     $rootScope.$on('$routeChangeStart', function (event) {
+//
+//         if (!Auth.isLoggedIn()) {
+//             console.log('DENY');
+//             event.preventDefault();
+//             $location.path('/login');
+//         }
+//         else {
+//             console.log('ALLOW');
+//             $location.path('/home');
+//         }
+//     });
+// }]);
 
 
 export default tanModule
