@@ -24,4 +24,9 @@ export default class authentificationService{
   this.$location.path("/home");
 }
 
+
+  //TODO
+  changePage(url){
+    this.$location.path(url)
+  }
 }

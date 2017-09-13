@@ -13,6 +13,11 @@ export default class authentificationController {
   $onInit(){
     this.getAllUsers();
     this.getUserConnected();
+
+    if(this.$sessionStorage.get('userConnected')!= undefined){
+        this.getRole(JSON.parse(this.$sessionStorage.get('userConnected')).email);
+    }
+
   }
 
   //-------------------Get userConnected-----------------------------
@@ -20,7 +25,7 @@ getUserConnected(){
   if(JSON.parse(this.$sessionStorage.get('userConnected')) != undefined){
      try {
        this.userConnected = JSON.parse(this.$sessionStorage.get('userConnected'));
-       this.$log.log ('Hi user :) '+this.userConnected.email + ' -- ' + this.userConnected.password);
+       this.$log.log ('Hi user :) '+this.userConnected.email + ' -- ' + this.userConnected.password );
        return this.userConnected;
      } catch (e) {
        this.$log.log ('error: '+ e.message);
@@ -56,7 +61,6 @@ getUserConnected(){
         if( (user.email === e.email) && (user.password === e.password) ){
             this.foundUser = true;
             user.nom = e.nom;
-            //this.role = e.role;
             this.authentificationService.getRole(user.email)
             .then((res)=>{
               this.role = res.data
@@ -89,13 +93,41 @@ getUserConnected(){
 
 
 deconnexion(){
-  this.result = "Déconnexion ec cours";
+  this.result = "Déconnexion en cours";
   this.$timeout(()=>{
   this.authentificationService.deconnexion();
   this.$window.location.reload();
 }, 1500);
 
 }
+
+
+  getRole(email){
+
+    if(this.$sessionStorage.get('userConnected') != undefined){
+      this.authentificationService.getRole(email)
+      .then((res)=>{
+        this.role = res.data
+        this.$log.log("role: " + res.data)
+      },(err)=>{
+        this.$log.log(err.statusText)
+      })
+    }
+
+  }
+
+  // changeRole(newRole){
+  //   this.role = role;
+  //   this.$sessionStorage.set('newRole', newRole)
+  // }
+
+  changePage(url){
+    this.$timeout(()=>{
+    this.authentificationService.changePage(url);
+    this.$window.location.reload();
+  }, 1500);
+
+  }
 
 }
 
