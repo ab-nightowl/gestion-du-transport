@@ -25,15 +25,13 @@ public class UserController {
 
 	@GetMapping
 	public List<User> listerUser() {
-		
 		return userRepo.findAll();
 	}
 	
 	
 	@RequestMapping(path = "/role", method = RequestMethod.PUT, consumes = { "application/json" })
 	public void setRole(@RequestBody List<User> listUsers){
-		int i =0;
-		
+		int i =0;		
 		User user;
 		for (User u : listUsers) {
 			 user = new User();
@@ -44,7 +42,6 @@ public class UserController {
 			 
 			userRepo.save(user);
 		}
-		
 	}
 	
 	@RequestMapping(path = "/role/{email}", method = RequestMethod.GET)

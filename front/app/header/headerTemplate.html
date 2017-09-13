@@ -1,44 +1,41 @@
-<!-- <div class="container">
-
-
-	<div class="row" id="header">
-
-		<div class="zoneLogo col col-lg-2 " >
-			<img src="./statique/img/logo.png"/>
-		</div>
-
-		<div class="zoneMenu">
-			<a href="#"><div  class="menu col col-lg-2 " id="reservation">Vos réservations</div></a>
-			<a href="collaborateur/annonces"><div class="menu col col-lg-2" id="annonces">Vos annonces</div></a>
-			<a href="#"><div class="menu col col-lg-2" id="statistiques">Statistiques</div></a>
-		</div>
-
-
-		<div class="zoneAuthentif">
-
-			<a href="/gestion-du-transport/connexion"><div class="authentif col col-lg-1 col-lg-offset-1 " id="login">Identifier</div></a>
-			<a href="#"><div class="authentif col col-lg-1" id="signup">S'incrire</div></a>
-
-		</div>
-
-	</div>
-
-</div>
-</div> -->
-
-<!--RE touche-->
-
-
-<div class="container">
+<div class="container" ng-controller='authentificationController as authentifCtrl'>
 
 
 	<div class="row" >
 
 		<div class="zoneLogo col col-lg-1 " >
-			<img src="./statique/img/wayup.png"/>
+			<a href="/home">
+				<img src="./statique/img/wayup.png"/>
+			</a>
 		</div>
 
-		<div class="zoneAuthentif">
+		<div class="zoneAuthentif" >
+
+
+
+		<div ng-if='authentifCtrl.userConnected == undefined'>
+			<a href="/gestion-du-transport/connexion">
+				<div class="authentif col col-lg-2 col-lg-offset-7 " id="login">Identifier <i style="margin-right:-15px;font-size:18px" class="fa fa-arrow-circle-o-down"></i></div>
+			</a>
+
+			<a href="#"><div class="authentif col-lg-1" id="signup">S'incrire</div></a>
+
+		</div>
+
+			<div ng-if='authentifCtrl.userConnected != undefined'>
+				<!-- fonctionnalité supplémentaire: display infos de la personne, à faire s'il y a du temps -->
+
+				<a href="#">
+
+					<div class="authentif col col-lg-2 col-lg-offset-7 " id="login">Bonjour {{authentifCtrl.userConnected.nom}}
+						<i style="float:right;font-size:18px; color:orange" class="fa fa-gratipay"></i>
+						<i style="font-size:10px;color:orange">{{authentifCtrl.role}}</i>
+					</div>
+
+				</a>
+
+				<a href="#" ng-click='authentifCtrl.deconnexion()' ><div class="authentif col-lg-1" id="signup"
+					data-toggle="modal" data-target="#modalInfoAuthentif">Déconnexion
 
 			<a href="/gestion-du-transport/connexion">
 				<div class="authentif col col-lg-2 col-lg-offset-7 " id="login">Identifier
@@ -63,11 +60,48 @@
 	<div id="header"></div>
 		<div class="row">
 			<div class="zoneMenu">
-				<a href="#"><div  class="menu col col-lg-2 " id="reservation">Vos réservations<i class="fa fa-table" style="float:right;margin-top:4px"></i></div></a>
-				<a href="collaborateur/annonces"><div class="menu col col-lg-2" id="annonces">Vos annonces<i class="fa fa-list-alt" style="float:right;margin-top:4px"></i></div></a>
-				<a href="#"><div class="menu col col-lg-2" id="statistiques">Statistiques<i class="fa fa-line-chart" style="float:right;margin-top:4px"></i></div></a>
+
+
+			<div ng-if='authentifCtrl.role != ("COWORKER" && "DRIVER" && "ADMINISTRATOR") '>
+				<a href="#"><div  class="menu col col-lg-2 " id="reservation">Vos réservations<i class="fa fa-table" style="float:right;margin-top:4px; color:black"></i></div></a>
+				<a href="collaborateur/annonces"><div class="menu col col-lg-2" id="annonces">Vos annonces<i class="fa fa-list-alt" style="float:right;margin-top:4px; color:black"></i></div></a>
+				<a href="#"><div class="menu col col-lg-2" id="statistiques">Statistiques<i class="fa fa-line-chart" style="float:right;margin-top:4px; color:black"></i></div></a>
+			</div>
+
+
+			<div ng-if='authentifCtrl.role == "COWORKER"'>
+				<a href="#"><div  class="menu col col-lg-2 " id="reservation">Vos réservations<i class="fa fa-table" style="float:right;margin-top:4px; color:black"></i></div></a>
+				<a href="collaborateur/annonces"><div class="menu col col-lg-2" id="annonces">Vos annonces<i class="fa fa-list-alt" style="float:right;margin-top:4px; color:black"></i></div></a>
+				<a href="#"><div class="menu col col-lg-2" id="statistiques">Statistiques<i class="fa fa-line-chart" style="float:right;margin-top:4px; color:black"></i></div></a>
+			</div>
+
+			<div ng-if='authentifCtrl.role == "DRIVER"'>
+				<a href="#"><div  class="menu col col-lg-2 " id="reservation">Occupation<i class="fa fa-table" style="float:right;margin-top:4px; color:black"></i></div></a>
+				<a href="collaborateur/annonces"><div class="menu col col-lg-2" id="annonces">Planning<i class="fa fa-list-alt" style="float:right;margin-top:4px; color:black"></i></div></a>
+				<a href="#"><div class="menu col col-lg-2" id="statistiques">Abc<i class="fa fa-line-chart" style="float:right;margin-top:4px; color:black"></i></div></a>
+			</div>
+
+
+			<div ng-if='authentifCtrl.role == "ADMINISTRATOR"'>
+				<a href="#"><div  class="menu col col-lg-2 " id="reservation">Vos réservations<i class="fa fa-table" style="float:right;margin-top:4px; color:black"></i></div></a>
+				<a href="collaborateur/annonces"><div class="menu col col-lg-2" id="annonces">Vos annonces<i class="fa fa-list-alt" style="float:right;margin-top:4px; color:black"></i></div></a>
+				<a href="#"><div class="menu col col-lg-2" id="statistiques">Statistiques<i class="fa fa-line-chart" style="float:right;margin-top:4px; color:black"></i></div></a>
+				<a href="#"><div  class="menu col col-lg-2 " id="reservation">Occupation<i class="fa fa-table" style="float:right;margin-top:4px; color:black"></i></div></a>
+				<a href="collaborateur/annonces"><div class="menu col col-lg-2" id="annonces">Planning<i class="fa fa-list-alt" style="float:right;margin-top:4px; color:black"></i></div></a>
+				<a href="#"><div class="menu col col-lg-2" id="statistiques">Abc<i class="fa fa-line-chart" style="float:right;margin-top:4px; color:black"></i></div></a>
+			</div>
+
+
+
 			</div>
 		</div>
-
-</div>
+  <div class="modal fade" id="modalInfoAuthentif" role="dialog">
+    <div class="modal-dialog modal-xs">
+      <div class="modal-content">
+        <div class="modal-body">
+        	<strong>Info! </strong>{{authentifCtrl.result}} <i class="fa fa-cog fa-spin" style="font-size:24px"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

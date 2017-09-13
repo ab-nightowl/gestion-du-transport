@@ -6,7 +6,12 @@ class headerController {
     constructor () {
         this.titre = 'hello header controller';
     }
+
+    $onInit(){
+      this.getUserConnected();
+    }
 }
+
 
 const headerComponent = {
 	template : headerTemplate,
