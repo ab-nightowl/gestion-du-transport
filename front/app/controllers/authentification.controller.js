@@ -15,7 +15,7 @@ export default class authentificationController {
     this.getUserConnected();
 
     if(this.$sessionStorage.get('userConnected')!= undefined){
-        this.getRole(JSON.parse(this.$sessionStorage.get('userConnected')).email);
+        this.getRole();
     }
 
   }
@@ -63,8 +63,10 @@ getUserConnected(){
             user.nom = e.nom;
             this.authentificationService.getRole(user.email)
             .then((res)=>{
-              this.role = res.data
+              this.role = res.data;
+              this.$sessionStorage.put('userConnectedRole', res.data)
               this.$log.log("role: " + res.data)
+              this.$log.log("userConnectedRole: "+ this.$sessionStorage.get('userConnectedRole'))
             },(err)=>{
               this.$log.log(err.statusText)
             })
@@ -76,6 +78,7 @@ getUserConnected(){
         this.$log.log("OK connexion ! ");
         this.$sessionStorage.put('userConnected', JSON.stringify(user))
         this.$log.log("userConnected: "+ this.$sessionStorage.get('userConnected'))
+
       }else{
         this.result = 'Connexion failed ! ';
         this.$log.log("failed connexion ! ");
@@ -91,13 +94,6 @@ getUserConnected(){
   this.$log.log("Please enter your ID ! ");
 }
 
-<<<<<<< HEAD
-  getUserConnected(){
-      this.userConnected = this.authentificationService.getUserConnected();
-      this.$log.log('userConnected: '+ this.userConnected)
-  }
-
-=======
 
 deconnexion(){
   this.result = "Déconnexion en cours";
@@ -109,24 +105,26 @@ deconnexion(){
 }
 
 
-  getRole(email){
-
+  getRole(){
     if(this.$sessionStorage.get('userConnected') != undefined){
-      this.authentificationService.getRole(email)
-      .then((res)=>{
-        this.role = res.data
-        this.$log.log("role: " + res.data)
-      },(err)=>{
-        this.$log.log(err.statusText)
-      })
+      this.role = this.$sessionStorage.get('userConnectedRole');
+      this.$log.log("userConnectedRole: " + this.role);
     }
 
   }
 
-  // changeRole(newRole){
-  //   this.role = role;
-  //   this.$sessionStorage.set('newRole', newRole)
-  // }
+  changeRole(newRole){
+
+    this.$sessionStorage.remove('userConnectedRole');
+    this.$sessionStorage.put('userConnectedRole', newRole);
+
+    this.$timeout(()=>{
+
+    this.authentificationService.changePage('/gestion-du-transport/home');
+    this.$window.location.reload();
+  }, 1500);
+
+  }
 
   changePage(url){
     this.$timeout(()=>{
@@ -135,7 +133,6 @@ deconnexion(){
   }, 1500);
 
   }
->>>>>>> 7320ab7348b07c0a925fced3df0548f9c4b2ea9a
 
 }
 
