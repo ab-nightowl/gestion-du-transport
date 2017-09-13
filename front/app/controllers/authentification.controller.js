@@ -117,7 +117,7 @@ deconnexion(){
 
     this.$sessionStorage.remove('userConnectedRole');
     this.$sessionStorage.put('userConnectedRole', newRole);
-
+    this.result = 'OK, wait...'
     this.$timeout(()=>{
 
     this.authentificationService.changePage('/gestion-du-transport/home');
