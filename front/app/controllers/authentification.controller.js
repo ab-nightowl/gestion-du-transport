@@ -1,17 +1,34 @@
 export default class authentificationController {
 
-  constructor($scope,$http, $log, authentificationService, $sessionStorage){
+  constructor($scope,$http, $log, authentificationService, $sessionStorage, $window, $timeout){
     this.$scope = $scope;
     this.$http = $http
     this.$log = $log
     this.authentificationService = authentificationService;
     this.$sessionStorage = $sessionStorage;
-
+    this.$window = $window;
+    this.$timeout = $timeout;
 }
 
   $onInit(){
     this.getAllUsers();
+    this.getUserConnected();
   }
+
+  //-------------------Get userConnected-----------------------------
+getUserConnected(){
+  if(JSON.parse(this.$sessionStorage.get('userConnected')) != undefined){
+     try {
+       this.userConnected = JSON.parse(this.$sessionStorage.get('userConnected'));
+       this.$log.log ('Hi user :) '+this.userConnected.email + ' -- ' + this.userConnected.password);
+       return this.userConnected;
+     } catch (e) {
+       this.$log.log ('error: '+ e.message);
+     }
+   }else{
+     this.$log.log ('No user connected ! :(');
+   }
+ }
 
 
   getAllUsers(){
@@ -70,6 +87,16 @@ export default class authentificationController {
   this.$log.log("Please enter your ID ! ");
 }
 
+
+deconnexion(){
+  this.result = "Déconnexion ec cours";
+  this.$timeout(()=>{
+  this.authentificationService.deconnexion();
+  this.$window.location.reload();
+}, 1500);
+
 }
 
-authentificationController['$inject'] = ['$scope','$http', '$log', 'authentificationService', '$sessionStorage'];
+}
+
+authentificationController['$inject'] = ['$scope','$http', '$log', 'authentificationService', '$sessionStorage','$window', '$timeout'];

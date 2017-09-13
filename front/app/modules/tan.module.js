@@ -6,7 +6,7 @@ import bookVehicleController from '../controllers/book.vehicle.controller'
 
 import authentificationService from '../services/authentification.service'
 import authentificationController from '../controllers/authentification.controller'
-
+// import headerComponent from '../header/header.component'
 
 import urlsService from '../services/urls.service'
 import UiBootrap from 'angular-ui-bootstrap'
@@ -17,6 +17,8 @@ require('angular-ui-bootstrap-datetimepicker')
 
 const tanModule = angular.module('tanModule',[UiBootrap,ngSessionStorage])
 .constant('urlsService', urlsService)
+
+// .component('headerComponent', headerComponent)
 
 .component('collabBookVehicleSocietyComponent', collabBookVehicleSocietyComponent)
 .controller('bookVehicleController', bookVehicleController)

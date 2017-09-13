@@ -9,16 +9,15 @@ background-image: url("./statique/img/blahblahcar.jpg");
 background: #181f3f !important;
 display: block;
 margin-top: 3px;
-margin-left: 12px;
 }
 
 .menu{
   display: block;
-background: #f09100;
-padding: 7px;
-color: white;
-margin-right: 3px;
-text-align: center;
+  background: #f09100;
+  padding: 6px;
+  color: white;
+  margin-right: 0px;
+  text-align: center;
 
 }
 

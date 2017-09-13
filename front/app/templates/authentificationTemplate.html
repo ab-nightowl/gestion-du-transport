@@ -76,7 +76,12 @@ margin-right: -17px;
 #zoneConnexion{
   margin-top: 35px;
 }
-
+.profil{
+  display: block;
+  background: #f9910c;
+  height: 140px;
+  width: 137px;
+}
 
 a .profil:hover{
   background: black;
@@ -159,22 +164,22 @@ a .profil:hover{
             <h3>{{$ctrl.result}}</h3>
             <div ng-if='$ctrl.role === "ADMINISTRATOR"'>
               <div class="row">
-                  <a href="#"><div class="profil col col-lg-3 col-lg-offset-1 ">Profil Administrator</div></a>
-                  <a href="#"><div class="profil col col-lg-3 col-lg-offset-1">Profil DRIVER</div></a>
-                  <a href="#"><div class="profil col col-lg-3 col-lg-offset-1">Profil COWORKER</div></a>
+                  <a href="#"><div class="profil col col-lg-3 col-lg-offset-1 ">Administrator</div></a>
+                  <a href="#"><div class="profil col col-lg-3 col-lg-offset-1">DRIVER</div></a>
+                  <a href="#"><div class="profil col col-lg-3 col-lg-offset-1">COWORKER</div></a>
               </div>
             </div>
 
             <div ng-if='$ctrl.role === "COWORKER"'>
               <div class="row">
-                <a href="#"><div class="profil col-lg-3 col-lg-offset-5 ">Profil Collaborateur</div></a>
+                <a href="#"><div class="profil col-lg-3 col-lg-offset-5 ">Collaborateur</div></a>
               </div>
             </div>
 
             <div ng-if='$ctrl.role === "DRIVER"'>
               <div class="row">
-                <a href="#"><div class="profil col-lg-3 col-lg-offset-1">Profil Chauffeur</div></a>
-                <a href="#"><div class="profil col-lg-3 col-lg-offset-1">Profil Collaborateur</div></a>
+                <a href="#"><div class="profil col-lg-3 col-lg-offset-1">Chauffeur</div></a>
+                <a href="#"><div class="profil col-lg-3 col-lg-offset-1">Collaborateur</div></a>
               </div>
             </div>
 
