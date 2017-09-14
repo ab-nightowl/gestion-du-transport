@@ -23,4 +23,5 @@ export default class bookVehicleService{
     return this.$http.get(this.urlsService.booking)
   }
 
+
 }

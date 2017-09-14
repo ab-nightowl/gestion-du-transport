@@ -78,8 +78,13 @@ public class VehicleController {
 					bookingFromClient.getDateLast().getHour(), bookingFromClient.getDateLast().getMinute(),
 					bookingFromClient.getDateLast().getSecond()));
 
+			
+//			booking.setDriver(bookingFromClient.getDriver());
+			
+			booking.setWithDriver(bookingFromClient.isWithDriver());
 			booking.setStatut(AdvertStatut.COMPLETED);
 			booking.setVehicle(v);
+			
 
 			bookingRepo.save(booking);
 		}

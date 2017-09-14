@@ -1,13 +1,14 @@
 
 export default class bookVehicleController {
 
-  constructor($scope,$http, $log, bookVehicleService, $window, $timeout){
+  constructor($scope,$http, $log, bookVehicleService, $window, $timeout, $sessionStorage){
     this.$scope = $scope;
     this.$http = $http
     this.$log = $log
     this.bookVehicleService = bookVehicleService;
     this.$window = $window;
     this.$timeout = $timeout;
+    this.$sessionStorage = $sessionStorage;
 
     this.inlineOptions = {
         customClass: this.getDayClass,
@@ -134,15 +135,19 @@ today() {
     }
 
     reserveVehicleSociety(vehicleLicensePlate, booking){
+
+    if(this.$sessionStorage.get('userConnected') != undefined){
+
       this.bookVehicleService.checkingBeforeBookingVehicle(vehicleLicensePlate)
       .then((res)=>{
         this.$log.log(res.data)
         if(!res.data){
+          // booking.driver.email = this.$sessionStorage.get('userConnected').email;
           this.bookVehicleService.reserveVehicleSociety(vehicleLicensePlate, booking)
           .then((res)=>{
               this.result = "Votre réservation est enregistré avec succèss :)"
               this.$timeout(()=>{
-			        this.$window.location.reload();;
+			        this.$window.location.reload();
             }, 1500);
 
             this.$log.log("Réservation avec succèss :) ");
@@ -157,8 +162,11 @@ today() {
       },(err)=>{
 
       })
-
+    }else{
+        this.result = "Veuillez vous connecter avant de réserver !:)"
     }
+
+  }
 
 
       getAllBookings(){
@@ -193,4 +201,4 @@ today() {
 
 }
 
-bookVehicleController['$inject'] = ['$scope','$http', '$log', 'bookVehicleService', '$window', '$timeout'];
+bookVehicleController['$inject'] = ['$scope','$http', '$log', 'bookVehicleService', '$window', '$timeout', '$sessionStorage'];

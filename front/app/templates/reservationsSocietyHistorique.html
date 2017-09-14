@@ -1,0 +1,45 @@
+<div class="container"><br />
+  <div class="row">
+    <h1 class="col col-lg-10">Historique des reservations de véhicule de société</h1>
+    <a ng-if='$ctrl.bookings == ""' href="/gestion-du-transport/collaborateur/reservation/societe/creer" class="col col-lg-2" style="text-decoration:none"><div class="menu" id="reservation">Réserver vite !<i class="fa fa-arrow-circle-left" style="float:right;margin-top:4px; color:black"></i></div></a>
+    <a ng-if='$ctrl.bookings != ""' href="/gestion-du-transport/collaborateur/reservation/societe/creer" class="col col-lg-2" style="text-decoration:none"><div class="menu" id="reservation">Réserver encore !<i class="fa fa-arrow-circle-left" style="float:right;margin-top:4px; color:black"></i></div></a>
+  </div>
+
+  <div class="row">
+    <h4 style="height:50px" class="alert alert-danger " ng-if='$ctrl.bookings == ""'>Vous n'avez pas encore réservé :(</h4>
+
+    <!--  -->
+  </div>
+
+
+
+ <table ng-if='$ctrl.bookings != ""'  class="table table-hover" >
+    <thead >
+      <tr>
+        <th>Date/Heure début</th>
+        <th>Date/Heure retour</th>
+        <th>Statut</th>
+        <th>licensePlate</th>
+        <th>Brand</th>
+        <th>Modèle</th>
+        <th>Chauffeur</th>
+      </tr>
+    </thead>
+    <tbody>
+          <tr ng-repeat='rev in $ctrl.bookings'>
+              <td>{{rev.dateFirst}}</td>
+              <td>{{rev.dateLast}}</td>
+              <td>{{rev.statut}}</td>
+              <td>{{rev.vehicle.licensePlate}}</td>
+              <td>{{rev.vehicle.brand}}</td>
+              <td>{{rev.vehicle.model}}</td>
+              <td>{{rev.withDriver}}</td>
+          </tr>
+  </tbody>
+  </table>
+
+
+
+
+
+</div>

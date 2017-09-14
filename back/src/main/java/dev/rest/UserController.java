@@ -35,7 +35,6 @@ public class UserController {
 		User user;
 		for (User u : listUsers) {
 			 user = new User();
-			
 			 user.setRole(RandomEnum.setRoleRandom());
 			 user.setEmail(u.getEmail());
 			 user.setRegistrationNumber("Abc-" + i++);

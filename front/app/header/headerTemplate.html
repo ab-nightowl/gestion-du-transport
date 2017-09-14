@@ -48,15 +48,16 @@
 			<div class="zoneMenu">
 
 
-			<div ng-if='authentifCtrl.role != ("COWORKER" && "DRIVER" && "ADMINISTRATOR") '>
-				<a href="#"><div  class="menu col col-lg-2 " id="reservation">Vos réservations<i class="fa fa-table" style="float:right;margin-top:4px; color:black"></i></div></a>
+			<!--<div ng-if='authentifCtrl.role != ("COWORKER" && "DRIVER" && "ADMINISTRATOR") '>-->
+				<!-- <div ng-if='authentifCtrl.role != "DRIVER" &&  authentifCtrl.role != "COWORKER" && authentifCtrl.role != "ADMINISTRATOR"'>
+				<a href='/gestion-du-transport/reservations '><div  class="menu col col-lg-2 " id="reservation">Vos réservations<i class="fa fa-table" style="float:right;margin-top:4px; color:black"></i></div></a>
 				<a href="collaborateur/annonces"><div class="menu col col-lg-2" id="annonces">Vos annonces<i class="fa fa-list-alt" style="float:right;margin-top:4px; color:black"></i></div></a>
 				<a href="#"><div class="menu col col-lg-2" id="statistiques">Statistiques<i class="fa fa-line-chart" style="float:right;margin-top:4px; color:black"></i></div></a>
-			</div>
+			</div> -->
 
 
 			<div ng-if='authentifCtrl.role == "COWORKER"'>
-				<a href="#"><div  class="menu col col-lg-2 " id="reservation">Vos réservations<i class="fa fa-table" style="float:right;margin-top:4px; color:black"></i></div></a>
+				<a href="/gestion-du-transport/reservations"><div  class="menu col col-lg-2 " id="reservation">Vos réservations<i class="fa fa-table" style="float:right;margin-top:4px; color:black"></i></div></a>
 				<a href="collaborateur/annonces"><div class="menu col col-lg-2" id="annonces">Vos annonces<i class="fa fa-list-alt" style="float:right;margin-top:4px; color:black"></i></div></a>
 				<a href="#"><div class="menu col col-lg-2" id="statistiques">Statistiques<i class="fa fa-line-chart" style="float:right;margin-top:4px; color:black"></i></div></a>
 			</div>
@@ -69,7 +70,7 @@
 
 
 			<div ng-if='authentifCtrl.role == "ADMINISTRATOR"'>
-				<a href="#"><div  class="menu col col-lg-2 " id="reservation">Vos réservations<i class="fa fa-table" style="float:right;margin-top:4px; color:black"></i></div></a>
+				<a href="/gestion-du-transport/reservations"><div  class="menu col col-lg-2 " id="reservation">Vos réservations<i class="fa fa-table" style="float:right;margin-top:4px; color:black"></i></div></a>
 				<a href="collaborateur/annonces"><div class="menu col col-lg-2" id="annonces">Vos annonces<i class="fa fa-list-alt" style="float:right;margin-top:4px; color:black"></i></div></a>
 				<a href="#"><div class="menu col col-lg-2" id="statistiques">Statistiques<i class="fa fa-line-chart" style="float:right;margin-top:4px; color:black"></i></div></a>
 				<a href="#"><div  class="menu col col-lg-2 " id="reservation">Occupation<i class="fa fa-table" style="float:right;margin-top:4px; color:black"></i></div></a>

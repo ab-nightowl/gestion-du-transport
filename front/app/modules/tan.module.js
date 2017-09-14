@@ -1,5 +1,6 @@
 import collabBookVehicleSocietyComponent from '../components/collab.book.vehicle.society.component'
 import authentificationComponent from '../components/authentification.component'
+import reservationsSocietyComponent from '../components/reservations.society.component'
 
 import bookVehicleService from '../services/book.vehicle.service'
 import bookVehicleController from '../controllers/book.vehicle.controller'
@@ -18,7 +19,8 @@ require('angular-ui-bootstrap-datetimepicker')
 const tanModule = angular.module('tanModule',[UiBootrap,ngSessionStorage])
 .constant('urlsService', urlsService)
 
-
+.component('reservationsSocietyComponent', reservationsSocietyComponent)
+.controller('bookVehicleController', bookVehicleController)
 
 .component('collabBookVehicleSocietyComponent', collabBookVehicleSocietyComponent)
 .controller('bookVehicleController', bookVehicleController)
@@ -37,6 +39,10 @@ const tanModule = angular.module('tanModule',[UiBootrap,ngSessionStorage])
 
 	.when('/connexion',{
 		template : '<authentification-component></authentification-component>',
+	})
+
+	.when('/reservations',{
+		template : '<reservations-society-component></reservations-society-component>'
 	})
 })
 // .run(['$rootScope']){
