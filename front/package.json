@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "angular": "^1.6.4",
+    "angular-bootstrap-calendar": "^0.30.0",
     "angular-font-awesome": "^2.0.3",
     "angular-google-places-autocomplete": "^0.2.9",
     "angular-route": "^1.6.4",

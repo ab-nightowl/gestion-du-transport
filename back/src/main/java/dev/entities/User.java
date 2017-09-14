@@ -9,18 +9,15 @@ import javax.persistence.Id;
 public class User {
 	@Id
 	private String registrationNumber;
-	
+
 	private String nom;
 	private String prenom;
 	private String email;
 	private String password;
-	
-	
+
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
-	
-	
 	public String getRegistrationNumber() {
 		return registrationNumber;
 	}
@@ -69,9 +66,8 @@ public class User {
 		this.role = role;
 	}
 
-	
-	public User(){
-		
+	public User() {
+
 	}
 
 	public User(String registrationNumber, String nom, String prenom, String email, String password, Role role) {
@@ -83,6 +79,5 @@ public class User {
 		this.password = password;
 		this.role = role;
 	}
-	
-	
+
 }

@@ -1,0 +1,15 @@
+<div id="myModal">
+    <div class="modal-header" id="modal-header">
+        <h5>Accepter un transport</h5>
+    </div>
+    <p>Date de début : {{$ctrl.calendarEvent.startsAt | date:"dd/MM/yyyy"}} à {{$ctrl.calendarEvent.startsAt | date:"hh:mm"}}</p>
+    
+    <p>Date de fin : {{$ctrl.calendarEvent.endsAt | date:"dd/MM/yyyy"}} à {{$ctrl.calendarEvent.endsAt | date:"hh:mm"}}</p>
+
+    <p>Responsable : {{$ctrl.calendarEvent.actions[0].hide.booker.nom.toUpperCase()}} {{$ctrl.calendarEvent.actions[0].hide.booker.prenom}}   </p>
+    
+    <div class="modal-footer" id="modal-footer">
+        <button class="btn btn-primary" ng-click="$ctrl.confirm()">Confirmer</button>
+        <button class="btn" ng-click="$ctrl.cancel()">Annuler</button>
+    </div>
+</div>

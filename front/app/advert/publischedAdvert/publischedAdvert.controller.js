@@ -1,24 +1,21 @@
 export default class AdvertPublishedController {
   constructor(AdvertPublischedService, AdvertPublischedModalService) {
-    this.today()
+
     this.AdvertPublischedModalService = AdvertPublischedModalService
     
-    this.inlineOptions = {
-      customClass: getDayClass,
-      minDate: this.today(),
-      showWeeks: true
-    };
+    this.date = new Date();
+    this.date.setDate(this.date.getDate() + 1)
 
     this.dateOptions = {
       dateDisabled: disabled,
       formatYear: 'yy',
       maxDate: new Date(2020, 5, 22),
+      minDate: this.date,
       startingDay: 1
     };
-    this.toggleMin();
     this.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
     this.format = this.formats[0];
-    this.altInputFormats = ['M!/d!/yyyy'];
+    this.altInputFormats = ['dd-MMMM-yyyy'];
     this.popup = {
       opened: false
     };
@@ -65,8 +62,8 @@ export default class AdvertPublishedController {
   calculate() {
     var map;
     var panel = document.querySelector("#panel");
-    if (this.addressDeparture != undefined && this.adresseArriver != undefined) {
-      if (this.addressDeparture.formatted_address != undefined && this.adresseArriver.formatted_address != undefined) {
+   
+      if (this.addressDeparture instanceof Object  && this.adresseArriver instanceof Object) {
         var request = {
           origin: this.addressDeparture.formatted_address,
           destination: this.adresseArriver.formatted_address,
@@ -84,7 +81,7 @@ export default class AdvertPublishedController {
       else{
         panel.textContent = ""
       }
-    }
+    
   }
 
   adressDepartureError(){    
@@ -122,21 +119,12 @@ export default class AdvertPublishedController {
     localStorage['Vehicule'] = JSON.stringify(this.advert)
     this.openModal(this.advert)
   }
-  today() {
-    this.date = new Date();
-    this.date.setDate(this.date.getDate() + 1)
-  }
+
 
   clear() {
     this.date = null;
   }
   // Disable weekend selection
-
-
-  toggleMin() {
-    this.inlineOptions.minDate = this.inlineOptions.minDate ? null : new Date();
-    this.dateOptions.minDate = this.inlineOptions.minDate;
-  }
   open() {
     this.popup.opened = true;
   }

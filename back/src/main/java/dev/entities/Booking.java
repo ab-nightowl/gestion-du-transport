@@ -3,14 +3,15 @@ package dev.entities;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-
 @Entity
-public class Booking{
+public class Booking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -21,9 +22,29 @@ public class Booking{
 	@ManyToOne
 	private User driver;
 
+	@ManyToOne
+	private User booker;
+	private boolean withDriver;
+
+	@Enumerated(EnumType.STRING)
 	private AdvertStatut statut;
 
-	
+	public User getBooker() {
+		return booker;
+	}
+
+	public void setBooker(User booker) {
+		this.booker = booker;
+	}
+
+	public boolean getWithDriver() {
+		return withDriver;
+	}
+
+	public void setWithDriver(boolean withDriver) {
+		this.withDriver = withDriver;
+	}
+
 	public AdvertStatut getStatut() {
 		return statut;
 	}
@@ -37,7 +58,7 @@ public class Booking{
 	}
 
 	public void setDateFirst(LocalDateTime dateFirst) {
-		
+
 		this.dateFirst = dateFirst;
 	}
 
@@ -68,6 +89,5 @@ public class Booking{
 	public Integer getId() {
 		return id;
 	}
-
 
 }

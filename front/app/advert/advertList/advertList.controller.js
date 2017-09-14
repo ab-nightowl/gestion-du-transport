@@ -9,6 +9,12 @@ export default class AdvertListController {
         this.list = []
         this.listEnd = []
         this.$route = $route
+        this.itemsPerPage = 5;
+        this.currentPage = 0;
+        this.maxSize = 5;
+        
+        
+        
     }
     $onInit() {
         this.advertListService.getAdvertHistory().then(res => {
@@ -24,8 +30,10 @@ export default class AdvertListController {
                 else {
                     this.listEnd.push(element)
                 }
-            }, this);
+            }, this)
+            this.totalItems = this.listEnd.length;
         })
+        
     }
     cancelled(id) {
         this.AdvertListModalService.open(id)

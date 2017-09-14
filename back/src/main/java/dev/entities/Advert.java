@@ -4,6 +4,8 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,6 +33,7 @@ public class Advert {
 	private String brand;
 	private String model;
 	private Integer capacity;
+	@Enumerated(EnumType.STRING)
 	private AdvertStatut statut;
 
 	public Advert() {

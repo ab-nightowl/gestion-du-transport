@@ -44,12 +44,12 @@ public class AdvertController {
 	}
 
 	@RequestMapping(path = "/cancelled/{id}", method = RequestMethod.PATCH)
-	public ResponseEntity<Advert> cancelledAdvert(@PathVariable("id") Integer id) {
+	public void cancelledAdvert(@PathVariable("id") Integer id) {
 		Advert advert = new Advert();
 		advert = advertRepo.findOneById(id);
 		advert.setStatut(AdvertStatut.CANCELED);
 		advertRepo.save(advert);
-		return new ResponseEntity<>(HttpStatus.OK);
+
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -64,20 +64,20 @@ public class AdvertController {
 	}
 
 	@RequestMapping(value = "/{user}", method = RequestMethod.GET)
-	public ResponseEntity<List<Advert>> getAllAdvert(@PathVariable("user") String registrationNumber) {
+	public List<Advert> getAllAdvert(@PathVariable("user") String registrationNumber) {
 		User user = new User();
 		user = userRepo.findByRegistrationNumber(registrationNumber);
 		List<Advert> adverts = advertRepo.findAllByDriver(user);
-		return new ResponseEntity<List<Advert>>(adverts, HttpStatus.OK);
+		return adverts;
 
 	}
 
 	@RequestMapping(value = "/passenger/{user}", method = RequestMethod.GET)
-	public ResponseEntity<List<Advert>> getAllPassengerAdvert(@PathVariable("user") String registrationNumber) {
+	public List<Advert> getAllPassengerAdvert(@PathVariable("user") String registrationNumber) {
 		User user = new User();
 		user = userRepo.findByRegistrationNumber(registrationNumber);
 		List<Advert> adverts = advertRepo.findAllByPassengers(user);
-		return new ResponseEntity<List<Advert>>(adverts, HttpStatus.OK);
+		return adverts;
 
 	}
 }
