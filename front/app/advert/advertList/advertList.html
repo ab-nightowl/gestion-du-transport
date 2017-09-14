@@ -21,7 +21,7 @@
                     <td>{{advert.dateFirst}}</td>
                     <td>{{advert.addressDeparture}}</td>
                     <td>{{advert.addressArrival}}</td>
-                    <td>{{advert.passengers.length}}</td>
+                    <td>{{advert.passengerCount}}</td>
                     <td> <input type="button" ng-click="$ctrl.cancelled(advert.id)" class="btn btn-danger" value="Annuler">
                 </tr>
             </tbody>
@@ -37,13 +37,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="advert in $ctrl.listEnd">
+                    <tr ng-repeat="advert in $ctrl.listEnd | orderBy:'dateFirst':true | limitTo:$ctrl.itemsPerPage:$ctrl.itemsPerPage*($ctrl.currentPage-1)">
                         <td>{{advert.dateFirst}}</td>
                         <td>{{advert.addressDeparture}}</td>
                         <td>{{advert.addressArrival}}</td>
-                        <td>{{advert.passengers.length}}</td>
+                        <td>{{advert.passengerCount}}</td>
                     </tr>
                 </tbody>
             </table>
+            <ul uib-pagination total-items="$ctrl.totalItems" ng-model="$ctrl.currentPage" max-size="$ctrl.maxSize" items-per-page="$ctrl.itemsPerPage" class="pagination-sm pull-right" boundary-link-numbers="true"></ul>
     </div>
 </div>

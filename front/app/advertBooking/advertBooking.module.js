@@ -11,7 +11,7 @@ const advertBookingModule = angular
   .controller(AdvertModalCtrl.name, AdvertModalCtrl)
   .service(AdvertBookingService.name, AdvertBookingService)
   .service(AdvertModalService.name, AdvertModalService)
-  .filter('addressFilter', advertBookingFilter)
+  .filter("addressFilter", advertBookingFilter)
   .config(route);
 
 export default advertBookingModule;

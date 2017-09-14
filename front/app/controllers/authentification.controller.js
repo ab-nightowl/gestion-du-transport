@@ -1,6 +1,6 @@
 export default class authentificationController {
 
-  constructor($scope,$http, $log, authentificationService, $sessionStorage, $window, $timeout){
+  constructor($scope,$http, $log, authentificationService, $sessionStorage, $window, $timeout,$location,jssha){
     this.$scope = $scope;
     this.$http = $http
     this.$log = $log
@@ -8,10 +8,21 @@ export default class authentificationController {
     this.$sessionStorage = $sessionStorage;
     this.$window = $window;
     this.$timeout = $timeout;
+    this.$location = $location
+    this.encrypt = jssha
+    if(this.getUserConnected()!=undefined){
+      this.$location.path('/home')
+    }
 }
 
   $onInit(){
-    this.getAllUsers();
+    this.authentificationService.getAllUserServer().then(res=>{
+      if(res.data.length==0){
+        this.getAllUsers();
+      }
+      
+  })
+     
     this.getUserConnected();
 
     if(this.$sessionStorage.get('userConnected')!= undefined){
@@ -32,6 +43,7 @@ getUserConnected(){
      }
    }else{
      this.$log.log ('No user connected ! :(');
+     this.$location.path('/connexion')
    }
  }
 
@@ -39,12 +51,17 @@ getUserConnected(){
   getAllUsers(){
     this.authentificationService.getAllUser()
     .then((res)=>{
-      this.authentificationService.setRole(res.data)
-      .then((res)=>{
-        this.$log.log(res.statusText)
-      },(err)=>{
-        this.$log.log(err.statusText)
-      })
+        res.data.forEach(user=>{
+          user.registrationNumber = user.matricule
+          delete user['matricule']        
+        })
+        
+        this.authentificationService.setRole(res.data)
+        .then((res)=>{
+          this.$log.log(res.statusText)
+        },(err)=>{
+          this.$log.log(err.statusText)
+        })    
     },(err)=>{
       this.$log.log('err: '+ err.statusText)
     })
@@ -58,9 +75,14 @@ getUserConnected(){
 
       this.users = res.data;
       this.users.forEach((e)=>{
-        if( (user.email === e.email) && (user.password === e.password) ){
+        let password = new this.encrypt("SHA-1", "TEXT")
+        password.update(user.password)
+        password = password.getHash("HEX")
+        if( (user.email === e.email) && (password === e.password) ){
             this.foundUser = true;
             user.nom = e.nom;
+            user.prenom = e.prenom
+            user.registrationNumber = e.matricule                     
             this.authentificationService.getRole(user.email)
             .then((res)=>{
               this.role = res.data;
@@ -74,13 +96,20 @@ getUserConnected(){
       })
 
       if(this.foundUser){
-        this.result = 'Welcome '+ user.nom + ' :)';
-        this.$log.log("OK connexion ! ");
-        this.$sessionStorage.put('userConnected', JSON.stringify(user))
+        this.result = 'Bienvenue '+ user.nom + ' :)';
+        this.$log.log("OK connexion ! ");        
+        this.userInfo ={
+          "email":user.email,
+          "nom":user.nom,
+          "prenom":user.prenom,
+          "registrationNumber":user.registrationNumber
+        }
+        this.$sessionStorage.put('userConnected', JSON.stringify(this.userInfo))
         this.$log.log("userConnected: "+ this.$sessionStorage.get('userConnected'))
+        this.$window.location.reload()
 
       }else{
-        this.result = 'Connexion failed ! ';
+        this.result = 'Connexion échouée ! ';
         this.$log.log("failed connexion ! ");
       }
 
@@ -100,11 +129,9 @@ deconnexion(){
   this.$timeout(()=>{
   this.authentificationService.deconnexion();
   this.$window.location.reload();
-}, 1500);
+}, 1000);
 
 }
-
-
   getRole(){
     if(this.$sessionStorage.get('userConnected') != undefined){
       this.role = this.$sessionStorage.get('userConnectedRole');
@@ -136,4 +163,4 @@ deconnexion(){
 
 }
 
-authentificationController['$inject'] = ['$scope','$http', '$log', 'authentificationService', '$sessionStorage','$window', '$timeout'];
+authentificationController['$inject'] = ['$scope','$http', '$log', 'authentificationService', '$sessionStorage','$window', '$timeout','$location','jssha'];

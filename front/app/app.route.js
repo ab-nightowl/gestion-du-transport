@@ -19,7 +19,10 @@ export function route($routeProvider, $locationProvider) {
     .when("/collaborateur/reservations/creer", {
       template: "<advert-booking-cmp></advert-booking-cmp>"
     })
+    .when("/chauffeur/planning",{
+      template: "<planning-cmp></planning-cmp>"
+    })
     .otherwise({
-      redirectTo: "/home"
+      redirectTo: "/"
     });
 }

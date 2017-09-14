@@ -1,0 +1,44 @@
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<style>
+    .edit-event h8, strong, p{
+        color: black
+    }
+</style>
+<h1 class="col-xs-offset-1">Planning</h1>
+<div class="col-xs-offset-5" ><h2>{{$ctrl.viewDate | date:"dd/MM/yyyy"}}</h2></div>
+<div class="pull-right" style="margin-right:10.5%">
+        <button
+        class="btn btn-primary"
+        mwl-date-modifier
+        date="$ctrl.viewDate"
+        decrement="$ctrl.calendarView">
+        Précédent
+      </button>
+      
+      <button
+        class="btn btn-default"
+        mwl-date-modifier
+        date="$ctrl.viewDate"
+        set-to-today>
+        Aujourd'hui
+      
+      <button
+        class="btn btn-primary" 
+        mwl-date-modifier
+        date="$ctrl.viewDate"
+        increment="$ctrl.calendarView">
+        Suivant
+      </button>
+</div>
+<br>
+<br>
+<br>
+<mwl-calendar style="margin-left:7.4%" class="col-xs-offset-1 col-xs-10 col-xs-offset-1" 
+    view="$ctrl.calendarView" view-date="$ctrl.viewDate" events="$ctrl.events" view-title="$ctrl.calendarTitle" on-event-click="$ctrl.eventClicked(calendarEvent)"
+    cell-is-open="true">
+</mwl-calendar>

@@ -1,11 +1,29 @@
 export default class CarpoolingListService {
-  constructor($http, apiUrl) {
+  constructor($http, apiUrl, $sessionStorage, $route) {
     this.$http = $http;
     this.apiUrl = apiUrl;
+    this.$sessionStorage = $sessionStorage;
+    this.user = { registrationNumber: null };
+    this.$route = $route;
   }
 
   getCarpoolingHistory() {
-    this.user = sessionStorage.getItem("user");
-    return this.$http.get(this.apiUrl + "/advert/passenger/" + this.user);
+    this.user = JSON.parse(this.$sessionStorage.get("userConnected"));
+    return this.$http.get(
+      this.apiUrl + "/advert/passenger/" + this.user.registrationNumber
+    );
+  }
+
+  cancel(carpooling) {
+    this.carpooling = carpooling;
+    this.user = JSON.parse(this.$sessionStorage.get("userConnected"));
+    this.$http
+      .patch(
+        this.apiUrl + "/advert/passenger/cancelled/" + this.carpooling,
+        this.user.registrationNumber
+      )
+      .then(res => {
+        this.$route.reload();
+      });
   }
 }

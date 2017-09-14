@@ -1,8 +1,11 @@
 export default class AdvertBookingService {
-  constructor($uibModal, apiUrl, $http) {
+  constructor($uibModal, apiUrl, $http, $sessionStorage, $route) {
     this.$uibModal = $uibModal;
     this.apiUrl = apiUrl;
     this.$http = $http;
+    this.$sessionStorage = $sessionStorage;
+    this.user = { registrationNumber: null };
+    this.$route = $route;
   }
 
   findAll() {
@@ -11,9 +14,14 @@ export default class AdvertBookingService {
 
   confirm(advert) {
     this.advert = advert;
-    // this.user = sessionStorage.getItem('user')
-    this.user = { registrationNumber: "test", role: "DRIVER" }
-    this.advert.passengers.push(this.user);
-    this.$http.patch(this.apiUrl + "/advert/book", this.advert);
+    this.user = JSON.parse(this.$sessionStorage.get("userConnected"));
+    this.$http
+      .patch(
+        this.apiUrl + "/advert/book/" + this.user.registrationNumber,
+        this.advert
+      )
+      .then(res => {
+        this.$route.reload();
+      });
   }
 }
