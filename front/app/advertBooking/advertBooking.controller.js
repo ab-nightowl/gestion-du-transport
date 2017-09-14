@@ -35,14 +35,17 @@ export default class AdvertBookingCtrl {
     this.today();
     this.toggleMin();
     this.list = [];
-    
   }
 
   $onInit() {
     this.AdvertBookingService.findAll().then(res => {
       res.data.forEach(function(element) {
         if (element.statut === "INPROGRESS") {
-          this.list.push(element);
+          if (element.passengers.length == 0) {
+            this.list.push(element);
+          } else if (element.passengers[0].status !== "BOOKED") {
+            this.list.push(element);
+          }
         }
       }, this);
     });

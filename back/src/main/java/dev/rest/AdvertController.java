@@ -32,7 +32,7 @@ public class AdvertController {
 	@Autowired
 	private UserRepository userRepo;
 
-	@RequestMapping(path = "/saveNewAdvert", method = RequestMethod.POST, consumes = "application/json;charset=UTF-8")
+	@RequestMapping(path = "/saveNewAdvert", method = RequestMethod.POST, consumes = "application/json;charset=UTF-8;odata=verbose")
 	public ResponseEntity<Advert> saveNewAdvert(@RequestBody Advert advert) {
 		if (advert.getCapacity() > 20 || advert.getCapacity() < 1) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -60,23 +60,20 @@ public class AdvertController {
 	}
 
 	@RequestMapping(value = "/book/{user}", method = RequestMethod.PATCH)
-	public void bookAdvert(@RequestBody Advert advert) {
-		advertService.bookAdvert(advert);
+	public void bookAdvert(@PathVariable("user") String registrationNumber, @RequestBody Advert advert) {
+		advertService.bookAdvert(advert, registrationNumber);
 	}
 
 	@RequestMapping(value = "/{user}", method = RequestMethod.GET)
 	public ResponseEntity<List<Advert>> getAllAdvert(@PathVariable("user") String registrationNumber) {
-		User user = new User();
-		user = userRepo.findByRegistrationNumber(registrationNumber);
+		User user = userRepo.findByRegistrationNumber(registrationNumber);
 		List<Advert> adverts = advertService.findAllByDriver(user);
 		return new ResponseEntity<List<Advert>>(adverts, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/passenger/{user}", method = RequestMethod.GET)
-	public ResponseEntity<List<Advert>> getAllPassengerAdvert(@PathVariable("user") String registrationNumber) {
-		User user = userRepo.findByRegistrationNumber(registrationNumber);
-		List<Advert> adverts = advertService.findAllByPassengers(user);
-		return new ResponseEntity<List<Advert>>(adverts, HttpStatus.OK);
+	public List<Advert> getAllPassengerAdvert(@PathVariable("user") String registrationNumber) {
+		return advertService.findAllByPassengers(registrationNumber);
 	}
 
 	@RequestMapping(path = "/passenger/cancelled/{id}", method = RequestMethod.PATCH)
@@ -84,7 +81,8 @@ public class AdvertController {
 			@RequestBody String registrationNumber) {
 		Advert advert = advertService.findOneById(id);
 		advert.setPassengers(advert.getPassengers().stream()
-				.filter(p -> !p.getRegistrationNumber().equals(registrationNumber)).collect(Collectors.toList()));
+				.filter(p -> !p.getPassenger().getRegistrationNumber().equals(registrationNumber)).collect(Collectors.toList()));
+		advertService.cancelPassenger(advert);
 		return new ResponseEntity<Advert>(HttpStatus.OK);
 	}
 }

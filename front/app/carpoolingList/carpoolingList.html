@@ -16,11 +16,11 @@
             </thead>
             <tbody>
                 <tr ng-repeat="carpooling in $ctrl.list">
-                    <td class="col-sm-3">{{carpooling.dateFirst}}</td>
+                    <td class="col-sm-3">{{carpooling.dateFirst | date:"yyyy/MM/dd H:mm"}}</td>
                     <td class="col-sm-3">{{carpooling.addressDeparture}}</td>
                     <td class="col-sm-3">{{carpooling.addressArrival}}</td>
-                    <td class="col-sm-3 text-center"><button class="btn" ng-click="$ctrl.open(carpooling)">Détails</button>
-                        <button class="btn btn-danger" ng-click="$ctrl.cancel(carpooling.id)">Annuler</button></td>
+                    <td class="col-sm-2 text-center"><button class="btn" ng-click="$ctrl.open(carpooling)">Détails</button>
+                        <button class="btn btn-danger" ng-click="$ctrl.cancel(carpooling)">Annuler</button></td>
                 </tr>
             </tbody>
         </table>
@@ -31,14 +31,16 @@
                     <th class="col-sm-3">Date / heure de départ</th>
                     <th class="col-sm-3">Départ</th>
                     <th class="col-sm-3">Destination</th>
-                    <th class="col-sm-3"></th>
+                    <th class="col-sm-1">Status</th>
+                    <th class="col-sm-2"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="carpooling in $ctrl.listEnd | orderBy:'dateFirst':true | limitTo:$ctrl.itemsPerPage:$ctrl.itemsPerPage*($ctrl.currentPage-1)">
-                    <td class="col-sm-3">{{carpooling.dateFirst}}</td>
+                    <td class="col-sm-3">{{carpooling.dateFirst | date:"yyyy/MM/dd H:mm"}}</td>
                     <td class="col-sm-3">{{carpooling.addressDeparture}}</td>
                     <td class="col-sm-3">{{carpooling.addressArrival}}</td>
+                    <td class="col-sm-1">{{carpooling.passengers[0].status | statusFilter}}</td>
                     <td class="col-sm-3"><button class="btn center-block" ng-click="$ctrl.open(carpooling)">Détails</button></td>
                 </tr>
             </tbody>

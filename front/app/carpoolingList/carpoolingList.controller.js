@@ -18,12 +18,8 @@ export default class CarpoolingListCtrl {
   $onInit() {
     this.CarpoolingListService.getCarpoolingHistory().then(res => {
       res.data.forEach(function(element) {
-        this.dateTime = element.dateFirst.split("T");
-        this.date = this.dateTime[0];
-        this.splitTime = this.dateTime[1].split("+");
-        this.time = this.splitTime[0];
-        element.dateFirst = this.date + " à " + this.time;
-        if (element.statut === "INPROGRESS") {
+        console.log(element);
+        if (element.passengers[0].status === "BOOKED") {
           this.list.push(element);
         } else {
           this.listEnd.push(element);
@@ -38,9 +34,9 @@ export default class CarpoolingListCtrl {
     this.CarpoolingModalService.open(this.carpooling);
   }
 
-  cancel(carpoolingId) {
-    this.carpoolingId = carpoolingId;
-    this.CarpoolingModalService.cancel(this.carpoolingId);
+  cancel(carpooling) {
+    this.carpooling = carpooling;
+    this.CarpoolingModalService.cancel(this.carpooling);
   }
 
 }

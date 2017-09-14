@@ -24,15 +24,15 @@ export default class CarpoolingModalService {
     });
   }
 
-  cancel(carpoolingId) {
-    this.carpoolingId = carpoolingId;
+  cancel(carpooling) {
+    this.carpooling = carpooling;
     let modalInstance = this.$uibModal.open({
       template: cancel,
       controller: CarpoolingModalCtrl.name,
       controllerAs: "$ctrl",
       resolve: {
-        carpoolingId: () => {
-          return this.carpoolingId;
+        carpooling: () => {
+          return this.carpooling;
         }
       }
     });

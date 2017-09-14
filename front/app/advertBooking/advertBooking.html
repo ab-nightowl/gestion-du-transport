@@ -49,12 +49,12 @@
                         <td class="col-sm-2 col-sm-2"></td>
                     </tr>
                     <tr ng-repeat="advert in $ctrl.list | addressFilter:$ctrl.addressDeparture:$ctrl.addressArrival | filter: $ctrl.dateFirst">
-                        <td class="col-sm-2 col-sm-2">{{advert.dateFirst}}</td>
+                        <td class="col-sm-2 col-sm-2">{{advert.dateFirst | date:"yyyy/MM/dd H:mm"}}</td>
                         <td class="col-sm-1 col-sm-1">{{advert.addressDeparture}}</td>
                         <td class="col-sm-2 col-sm-2">{{advert.addressArrival}}</td>
                         <td class="col-sm-1 col-sm-1">{{advert.brand}} {{advert.model}}</td>
                         <td class="col-sm-2 col-sm-2">{{advert.driver.nom}} {{advert.driver.prenom}}</td>
-                        <td class="col-sm-2 col-sm-2">{{advert.capacity}}</td>
+                        <td class="col-sm-2 col-sm-2">{{advert.capacity - advert.passengerCount}}</td>
                         <td class="col-sm-2 col-sm-2"><button class="btn" ng-click="$ctrl.open(advert)" ng-disabled="$ctrl.checkCapacity({{advert.capacity}})">Réserver</button></td>
                     </tr>
                 </table>
