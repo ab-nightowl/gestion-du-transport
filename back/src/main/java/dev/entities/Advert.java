@@ -1,6 +1,8 @@
 package dev.entities;
 
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -9,10 +11,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Advert {
@@ -24,24 +26,28 @@ public class Advert {
 	@ManyToOne
 	private User driver;
 
-	@ManyToMany
-	@JoinTable(name = "User_Advert", joinColumns = @JoinColumn(name = "AdvertId", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "User_Registration_Number", referencedColumnName = "registrationNumber"))
-	private List<User> passengers;
+	@OneToMany(mappedBy = "advert")
+	@JsonManagedReference("advert")
+	private List<UserAdvert> passengers = new ArrayList<>(new HashSet<UserAdvert>());
 	private String addressDeparture;
 	private String addressArrival;
 	private String licensePlate;
 	private String brand;
 	private String model;
 	private Integer capacity;
+
+	private Integer passengerCount;
+
 	@Enumerated(EnumType.STRING)
 	private AdvertStatut statut;
 
 	public Advert() {
+
 	}
 
-	public Advert(ZonedDateTime dateFirst, User driver, List<User> passengers, String addressDeparture,
+	public Advert(ZonedDateTime dateFirst, User driver, List<UserAdvert> passengers, String addressDeparture,
 			String addressArrival, String licensePlate, String brand, String model, Integer capacity,
-			AdvertStatut statut) {
+			Integer passengerCount, AdvertStatut statut) {
 		super();
 		this.dateFirst = dateFirst;
 		this.driver = driver;
@@ -52,6 +58,7 @@ public class Advert {
 		this.brand = brand;
 		this.model = model;
 		this.capacity = capacity;
+		this.passengerCount = passengerCount;
 		this.statut = statut;
 	}
 
@@ -83,11 +90,11 @@ public class Advert {
 		this.driver = driver;
 	}
 
-	public List<User> getPassengers() {
+	public List<UserAdvert> getPassengers() {
 		return passengers;
 	}
 
-	public void setPassengers(List<User> passengers) {
+	public void setPassengers(List<UserAdvert> passengers) {
 		this.passengers = passengers;
 	}
 
@@ -137,6 +144,14 @@ public class Advert {
 
 	public void setCapacity(Integer capacity) {
 		this.capacity = capacity;
+	}
+
+	public Integer getPassengerCount() {
+		return passengerCount;
+	}
+
+	public void setPassengerCount(Integer passengerCount) {
+		this.passengerCount = passengerCount;
 	}
 
 }

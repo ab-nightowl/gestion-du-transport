@@ -1,29 +1,29 @@
 <div class="modal-header" id="modal-header">
-    <h5>Réservation d'un covoiturage</h5>
+    <h5>Informations du covoiturage</h5>
 </div>
 <div class="modal-body" id="modal-body">
     <table>
         <tr>
             <div class="col-xs-6">Départ </div>
-            <div class="col-xs-6">{{$ctrl.advert.addressDeparture}}</div>
+            <div class="col-xs-6">{{$ctrl.carpooling.addressDeparture}}</div>
         </tr>
         <tr>
             <div class="col-xs-6">Destination </div>
-            <div class="col-xs-6">{{$ctrl.advert.addressArrival}}</div>
+            <div class="col-xs-6">{{$ctrl.carpooling.addressArrival}}</div>
         </tr>
         <tr>
             <div class="col-xs-6">Date/heure </div>
-            <div class="col-xs-6">{{$ctrl.advert.dateFirst}}</div>
+            <div class="col-xs-6">{{$ctrl.carpooling.dateFirst | date:"yyyy/MM/dd H:mm"}}</div>
         </tr>
         <tr>
             <div class="col-xs-6">Véhicule </div>
-            <div class="col-xs-6">{{$ctrl.advert.brand}} {{$ctrl.advert.model}}</div>
+            <div class="col-xs-6">{{$ctrl.carpooling.brand}} {{$ctrl.carpooling.model}}</div>
         </tr>
         <tr>
             <div class="col-xs-6">Chauffeur </div>
-            <div class="col-xs-6">{{$ctrl.advert.driver.nom}} {{$ctrl.advert.driver.prenom}}</div>
+            <div class="col-xs-6">{{$ctrl.carpooling.driver.nom}} {{$ctrl.carpooling.driver.prenom}}</div>
         </tr>
 </div>
 <div class="modal-footer" id="modal-footer">
-    <button class="btn" ng-click="$ctrl.close()">Annuler</button>
+    <button class="btn" ng-click="$ctrl.close()">Fermer</button>
 </div>

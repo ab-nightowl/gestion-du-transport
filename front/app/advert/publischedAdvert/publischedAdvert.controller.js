@@ -115,6 +115,7 @@ export default class AdvertPublishedController {
       'brand': this.brand,
       'model': this.model,
       'capacity': this.capacity,
+      'passengerCount': 0,
       'dateFirst': this.resultDate
     }
     localStorage['Vehicule'] = JSON.stringify(this.advert)
