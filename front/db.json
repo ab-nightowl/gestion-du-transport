@@ -1,3 +1,20 @@
 {
-  "data": []
+  "users": [
+    {
+      "id": 1,
+      "registrationNumber": "User123",
+      "nom": "HELLO",
+      "prenom": "world",
+      "email": "hello_wold@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "registrationNumber": "User456",
+      "nom": "DOAN",
+      "prenom": "Thu",
+      "email": "doan_thu@gmail.com",
+      "password": "123"
+    }
+  ]
 }

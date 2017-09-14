@@ -11,6 +11,10 @@ export default class PublischedAdvertModalCtrl {
     this.$location = $location;
     this.advert = AdvertPublischedModalService.advert;
   }
+  $onInit(){
+    this.date = this.advert.dateFirst.toLocaleDateString()
+    this.time = this.advert.dateFirst.toLocaleTimeString()
+  }
 
   confirm() {
     this.AdvertPublischedService.saveAdvert(this.advert);

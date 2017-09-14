@@ -1,6 +1,6 @@
 
 #header{
-height: 179px;
+height: 200px;
 background-image: url("./statique/img/blahblahcar.jpg");
 
 }
@@ -8,31 +8,33 @@ background-image: url("./statique/img/blahblahcar.jpg");
 
 background: #181f3f !important;
 display: block;
+margin-top: 3px;
 }
 
 .menu{
-display: block;
-    background: #FECC0B;
-    padding: 14px;
-
-    margin-right: 3px;
-    text-align: center;
+  display: block;
+  background: #f09100;
+  padding: 6px;
+  color: white;
+  margin-right: 0px;
+  text-align: center;
 
 }
 
 .zoneAuthentif{
 
-	display: block;
+  display: block;
+  margin-top: 23px;
+  margin-right: -95px;
 
 
 }
 .authentif{
-    background: #248925;
-    padding: 20px;
-    color: white;
-    margin-right: 3px;
-	color: white;
-	text-align: center;
+  background: #5678f7;
+  padding: 12px;
+  margin-right: 2px;
+  color: white;
+  text-align: center;
 
 }
 
@@ -43,21 +45,34 @@ a div{
 }
 
 .zoneLogo img{
-	     width: 210px;
-    height: 179px;
+  width: 175px;
+  height: 72px;
 }
 
 a div{
   transform-style: preserve-3d;
 }
 a div:hover{
-	border: 2px dotted #3a7999;
-	background: rgba(0,0,0,0);
+
+  border-collapse: 30px;
 	color: white;
 	font-size: 17px;
 	font-weight: bold;
 	font-family: "Times New Roman", Times, serif;
+}
 
+a div:before {
+	content:'';
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 0px;
+	height: 52px;
+	background: rgba(255,255,255,0.2);
+	border-radius: 5px;
+	transition: all 1s ease;
+}
 
-
+a div:hover:before {
+	width: 100%;
 }

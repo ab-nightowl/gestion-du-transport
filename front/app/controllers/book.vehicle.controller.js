@@ -1,11 +1,13 @@
 
 export default class bookVehicleController {
 
-  constructor($scope,$http, $log, bookVehicleService){
+  constructor($scope,$http, $log, bookVehicleService, $window, $timeout){
     this.$scope = $scope;
     this.$http = $http
     this.$log = $log
     this.bookVehicleService = bookVehicleService;
+    this.$window = $window;
+    this.$timeout = $timeout;
 
     this.inlineOptions = {
         customClass: this.getDayClass,
@@ -91,6 +93,7 @@ today() {
 
   $onInit(){
     this.getVehicles();
+    this.getAllBookings();
     this.currentId = 0;
     var d = new Date();
         d.setHours( 0 );
@@ -112,6 +115,15 @@ today() {
       })
     }
 
+    checkingBeforeBookingVehicle(licensePlat){
+      this.bookVehicleService.checkingBeforeBookingVehicle(licensePlat)
+      .then((res)=>{
+        return res.data;
+      },(err)=>{
+        this.$log.log("error: "+ err.data)
+      })
+    }
+
 
     next(){
         this.currentId == this.vehicles.length - 1 ? this.currentId = 0 : this.currentId++;
@@ -122,19 +134,42 @@ today() {
     }
 
     reserveVehicleSociety(vehicleLicensePlate, booking){
-      this.bookVehicleService.reserveVehicleSociety(vehicleLicensePlate, booking)
+      this.bookVehicleService.checkingBeforeBookingVehicle(vehicleLicensePlate)
       .then((res)=>{
+        this.$log.log(res.data)
+        if(!res.data){
+          this.bookVehicleService.reserveVehicleSociety(vehicleLicensePlate, booking)
+          .then((res)=>{
+              this.result = "Votre réservation est enregistré avec succèss :)"
+              this.$timeout(()=>{
+			        this.$window.location.reload();;
+            }, 1500);
 
-          this.result = "Votre réservation est bien enregistré :)"
-
-        this.$log.log("Réservé OK ! ");
+            this.$log.log("Réservation avec succèss :) ");
+          },(err)=>{
+            this.$log.log("Réservation échouée ! " + err.statusText);
+            this.result = "Votre réservation est échouée :("
+          })
+        }else{
+          this.result = "Cette véhicule est déjà réservé !";
+          this.$log.log(res.data);
+        }
       },(err)=>{
-        this.$log.log("Réservé failed ! " + err.statusText);
-        this.result = "Votre réservation est échouée :("
+
       })
+
     }
 
 
+      getAllBookings(){
+        this.bookVehicleService.  getAllBookings()
+        .then((res)=>{
+          this.bookings = res.data
+          this.$log.log(res.data)
+        },(err)=>{
+          this.$log.log('error:'+ err.statusText )
+        })
+      }
     save(){
         this.resultDateDepart = new Date()
         this.resultDateDepart.setMonth(this.dateReservation.depart.getMonth())
@@ -158,4 +193,4 @@ today() {
 
 }
 
-bookVehicleController['$inject'] = ['$scope','$http', '$log', 'bookVehicleService'];
+bookVehicleController['$inject'] = ['$scope','$http', '$log', 'bookVehicleService', '$window', '$timeout'];

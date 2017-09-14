@@ -4,3 +4,6 @@ input.ng-invalid {
 input.ng-valid {
     border-color:lightgreen;
 }
+input.error{
+    border-color:#ff4d4d;
+}

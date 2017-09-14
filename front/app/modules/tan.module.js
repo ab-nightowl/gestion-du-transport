@@ -18,6 +18,8 @@ require('angular-ui-bootstrap-datetimepicker')
 const tanModule = angular.module('tanModule',[UiBootrap,ngSessionStorage])
 .constant('urlsService', urlsService)
 
+
+
 .component('collabBookVehicleSocietyComponent', collabBookVehicleSocietyComponent)
 .controller('bookVehicleController', bookVehicleController)
 .service('bookVehicleService', bookVehicleService)
@@ -29,7 +31,7 @@ const tanModule = angular.module('tanModule',[UiBootrap,ngSessionStorage])
 .config(($routeProvider)=>{
 	$routeProvider
 
-	.when('/collab/book/create',{
+	.when('/collaborateur/reservation/societe/creer',{
 		template : '<collab-book-vehicle-society-component></collab-book-vehicle-society-component>',
 	})
 
@@ -37,7 +39,25 @@ const tanModule = angular.module('tanModule',[UiBootrap,ngSessionStorage])
 		template : '<authentification-component></authentification-component>',
 	})
 })
+// .run(['$rootScope']){
+//
+// }
 
+
+// app.run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Auth) {
+//     $rootScope.$on('$routeChangeStart', function (event) {
+//
+//         if (!Auth.isLoggedIn()) {
+//             console.log('DENY');
+//             event.preventDefault();
+//             $location.path('/login');
+//         }
+//         else {
+//             console.log('ALLOW');
+//             $location.path('/home');
+//         }
+//     });
+// }]);
 
 
 export default tanModule

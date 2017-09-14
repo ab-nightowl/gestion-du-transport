@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class User {
+	
 	@Id
 	private String registrationNumber;
 
@@ -21,11 +22,11 @@ public class User {
 	private String prenom;
 	private String email;
 	private String password;
-
+	
 	@OneToMany(mappedBy = "passenger")
 	@JsonManagedReference("passengers")
 	private List<UserAdvert> adverts = new ArrayList<>(new HashSet<UserAdvert>());
-	
+
 	@Enumerated(EnumType.STRING)
 	private Role role;
 

@@ -1,23 +1,21 @@
 export default class AdvertPublishedController {
   constructor(AdvertPublischedService, AdvertPublischedModalService) {
-    this.today()
+
     this.AdvertPublischedModalService = AdvertPublischedModalService
-    this.inlineOptions = {
-      customClass: getDayClass,
-      minDate: this.today(),
-      showWeeks: true
-    };
+    
+    this.date = new Date();
+    this.date.setDate(this.date.getDate() + 1)
 
     this.dateOptions = {
       dateDisabled: disabled,
       formatYear: 'yy',
       maxDate: new Date(2020, 5, 22),
+      minDate: this.date,
       startingDay: 1
     };
-    this.toggleMin();
     this.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
     this.format = this.formats[0];
-    this.altInputFormats = ['M!/d!/yyyy'];
+    this.altInputFormats = ['dd-MMMM-yyyy'];
     this.popup = {
       opened: false
     };
@@ -58,27 +56,49 @@ export default class AdvertPublishedController {
   openModal(advert) {
     this.advert = advert;
     this.AdvertPublischedModalService.open(this.advert);
-    
+
   }
 
   calculate() {
     var map;
     var panel = document.querySelector("#panel");
+   
+      if (this.addressDeparture instanceof Object  && this.adresseArriver instanceof Object) {
+        var request = {
+          origin: this.addressDeparture.formatted_address,
+          destination: this.adresseArriver.formatted_address,
+          travelMode: google.maps.DirectionsTravelMode.DRIVING, // Type de transport
+        }
+        var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinéraire
+        directionsService.route(request, function (response, status) { // Envoie de la requête pour calculer le parcours
+          if (status == google.maps.DirectionsStatus.OK) {
+            panel.textContent = 'Distance : ' + response.routes[0].legs[0].distance.text + " / "
+              + 'Durée : ' + response.routes[0].legs[0].duration.text;
 
-
-    var request = {
-      origin: this.addressDeparture.formatted_address,
-      destination: this.adresseArriver.formatted_address,
-      travelMode: google.maps.DirectionsTravelMode.DRIVING, // Type de transport
-    }
-    var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinéraire
-    directionsService.route(request, function (response, status) { // Envoie de la requête pour calculer le parcours
-      if (status == google.maps.DirectionsStatus.OK) {
-        panel.textContent = 'Distance : ' + response.routes[0].legs[0].distance.text + " / "
-          + 'Durée : ' + response.routes[0].legs[0].duration.text;
-
+          }
+        });
       }
-    });
+      else{
+        panel.textContent = ""
+      }
+    
+  }
+
+  adressDepartureError(){    
+    if (this.addressDeparture === undefined) {      
+        return true
+    }
+    if(this.addressDeparture.formatted_address === undefined){
+      return true
+    }
+  }
+  adresseArriverError(){   
+    if (this.adresseArriver === undefined) {
+        return true
+    }
+    if(this.adresseArriver.formatted_address === undefined){
+      return true
+    }
   }
   save() {
     this.resultDate = new Date()
@@ -100,20 +120,12 @@ export default class AdvertPublishedController {
     localStorage['Vehicule'] = JSON.stringify(this.advert)
     this.openModal(this.advert)
   }
-  today() {
-    this.date = new Date();
-  }
+
 
   clear() {
     this.date = null;
   }
   // Disable weekend selection
-
-
-  toggleMin() {
-    this.inlineOptions.minDate = this.inlineOptions.minDate ? null : new Date();
-    this.dateOptions.minDate = this.inlineOptions.minDate;
-  }
   open() {
     this.popup.opened = true;
   }
@@ -129,11 +141,11 @@ function getDayClass(data) {
   if (mode === 'day') {
     var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
 
-    for (var i = 0; i < $scope.events.length; i++) {
-      var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+    for (var i = 0; i < this.events.length; i++) {
+      var currentDay = new Date(this.events[i].date).setHours(0, 0, 0, 0);
 
       if (dayToCheck === currentDay) {
-        return $scope.events[i].status;
+        return this.events[i].status;
       }
     }
   }

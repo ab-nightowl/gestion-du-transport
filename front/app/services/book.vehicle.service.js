@@ -9,8 +9,18 @@ export default class bookVehicleService{
     return this.$http.get(this.urlsService.vehicles)
   }
 
+
+  checkingBeforeBookingVehicle(licensePlat){
+    return this.$http.get(this.urlsService.checkingBeforeBookingVehicle + '/' + licensePlat)
+  }
+
   reserveVehicleSociety(vehicleLicensePlate, booking){
     return this.$http.put(this.urlsService.vehicles + '/' + vehicleLicensePlate, booking );
 }
+
+
+  getAllBookings(){
+    return this.$http.get(this.urlsService.booking)
+  }
 
 }

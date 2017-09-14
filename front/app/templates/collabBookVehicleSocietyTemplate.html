@@ -43,6 +43,10 @@ margin-top: 20px;
   margin-top: 20px;
 }
 
+
+#statusReservation{
+  color: red;
+}
 </style>
 
 <div>
@@ -52,7 +56,7 @@ margin-top: 20px;
 
 <div ng-controller="bookVehicleController as bookingCtrl">
 <div class="container">
-  <h1>Reserve a company vehicle</h1><br />
+  <h1>Réserver un véhicule de société</h1><br />
   <div class="row">
       <div class='col col-lg-4 col-lg-offset-2'>
           <div class="form-group">
@@ -81,7 +85,12 @@ margin-top: 20px;
 
   </div>
 
-<h3>Our Vehicles : </h3>
+<h3>Nos véhicules</h3>
+
+<div id="result" class="alert alert-success " ng-if='bookingCtrl.result != null'>
+  <strong>Info!</strong> {{bookingCtrl.result}}
+    <i class="fa fa-spinner fa-spin" style="font-size:24px; color:red; float:right" ng-if="bookingCtrl.result == 'Votre réservation est enregistré avec succèss :)'"></i>
+</div>
 
 <div class="buttonMove">
   <div id="buttonNext">
@@ -102,20 +111,22 @@ margin-top: 20px;
   <span >Model: {{bookingCtrl.vehicles[bookingCtrl.currentId].model}}</span><br />
   <span >Capacité: {{bookingCtrl.vehicles[bookingCtrl.currentId].capacity}}</span><br />
   <span >Status: {{bookingCtrl.vehicles[bookingCtrl.currentId].status}}</span><br />
+  <div ng-if='bookingCtrl.bookings[bookingCtrl.currentId].statut != null '>
+    <span id="statusReservation">Status de réservation: {{bookingCtrl.bookings[bookingCtrl.currentId].statut}} </span>
+  </div>
 
 </div>
 
 
 <div class="reservation">
+
   <button id="buttonReserver" class="btn btn-primary btn-success"
 
    class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
-  Réserver</button>
+  Réserver
+  </button>
 
 
-  <div id="result" class="alert alert-success" ng-if='bookingCtrl.result != null'>
-    <strong>Info!</strong> {{bookingCtrl.result}}
-  </div>
 
 
 
@@ -150,6 +161,7 @@ margin-top: 20px;
     </div>
   </div>
 </div>
+
 
 <!---->
 

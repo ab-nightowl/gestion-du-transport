@@ -1,4 +1,4 @@
-package util;
+package dev.util;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -6,7 +6,9 @@ import java.time.LocalDateTime;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
+import org.springframework.stereotype.Service;
 
+@Service
 @Converter(autoApply = true)	
 public class LocalDateTimeConverter implements AttributeConverter<LocalDateTime, Timestamp> {
 
