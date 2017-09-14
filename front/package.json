@@ -44,6 +44,7 @@
     "css-loader": "^0.28.1",
     "fullcalendar": "^3.5.0",
     "google_directions": "^0.6.0",
+    "jssha": "^2.3.1",
     "lodash": "^4.17.4",
     "uuid": "^3.0.1"
   }
