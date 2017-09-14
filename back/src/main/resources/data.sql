@@ -1,4 +1,0 @@
-INSERT INTO `user`(`registration_number`, `role`, `nom`, `prenom`) VALUES ('test','DRIVER','oddet','rossi');
-INSERT INTO `vehicle` (`license_plate`, `brand`, `capacity`, `category`, `model`, `status`, `url_img`) VALUES ('test', 'test', '10', 'test', 'test', 'SERVICE', '""');
-INSERT INTO `booking` (`booker_registration_number`,`date_first`, `date_last`, `statut`, `with_driver`,`vehicle_license_plate`) VALUES ('test','2017-09-14 04:00:00', '2017-09-14 05:00:00', 'INPROGRESS', true, 'test');
-INSERT INTO `booking` (`booker_registration_number`,`date_first`, `date_last`, `statut`, `with_driver`,`vehicle_license_plate`) VALUES ('test','2017-09-14 04:00:00', '2017-09-14 09:00:00', 'INPROGRESS', true, 'test');
