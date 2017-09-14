@@ -39,7 +39,6 @@ public class UserController {
 			user.setNom(u.getNom());
 			user.setPrenom(u.getPrenom());
 
-
 			userRepo.save(user);
 		}
 	}
@@ -47,7 +46,7 @@ public class UserController {
 	@RequestMapping(path = "/role/{email}", method = RequestMethod.GET)
 	public Role getRole(@PathVariable String email) {
 
-		User user = userRepo.findByEmail(email + ".com");
+		User user = userRepo.findByEmail(email);
 		return user.getRole();
 
 	}
