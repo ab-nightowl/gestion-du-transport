@@ -82,10 +82,12 @@ getUserConnected(){
             this.foundUser = true;
             user.nom = e.nom;
             user.prenom = e.prenom
-            user.registrationNumber = e.matricule                     
+            user.registrationNumber = e.matricule          
+                    
             this.authentificationService.getRole(user.email)
             .then((res)=>{
               this.role = res.data;
+              alert(this.role)
               this.$sessionStorage.put('userConnectedRole', res.data)
               this.$log.log("role: " + res.data)
               this.$log.log("userConnectedRole: "+ this.$sessionStorage.get('userConnectedRole'))
