@@ -76,10 +76,19 @@ margin-right: -17px;
 #zoneConnexion{
   margin-top: 35px;
 }
-
+.profil{
+  display: block;
+  background: #f9910c;
+  height: 140px;
+  width: 137px;
+}
 
 a .profil:hover{
   background: black;
+}
+
+#bg{
+  background-image: url("../statique/img/nature.jpg");
 }
 </style>
 
@@ -87,6 +96,13 @@ a .profil:hover{
 <div class="container">
 
 <div id="bg" class="well">
+  <div class="row">
+    <h1 class="col col-lg-5 col-lg-offset-4">Gestion du transport</h1>
+  </div>
+
+  <div class="row">
+    <img style="width: 133px;height: 39px;margin-bottom:25px;" class="col col-lg-5 col-lg-offset-5" ng-src="../statique/img/wayup.png"/><br />
+  </div>
 
 			<div id="myBorder"  class="col-lg-offset-3" >
 				<span id="labelNewCollab" class="label label-default ">Connexion</span>
@@ -128,9 +144,12 @@ a .profil:hover{
 								<div class="col-lg-offset-3 " >
 
 									<input ng-click='$ctrl.login(user)' id="buttonCreate" class="btn btn-default  " type="submit" name="" value="Se connecter"
-                  data-toggle="modal" data-target="#myModal">
+                  data-toggle="modal" data-target="#myModal" >
 
 								</div>
+
+              </div>
+
               </div>
 
 
@@ -151,23 +170,32 @@ a .profil:hover{
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Choisissez-vous un profil</h4>
+            <div ng-if='$ctrl.result == "OK, wait..."'>
+              <strong>Info! </strong>{{$ctrl.result}} <i class="fa fa-cog fa-spin" style="font-size:24px"></i>
+            </div>
+
           </div>
           <div class="modal-body">
             <h3>{{$ctrl.result}}</h3>
             <div ng-if='$ctrl.role === "ADMINISTRATOR"'>
-              <a href="#"><div class="profil">Profil Administrator</div></a>
-              <a href="#"><div class="profil">Profil DRIVER</div></a>
-            <a href="#"><div class="profil">Profil COWORKER</div></a>
+              <div class="row">
+                  <a href="#" ng-click='$ctrl.changeRole("ADMINISTRATOR")'><div class="profil col col-lg-3 col-lg-offset-1 ">Administrator</div></a>
+                  <a href="#" ng-click='$ctrl.changeRole("DRIVER")'><div class="profil col col-lg-3 col-lg-offset-1">Chauffeur</div></a>
+                  <a href="#" ng-click='$ctrl.changeRole("COWORKER")'><div class="profil col col-lg-3 col-lg-offset-1">Collaborateur</div></a>
+              </div>
             </div>
 
             <div ng-if='$ctrl.role === "COWORKER"'>
-              <a href="#"><div class="profil">Profil Collaborateur</div></a>
-
+              <div class="row">
+                <a href="#" ng-click='$ctrl.changeRole("COWORKER")'><div class="profil col-lg-3 col-lg-offset-5 ">Collaborateur</div></a>
+              </div>
             </div>
 
             <div ng-if='$ctrl.role === "DRIVER"'>
-              <a href="#"><div class="profil">Profil Chauffeur</div></a>
-              <a href="#"><div class="profil">Profil Collaborateur</div></a>
+              <div class="row">
+                <a href="#" ng-click='$ctrl.changeRole("DRIVER")'><div class="profil col-lg-3 col-lg-offset-1">Chauffeur</div></a>
+                <a href="#" ng-click='$ctrl.changeRole("COWORKER")'><div class="profil col-lg-3 col-lg-offset-1">Collaborateur</div></a>
+              </div>
             </div>
 
           </div>

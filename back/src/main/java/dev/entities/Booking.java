@@ -27,6 +27,7 @@ public class Booking {
 	private boolean withDriver;
 
 	@Enumerated(EnumType.STRING)
+
 	private AdvertStatut statut;
 
 	public User getBooker() {
@@ -68,6 +69,10 @@ public class Booking {
 
 	public void setDateLast(LocalDateTime dateLast) {
 		this.dateLast = dateLast;
+	}
+
+	public boolean isWithDriver() {
+		return withDriver;
 	}
 
 	public Vehicle getVehicle() {
