@@ -46,7 +46,7 @@ public class UserController {
 	@RequestMapping(path = "/role/{email}", method = RequestMethod.GET)
 	public Role getRole(@PathVariable String email) {
 
-		User user = userRepo.findByEmail(email);
+		User user = userRepo.findByEmail(email + ".com");
 		return user.getRole();
 
 	}
