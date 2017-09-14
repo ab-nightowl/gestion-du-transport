@@ -142,12 +142,14 @@ today() {
       .then((res)=>{
         this.$log.log(res.data)
         if(!res.data){
-          // booking.driver.email = this.$sessionStorage.get('userConnected').email;
+          console.log('Booking ' ,booking);
+          
+          booking.booker = JSON.parse(this.$sessionStorage.get('userConnected'))
           this.bookVehicleService.reserveVehicleSociety(vehicleLicensePlate, booking)
           .then((res)=>{
               this.result = "Votre réservation est enregistré avec succèss :)"
               this.$timeout(()=>{
-			        this.$window.location.reload();
+			        //this.$window.location.reload();
             }, 1500);
 
             this.$log.log("Réservation avec succèss :) ");

@@ -78,34 +78,29 @@ public class VehicleController {
 					bookingFromClient.getDateLast().getHour(), bookingFromClient.getDateLast().getMinute(),
 					bookingFromClient.getDateLast().getSecond()));
 
-			
-//			booking.setDriver(bookingFromClient.getDriver());
-			
+			// booking.setDriver(bookingFromClient.getDriver());
+			booking.setBooker(bookingFromClient.getBooker());
 			booking.setWithDriver(bookingFromClient.isWithDriver());
-			booking.setStatut(AdvertStatut.COMPLETED);
+			booking.setStatut(AdvertStatut.INPROGRESS);
 			booking.setVehicle(v);
-			
 
 			bookingRepo.save(booking);
 		}
 
 	}
-	
+
 	@CrossOrigin(origins = "*")
-	@RequestMapping(method = RequestMethod.GET, path="/check/{licensePlat}")
-	public boolean checkDispoVehicleSociety(@PathVariable String licensePlat){
+	@RequestMapping(method = RequestMethod.GET, path = "/check/{licensePlat}")
+	public boolean checkDispoVehicleSociety(@PathVariable String licensePlat) {
 		boolean busyVehicle = false;
 		List<Booking> listBooking = bookingRepo.findAll();
 		for (Booking b : listBooking) {
-			if(b.getVehicle().getLicensePlate().equalsIgnoreCase(licensePlat)){
+			if (b.getVehicle().getLicensePlate().equalsIgnoreCase(licensePlat)) {
 				busyVehicle = true;
 			}
 		}
-		
-		
+
 		return busyVehicle;
 	}
-	
-	
 
 }

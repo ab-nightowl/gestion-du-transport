@@ -40,6 +40,7 @@ export default class PlanningController {
 
                     )
                 } else {
+                    console.log(element);
                     
                     this.color =
                         { // can also be calendarConfig.colorTypes.warning for shortcuts to the deprecated event types
