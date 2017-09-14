@@ -18,7 +18,6 @@ export default class CarpoolingListCtrl {
   $onInit() {
     this.CarpoolingListService.getCarpoolingHistory().then(res => {
       res.data.forEach(function(element) {
-        console.log(element);
         if (element.passengers[0].status === "BOOKED") {
           this.list.push(element);
         } else {

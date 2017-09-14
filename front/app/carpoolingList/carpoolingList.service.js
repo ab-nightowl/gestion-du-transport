@@ -8,8 +8,7 @@ export default class CarpoolingListService {
   }
 
   getCarpoolingHistory() {
-    // this.user = JSON.parse(this.$sessionStorage.get("userConnected"));
-    this.user.registrationNumber = "test";
+    this.user = JSON.parse(this.$sessionStorage.get("userConnected"));
     return this.$http.get(
       this.apiUrl + "/advert/passenger/" + this.user.registrationNumber
     );
@@ -17,8 +16,7 @@ export default class CarpoolingListService {
 
   cancel(carpooling) {
     this.carpooling = carpooling;
-    // this.user = JSON.parse(this.$sessionStorage.get("userConnected"));
-    this.user.registrationNumber = "test";
+    this.user = JSON.parse(this.$sessionStorage.get("userConnected"));
     this.$http
       .patch(
         this.apiUrl + "/advert/passenger/cancelled/" + this.carpooling,

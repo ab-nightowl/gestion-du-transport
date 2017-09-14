@@ -14,8 +14,7 @@ export default class AdvertBookingService {
 
   confirm(advert) {
     this.advert = advert;
-    // this.user = JSON.parse(this.$sessionStorage.get("userConnected"));
-    this.user.registrationNumber = "test";
+    this.user = JSON.parse(this.$sessionStorage.get("userConnected"));
     this.$http
       .patch(
         this.apiUrl + "/advert/book/" + this.user.registrationNumber,
