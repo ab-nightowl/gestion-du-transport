@@ -148,7 +148,7 @@ deconnexion(){
     this.$timeout(()=>{
 
     this.authentificationService.changePage('/gestion-du-transport/home');
-    this.$window.location.reload();
+    // this.$window.location.reload();
   }, 1500);
 
   }
@@ -156,7 +156,7 @@ deconnexion(){
   changePage(url){
     this.$timeout(()=>{
     this.authentificationService.changePage(url);
-    this.$window.location.reload();
+    // this.$window.location.reload();
   }, 1500);
 
   }
