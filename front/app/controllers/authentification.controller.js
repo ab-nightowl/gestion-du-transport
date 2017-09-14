@@ -83,39 +83,37 @@ getUserConnected(){
             user.nom = e.nom;
             user.prenom = e.prenom
             user.registrationNumber = e.matricule          
-                    
             this.authentificationService.getRole(user.email)
             .then((res)=>{
               this.role = res.data;
-              alert(this.role)
               this.$sessionStorage.put('userConnectedRole', res.data)
               this.$log.log("role: " + res.data)
               this.$log.log("userConnectedRole: "+ this.$sessionStorage.get('userConnectedRole'))
+              if(this.foundUser){
+                this.result = 'Bienvenue '+ user.nom + ' :)';
+                this.$log.log("OK connexion ! ");        
+                this.userInfo ={
+                  "email":user.email,
+                  "nom":user.nom,
+                  "prenom":user.prenom,
+                  "registrationNumber":user.registrationNumber
+                }
+                this.$sessionStorage.put('userConnected', JSON.stringify(this.userInfo))
+                this.$log.log("userConnected: "+ this.$sessionStorage.get('userConnected'))
+                this.$window.location.reload()
+        
+              }else{
+                this.result = 'Connexion échouée ! ';
+                this.$log.log("failed connexion ! ");
+              }
+                
             },(err)=>{
               this.$log.log(err.statusText)
             })
         }
       })
 
-      if(this.foundUser){
-        this.result = 'Bienvenue '+ user.nom + ' :)';
-        this.$log.log("OK connexion ! ");        
-        this.userInfo ={
-          "email":user.email,
-          "nom":user.nom,
-          "prenom":user.prenom,
-          "registrationNumber":user.registrationNumber
-        }
-        this.$sessionStorage.put('userConnected', JSON.stringify(this.userInfo))
-        this.$log.log("userConnected: "+ this.$sessionStorage.get('userConnected'))
-        this.$window.location.reload()
-
-      }else{
-        this.result = 'Connexion échouée ! ';
-        this.$log.log("failed connexion ! ");
-      }
-
-
+      
     },(err)=>{
       this.$log.log("error: " + err.statusText + '-'+ err.status)
 
