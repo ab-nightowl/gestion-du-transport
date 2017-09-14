@@ -23,6 +23,6 @@ export function route($routeProvider, $locationProvider) {
       template: "<planning-cmp></planning-cmp>"
     })
     .otherwise({
-      redirectTo: "/home"
+      redirectTo: "/"
     });
 }

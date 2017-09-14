@@ -17,6 +17,7 @@ import headerComponent from "./header/header.component";
 import carpoolingListModule from "./carpoolingList/carpoolingList.module";
 import planningModule from "./driver/planning/planning.module"
 import "angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.css"
+import jssha  from 'jssha'
 angular
   .module("app", [
     RouteModule,
@@ -30,6 +31,7 @@ angular
     carpoolingListModule.name,
     planningModule.name
   ])
+  .value('jssha', jssha)
   .value("apiUrl", API_URL)
   .component("accueil", AccueilComponent)
   .component("headerComponent", headerComponent)

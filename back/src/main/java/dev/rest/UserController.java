@@ -21,36 +21,33 @@ public class UserController {
 
 	@Autowired
 	private UserRepository userRepo;
-			
 
 	@GetMapping
 	public List<User> listerUser() {
 		return userRepo.findAll();
 	}
-	
-	
+
 	@RequestMapping(path = "/role", method = RequestMethod.PUT, consumes = { "application/json" })
-	public void setRole(@RequestBody List<User> listUsers){
-		int i =0;		
+	public void setRole(@RequestBody List<User> listUsers) {
 		User user;
 		for (User u : listUsers) {
-			 user = new User();
-			
-			 user.setRole(RandomEnum.setRoleRandom());
-			 user.setEmail(u.getEmail());
-			 user.setRegistrationNumber("Abc-" + i++);
-			 
+			user = new User();
+			user.setRegistrationNumber(u.getRegistrationNumber());
+			user.setRole(RandomEnum.setRoleRandom());
+			user.setEmail(u.getEmail());
+			user.setNom(u.getNom());
+			user.setPrenom(u.getPrenom());
+
 			userRepo.save(user);
 		}
 	}
-	
+
 	@RequestMapping(path = "/role/{email}", method = RequestMethod.GET)
-	public Role getRole(@PathVariable String email){
-		
+	public Role getRole(@PathVariable String email) {
+
 		User user = userRepo.findByEmail(email + ".com");
 		return user.getRole();
-		
+
 	}
-	
-	
+
 }

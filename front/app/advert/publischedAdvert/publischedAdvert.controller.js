@@ -1,8 +1,8 @@
 export default class AdvertPublishedController {
-  constructor(AdvertPublischedService, AdvertPublischedModalService) {
+  constructor(AdvertPublischedService, AdvertPublischedModalService,$sessionStorage) {
 
     this.AdvertPublischedModalService = AdvertPublischedModalService
-    
+    this.$sessionStorage = $sessionStorage
     this.date = new Date();
     this.date.setDate(this.date.getDate() + 1)
 
@@ -106,8 +106,9 @@ export default class AdvertPublishedController {
     this.resultDate.setDate(this.date.getDate())
     this.resultDate.setHours(this.mytime.getHours())
     this.resultDate.setMinutes(this.mytime.getMinutes())
+    this.user = JSON.parse(this.$sessionStorage.get('userConnected'))
     this.advert = {
-      'driver': { registrationNumber: "test", role: "DRIVER" },
+      'driver': this.user,
       'addressDeparture': this.addressDeparture.formatted_address,
       'addressArrival': this.adresseArriver.formatted_address,
       'licensePlate': this.licensePlate,
@@ -157,4 +158,4 @@ function disabled(data) {
   return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
 }
 
-AdvertPublishedController['$inject'] = ['AdvertPublischedService', 'AdvertPublischedModalService']
+AdvertPublishedController['$inject'] = ['AdvertPublischedService', 'AdvertPublischedModalService','$sessionStorage']

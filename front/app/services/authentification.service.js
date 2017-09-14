@@ -10,6 +10,9 @@ export default class authentificationService{
   getAllUser(){
     return this.$http.get(this.urlsService.usersFromRessourcesAtelier)
 }
+getAllUserServer(){
+  return this.$http.get(this.urlsService.users)
+}
 
   setRole(users){
     return this.$http.put(this.urlsService.role, users)

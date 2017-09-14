@@ -7,15 +7,13 @@ import javax.persistence.Id;
 
 @Entity
 public class User {
-	
+
 	@Id
 	private String registrationNumber;
 
 	private String nom;
 	private String prenom;
 	private String email;
-	private String password;
-
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
@@ -51,14 +49,6 @@ public class User {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public void setRegistrationNumber(String registrationNumber) {
 		this.registrationNumber = registrationNumber;
 	}
@@ -71,13 +61,12 @@ public class User {
 
 	}
 
-	public User(String registrationNumber, String nom, String prenom, String email, String password, Role role) {
+	public User(String registrationNumber, String nom, String prenom, String email, Role role) {
 		super();
 		this.registrationNumber = registrationNumber;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
-		this.password = password;
 		this.role = role;
 	}
 

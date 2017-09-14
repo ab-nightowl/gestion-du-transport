@@ -3,20 +3,23 @@ export default class PlanningModalCtrl {
     PlanningModalService,
     PlanningService,
     $uibModalInstance,
-    $location
+    $location,
+    $sessionStorage
   ) {
     this.PlanningModalService = PlanningModalService;
     this.PlanningService = PlanningService;
     this.$uibModalInstance = $uibModalInstance;
     this.$location = $location;
     this.calendarEvent = PlanningModalService.calendarEvent
+    this.$sessionStorage = $sessionStorage
   }
   $onInit(){
   }
 
   confirm() {
     this.booking = this.calendarEvent.actions[0].hide
-    this.booking.driver = { registrationNumber: "test", role: "DRIVER" },
+    this.user = JSON.parse(this.$sessionStorage.get('userConnected'))
+    this.booking.driver = this.user
     
     this.PlanningService.addDriver(this.booking)
     
@@ -31,4 +34,4 @@ export default class PlanningModalCtrl {
     this.$uibModalInstance.dismiss("cancel");
   }
 }
-PlanningModalCtrl['$inject'] = ['PlanningModalService','PlanningService','$uibModalInstance','$location']
+PlanningModalCtrl['$inject'] = ['PlanningModalService','PlanningService','$uibModalInstance','$location','$sessionStorage']

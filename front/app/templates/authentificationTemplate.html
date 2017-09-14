@@ -1,215 +1,212 @@
 <style>
+  #myBorder {
+    background: #33304e;
+    width: 510px;
+    height: auto;
+  }
 
-#myBorder{
-background: #33304e;
-width: 510px;
-height: auto;
+  #myForm {
+    padding-top: 33px;
+  }
 
-}
-#myForm{
-padding-top: 33px;
-}
-#labelNewCollab{
+  #labelNewCollab {
 
-padding: 5px 9px;
-display: inline-block;
-color: #111;
-font-family: 'Helvetica Neue', sans-serif;
-font-size: 20px;
-font-weight: bold;
-letter-spacing: -1px;
-line-height: 1;
-text-align: center;
-background: #e6c304;
-}
+    padding: 5px 9px;
+    display: inline-block;
+    color: #111;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+    text-align: center;
+    background: #e6c304;
+  }
 
-#buttonCreate{
-padding: 8px 95px;
-margin-top: 20px;
-text-transform: uppercase;
-font-weight: bold;
-font-family: 'open sans',sans-serif;
-background: white;
-margin-bottom: 11px;
-}
+  #buttonCreate {
+    padding: 8px 95px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'open sans', sans-serif;
+    background: white;
+    margin-bottom: 11px;
+  }
 
-#labelMessage{
+  #labelMessage {
 
-margin-bottom: 63px;
-margin-top: -30px;
+    margin-bottom: 63px;
+    margin-top: -30px;
+  }
 
-}
+  #iconCheckOk img {
+    height: 40px;
+    float: right;
+  }
 
-#iconCheckOk img{
-height: 40px;
-float: right;
+  .zoneAcc {
+    font-family: 'open sans', sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+    float: right;
 
-}
+    margin-right: 99px;
+  }
 
-.zoneAcc{
-  font-family: 'open sans',sans-serif;
-  font-size: 12px;
-  text-decoration: none;
-  float: right;
-
-  margin-right: 99px;
-}
-
-.zoneAcc div button a{
-  color: black;
-}
+  .zoneAcc div button a {
+    color: black;
+  }
 
 
-.zoneAcc button{
-  margin-top: : 20px;
-}
+  .zoneAcc button {
+    margin-top:20px;
+  }
 
-.acc{
-  padding: 7px;
-margin-top: -4px;
-margin-right: -17px;
-}
+  .acc {
+    padding: 7px;
+    margin-top: -4px;
+    margin-right: -17px;
+  }
 
-.container{
-  margin-top: 20px;
-}
-#zoneConnexion{
-  margin-top: 35px;
-}
-.profil{
-  display: block;
-  background: #f9910c;
-  height: 140px;
-  width: 137px;
-}
+  .container {
+    margin-top: 20px;
+  }
 
-a .profil:hover{
-  background: black;
-}
+  #zoneConnexion {
+    margin-top: 35px;
+  }
 
-#bg{
-  background-image: url("../statique/img/nature.jpg");
-}
+  .profil {
+    display: block;
+    background: #f9910c;
+    height: 140px;
+    width: 137px;
+  }
+
+  a .profil:hover {
+    background: black;
+  }
+
+  #bg {
+    background-image: url("../statique/img/nature.jpg");
+  }
 </style>
 
 <div>
-<div class="container">
+  <div class="container">
 
-<div id="bg" class="well">
-  <div class="row">
-    <h1 class="col col-lg-5 col-lg-offset-4">Gestion du transport</h1>
-  </div>
+    <div id="bg" class="well">
+      <div class="row">
+        <h1 class="col col-lg-5 col-lg-offset-4">Gestion du transport</h1>
+      </div>
 
-  <div class="row">
-    <img style="width: 133px;height: 39px;margin-bottom:25px;" class="col col-lg-5 col-lg-offset-5" ng-src="../statique/img/wayup.png"/><br />
-  </div>
-
-			<div id="myBorder"  class="col-lg-offset-3" >
-				<span id="labelNewCollab" class="label label-default ">Connexion</span>
-       <span ng-if='$ctrl.result != null' id="labelNewCollab">{{$ctrl.result}}</span>
+      <div class="row">
+        <img style="width: 133px;height: 39px;margin-bottom:25px;" class="col col-lg-5 col-lg-offset-5" ng-src="../statique/img/wayup.png"
+        /><br />
+      </div>
+      
+      <div id="myBorder" class="col-lg-offset-3">
+        <span id="labelNewCollab" class="label label-default ">Connexion</span>
+        <span ng-if='$ctrl.result != null' id="labelNewCollab">{{$ctrl.result}}</span>
 
         <div class="zoneAcc">
 
-        <div class="acc" class="row">
-         <div class="col-lg-offset-9 " >
-          <button  ng-click='$ctrl.changePage("newAccount")' class="btn btn-sm btn-info btn-outline-info">Nouveau compte</button>
-         </div>
+         
 
-       </div>
-
-       <div class="acc" class="row">
-        <div class="col-lg-offset-9 " >
-         <button ng-click='$ctrl.changePage("forgottenPasswords")' class="btn btn-sm btn-danger btn-outline-danger">Passwords oublié</button>
         </div>
 
-      </div>
+        <div id="myForm">
 
+          <form accept-charset="UTF-8">
+
+            <div id="zoneConnexion" class="row">
+              <div class="col-lg-5 col-lg-offset-1 ">
+                <input ng-model='user.email' type="text" name="email" placeholder="Votre email" class="form-control">
+              </div>
+              <div class="col-lg-5  ">
+                <input ng-model='user.password' type="password" name="password" placeholder="Votre passwords" class="form-control">
+              </div>
+            </div>
+            <br>
+
+            <div class="row">
+              <div class="col-lg-offset-3 ">
+
+                <input ng-click='$ctrl.login(user)' id="buttonCreate" class="btn btn-default  " type="submit" name="" value="Se connecter"
+                  data-toggle="modal" data-target="#myModal">
+
+              </div>
+
+            </div>
+
+        </div>
+
+
+        </form>
+      </div>
     </div>
 
-				<div id="myForm">
-
-					<form  accept-charset="UTF-8"   >
-
-						<div id="zoneConnexion" class="row" >
-							<div class="col-lg-5 col-lg-offset-1 " >
-								<input ng-model='user.email' type="text" name="email" placeholder="Votre email" class="form-control" >
-							</div>
-							<div class="col-lg-5  " >
-								<input ng-model='user.password' type="password" name="password" placeholder="Votre passwords" class="form-control">
-							</div>
-						</div>
-						<br>
-
-							<div class="row">
-								<div class="col-lg-offset-3 " >
-
-									<input ng-click='$ctrl.login(user)' id="buttonCreate" class="btn btn-default  " type="submit" name="" value="Se connecter"
-                  data-toggle="modal" data-target="#myModal" >
-
-								</div>
-
-              </div>
-
-              </div>
-
-
-					</form>
-				</div>
-		</div>
-
   </div>
-  </div>
+</div>
 
 
-  <!---->
-  <div class="container">
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-      <div class="modal-dialog modal-md">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Choisissez-vous un profil</h4>
-            <div ng-if='$ctrl.result == "OK, wait..."'>
-              <strong>Info! </strong>{{$ctrl.result}} <i class="fa fa-cog fa-spin" style="font-size:24px"></i>
-            </div>
-
+<!---->
+<!-- <div class="container"> -->
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Choisissez-vous un profil</h4>
+          <div ng-if='$ctrl.result == "OK, wait..."'>
+            <strong>Info! </strong>{{$ctrl.result}} <i class="fa fa-cog fa-spin" style="font-size:24px"></i>
           </div>
-          <div class="modal-body">
-            <h3>{{$ctrl.result}}</h3>
-            <div ng-if='$ctrl.role === "ADMINISTRATOR"'>
-              <div class="row">
-                  <a href="#" ng-click='$ctrl.changeRole("ADMINISTRATOR")'><div class="profil col col-lg-3 col-lg-offset-1 ">Administrator</div></a>
-                  <a href="#" ng-click='$ctrl.changeRole("DRIVER")'><div class="profil col col-lg-3 col-lg-offset-1">Chauffeur</div></a>
-                  <a href="#" ng-click='$ctrl.changeRole("COWORKER")'><div class="profil col col-lg-3 col-lg-offset-1">Collaborateur</div></a>
-              </div>
-            </div>
 
-            <div ng-if='$ctrl.role === "COWORKER"'>
-              <div class="row">
-                <a href="#" ng-click='$ctrl.changeRole("COWORKER")'><div class="profil col-lg-3 col-lg-offset-5 ">Collaborateur</div></a>
-              </div>
+        </div>
+        <div class="modal-body">
+          <h3>{{$ctrl.result}}</h3>
+          <div ng-if='$ctrl.role === "ADMINISTRATOR"'>
+            <div class="row">
+              <a href="#" ng-click='$ctrl.changeRole("ADMINISTRATOR")'>
+                <div class="profil col col-lg-3 col-lg-offset-1 ">Administrator</div>
+              </a>
+              <a href="#" ng-click='$ctrl.changeRole("DRIVER")'>
+                <div class="profil col col-lg-3 col-lg-offset-1">Chauffeur</div>
+              </a>
+              <a href="#" ng-click='$ctrl.changeRole("COWORKER")'>
+                <div class="profil col col-lg-3 col-lg-offset-1">Collaborateur</div>
+              </a>
             </div>
-
-            <div ng-if='$ctrl.role === "DRIVER"'>
-              <div class="row">
-                <a href="#" ng-click='$ctrl.changeRole("DRIVER")'><div class="profil col-lg-3 col-lg-offset-1">Chauffeur</div></a>
-                <a href="#" ng-click='$ctrl.changeRole("COWORKER")'><div class="profil col-lg-3 col-lg-offset-1">Collaborateur</div></a>
-              </div>
-            </div>
-
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button class="btn btn-primary btn-success"
-            ng-click='bookingCtrl.reserveVehicleSociety(bookingCtrl.vehicles[bookingCtrl.currentId].licensePlate, booking)'
-            data-dismiss="modal">
-            Go</button>
+
+          <div ng-if='$ctrl.role === "COWORKER"'>
+            <div class="row">
+              <a href="#" ng-click='$ctrl.changeRole("COWORKER")'>
+                <div class="profil col-lg-3 col-lg-offset-5 ">Collaborateur</div>
+              </a>
+            </div>
           </div>
+
+          <div ng-if='$ctrl.role === "DRIVER"'>
+            <div class="row">
+              <a href="#" ng-click='$ctrl.changeRole("DRIVER")'>
+                <div class="profil col-lg-3 col-lg-offset-1">Chauffeur</div>
+              </a>
+              <a href="#" ng-click='$ctrl.changeRole("COWORKER")'>
+                <div class="profil col-lg-3 col-lg-offset-1">Collaborateur</div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" ng-click="$ctrl.refresh()" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
   </div>
+</div> -->
 
-  <!---->
-  </div>
+<!---->
+</div>
