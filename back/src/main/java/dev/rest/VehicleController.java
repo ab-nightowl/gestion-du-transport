@@ -81,7 +81,7 @@ public class VehicleController {
 			// booking.setDriver(bookingFromClient.getDriver());
 			booking.setBooker(bookingFromClient.getBooker());
 			booking.setWithDriver(bookingFromClient.isWithDriver());
-			booking.setStatut(AdvertStatut.INPROGRESS);
+			booking.setStatut(AdvertStatut.COMPLETED);
 			booking.setVehicle(v);
 
 			bookingRepo.save(booking);
