@@ -39,6 +39,7 @@ public class AdvertController {
 		}
 		advert.setPassengers(null);
 		advert.setStatut(AdvertStatut.INPROGRESS);
+		userRepo.save(advert.getDriver());
 		advertRepo.save(advert);
 		return new ResponseEntity<Advert>(advert, HttpStatus.CREATED);
 

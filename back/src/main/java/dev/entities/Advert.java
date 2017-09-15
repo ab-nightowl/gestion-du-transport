@@ -14,8 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
 public class Advert {
 	@Id
@@ -27,7 +25,6 @@ public class Advert {
 	private User driver;
 
 	@OneToMany(mappedBy = "advert")
-	@JsonManagedReference("advert")
 	private List<UserAdvert> passengers = new ArrayList<>(new HashSet<UserAdvert>());
 	private String addressDeparture;
 	private String addressArrival;
