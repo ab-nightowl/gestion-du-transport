@@ -41,7 +41,7 @@ const tanModule = angular.module('tanModule',[UiBootrap,ngSessionStorage])
 		template : '<authentification-component></authentification-component>',
 	})
 
-	.when('/collaborateur/reservations',{
+	.when('/collaborateur/reservations/societe',{
 		template : '<reservations-society-component></reservations-society-component>'
 	})
 })

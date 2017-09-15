@@ -16,11 +16,11 @@
                             name="addressDeparture" id="addressDeparture">
                         <div ng-show="$ctrl.addressDeparture.$dirty && $ctrl.addressDeparture.$error.required">Veuillez saisir une adresse de départ.</div>
                     </div>
-                    <div class='col-sm-4'>
+                    <!-- <div class='col-sm-4'>
                         Adresse d'arrivée : <input type="text" g-places-autocomplete required ng-model="$ctrl.addressArrival"
                             name="adresseArrival">
                         <div ng-show="$ctrl.addressArrival.$dirty && $ctrl.addressArrival.$error.required">Veuillez saisir une adresse d'arrivée'.</div>
-                    </div>
+                    </div> -->
                 </div>
                 <div>
                     <div class="container">
@@ -48,7 +48,7 @@
                         <td class="col-sm-2 col-sm-2">Places disponibles</td>
                         <td class="col-sm-2 col-sm-2"></td>
                     </tr>
-                    <tr ng-repeat="advert in $ctrl.list | addressFilter:$ctrl.addressDeparture:$ctrl.addressArrival | filter: $ctrl.dateFirst">
+                    <tr ng-repeat="advert in $ctrl.list | addressFilter:$ctrl.addressDeparture | filter: $ctrl.dt">
                         <td class="col-sm-2 col-sm-2">{{advert.dateFirst | date:"yyyy/MM/dd H:mm"}}</td>
                         <td class="col-sm-1 col-sm-1">{{advert.addressDeparture}}</td>
                         <td class="col-sm-2 col-sm-2">{{advert.addressArrival}}</td>

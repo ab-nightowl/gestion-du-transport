@@ -10,7 +10,7 @@ export function route($routeProvider, $locationProvider) {
     .when("/collaborateur/annonces/creer", {
       template: "<advert-publisched></advert-publisched>"
     })
-    .when("/collaborateur/reservations", {
+    .when("/collaborateur/reservations/covoiturage", {
       template: "<carpooling-list-cmp></carpooling-list-cmp>"
     })
     .when('/collaborateur/annonces',{
