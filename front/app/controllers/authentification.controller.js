@@ -20,9 +20,9 @@ export default class authentificationController {
       if(res.data.length==0){
         this.getAllUsers();
       }
-      
+
   })
-     
+
     this.getUserConnected();
 
     if(this.$sessionStorage.get('userConnected')!= undefined){
@@ -53,15 +53,15 @@ getUserConnected(){
     .then((res)=>{
         res.data.forEach(user=>{
           user.registrationNumber = user.matricule
-          delete user['matricule']        
+          delete user['matricule']
         })
-        
+
         this.authentificationService.setRole(res.data)
         .then((res)=>{
           this.$log.log(res.statusText)
         },(err)=>{
           this.$log.log(err.statusText)
-        })    
+        })
     },(err)=>{
       this.$log.log('err: '+ err.statusText)
     })
@@ -82,7 +82,7 @@ getUserConnected(){
             this.foundUser = true;
             user.nom = e.nom;
             user.prenom = e.prenom
-            user.registrationNumber = e.matricule          
+            user.registrationNumber = e.matricule
             this.authentificationService.getRole(user.email)
             .then((res)=>{
               this.role = res.data;
@@ -91,7 +91,7 @@ getUserConnected(){
               this.$log.log("userConnectedRole: "+ this.$sessionStorage.get('userConnectedRole'))
               if(this.foundUser){
                 this.result = 'Bienvenue '+ user.nom + ' :)';
-                this.$log.log("OK connexion ! ");        
+                this.$log.log("OK connexion ! ");
                 this.userInfo ={
                   "email":user.email,
                   "nom":user.nom,
@@ -101,19 +101,19 @@ getUserConnected(){
                 this.$sessionStorage.put('userConnected', JSON.stringify(this.userInfo))
                 this.$log.log("userConnected: "+ this.$sessionStorage.get('userConnected'))
                 this.$window.location.reload()
-        
+
               }else{
                 this.result = 'Connexion échouée ! ';
                 this.$log.log("failed connexion ! ");
               }
-                
+
             },(err)=>{
               this.$log.log(err.statusText)
             })
         }
       })
 
-      
+
     },(err)=>{
       this.$log.log("error: " + err.statusText + '-'+ err.status)
 
