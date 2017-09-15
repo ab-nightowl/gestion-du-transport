@@ -90,7 +90,9 @@ margin-top: 20px;
 
 <div id="result" class="alert alert-success " ng-if='bookingCtrl.result != null'>
   <strong>Info!</strong> {{bookingCtrl.result}}
-    <i class="fa fa-spinner fa-spin" style="font-size:24px; color:red; float:right" ng-if="bookingCtrl.result == 'Votre réservation est enregistré avec succèss :)'"></i>
+    <i class="fa fa-check-square-o" style="font-size:24px; color:red; float:right" ng-if="bookingCtrl.result == 'Votre réservation est enregistré avec succèss :)'"></i>
+    <i class="fa fa-check-square-o" style="font-size:24px; color:red; float:right" ng-if="bookingCtrl.result == 'Cette véhicule est déjà réservé !'"></i>
+    <i class="fa fa-check-square-o" style="font-size:24px; color:red; float:right" ng-if="bookingCtrl.result == 'Votre réservation est échouée :('"></i>
 </div>
 
 <div class="buttonMove">
@@ -125,11 +127,6 @@ margin-top: 20px;
    class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
   Réserver
   </button>
-
-
-
-
-
 </div>
 
 <!---->
