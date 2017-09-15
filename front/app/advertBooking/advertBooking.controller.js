@@ -86,13 +86,13 @@ export default class AdvertBookingCtrl {
     this.popup = true;
   }
 
-  setDate(year, month, day) {
-    this.dt = new Date(year, month, day);
-  }
-
   toggleMin() {
     this.inlineOptions.minDate = this.inlineOptions.minDate ? null : new Date();
     this.dateOptions.minDate = this.inlineOptions.minDate;
+  }
+
+  dateFirstChange() {
+    this.newList = this.list.filter(advert => new Date(advert.dateFirst).getDay() == this.dateFirst.getDay())
   }
 }
 
