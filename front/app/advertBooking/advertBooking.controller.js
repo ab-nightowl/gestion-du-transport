@@ -41,7 +41,6 @@ export default class AdvertBookingCtrl {
   $onInit() {
     this.AdvertBookingService.findAll().then(res => {
       res.data.forEach(function(element) {
-        console.log(element.dateFirst);
         this.idUser = JSON.parse(
           this.$sessionStorage.get("userConnected")
         ).registrationNumber;
@@ -77,7 +76,6 @@ export default class AdvertBookingCtrl {
 
   today() {
     this.dateFirst = new Date();
-    console.log(this.dateFirst);
   }
 
   clear() {
@@ -94,7 +92,6 @@ export default class AdvertBookingCtrl {
   }
 
   dateFirstChange() {
-    console.log(this.list)
     this.newList = this.list.filter(advert => new Date(advert.dateFirst).getDay() == this.dateFirst.getDay())
   }
 }
