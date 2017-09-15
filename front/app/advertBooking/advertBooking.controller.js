@@ -1,8 +1,9 @@
 export default class AdvertBookingCtrl {
-  constructor(AdvertBookingService, AdvertModalService) {
+  constructor(AdvertBookingService, AdvertModalService, $sessionStorage) {
     this.AdvertBookingService = AdvertBookingService;
     this.AdvertModalService = AdvertModalService;
     this.advertBookingFilter = "addressFilter:addressDeparture";
+    this.$sessionStorage = $sessionStorage;
 
     let tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
@@ -40,10 +41,21 @@ export default class AdvertBookingCtrl {
   $onInit() {
     this.AdvertBookingService.findAll().then(res => {
       res.data.forEach(function(element) {
+        this.idUser = JSON.parse(
+          this.$sessionStorage.get("userConnected")
+        ).registrationNumber;
+        let count = 0;
+        element.passengers.forEach(passenger => {
+          if (this.idUser === passenger.passenger.registrationNumber) {
+            return count;
+          } else {
+            count++;
+          }
+        }, this);
         if (element.statut === "INPROGRESS") {
           if (element.passengers.length == 0) {
             this.list.push(element);
-          } else if (element.passengers[0].status !== "BOOKED") {
+          } else if (element.passengers[count].status !== "BOOKED") {
             this.list.push(element);
           }
         }

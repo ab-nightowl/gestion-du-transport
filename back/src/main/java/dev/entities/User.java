@@ -10,7 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User {
@@ -23,7 +23,7 @@ public class User {
 	private String email;
 
 	@OneToMany(mappedBy = "passenger")
-	@JsonManagedReference("passengers")
+	@JsonIgnore
 	private List<UserAdvert> adverts = new ArrayList<>(new HashSet<UserAdvert>());
 
 	@Enumerated(EnumType.STRING)
