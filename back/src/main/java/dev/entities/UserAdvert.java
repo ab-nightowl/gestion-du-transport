@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class UserAdvert {
@@ -20,12 +20,11 @@ public class UserAdvert {
 
 	@ManyToOne
 	@JoinColumn(name = "advert_id")
-	@JsonBackReference("advert")
+	@JsonIgnore
 	private Advert advert;
 
 	@ManyToOne
 	@JoinColumn(name = "user_registration_number")
-	@JsonBackReference("passengers")
 	private User passenger;
 
 	@Enumerated(EnumType.STRING)

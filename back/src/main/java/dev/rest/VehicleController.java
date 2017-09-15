@@ -35,20 +35,33 @@ public class VehicleController {
 	BookingRepository bookingRepo;
 
 	public void initDateVehicle() {
-		Vehicle v1 = new Vehicle("Abc123", "Mercedes", "2013", "categ1", "../statique/img/car5.jpg", 4,
+		Vehicle v1 = new Vehicle("Abc123", "Mercedes", "2013", "categ1", "./statique/img/car5.jpg", 4,
 				VehicleStatus.REPARATION);
-		Vehicle v2 = new Vehicle("Abc456", "Audi", "2016", "categ2", "../statique/img/car6.jpg", 2,
+		Vehicle v2 = new Vehicle("Abc456", "Audi", "2016", "categ2", "./statique/img/car6.jpg", 2,
 				VehicleStatus.OUTOFORDER);
-		Vehicle v3 = new Vehicle("Abc789", "Toyota", "2010", "categ3", "../statique/img/car7.jpg", 6,
+		Vehicle v3 = new Vehicle("Abc789", "Toyota", "2010", "categ3", "./statique/img/car7.jpg", 6,
 				VehicleStatus.SERVICE);
-		Vehicle v4 = new Vehicle("Abc999", "Mercedes", "2017", "categ4", "../statique/img/car8.jpg", 1,
+		Vehicle v4 = new Vehicle("Abc999", "Mercedes", "2017", "categ4", "./statique/img/car8.jpg", 1,
 				VehicleStatus.OUTOFORDER);
+		Vehicle v5 = new Vehicle("Abc159", "Toyota", "2016", "categ2", "./statique/img/car6.jpg", 3,
+				VehicleStatus.SERVICE);
+		Vehicle v6 = new Vehicle("Abc147", "Audi", "2012", "categ5", "./statique/img/car7.jpg", 4,
+				VehicleStatus.OUTOFORDER);
+		Vehicle v7 = new Vehicle("Abc756", "Mercedes", "2005", "categ4", "./statique/img/car8.jpg", 4,
+				VehicleStatus.REPARATION);
+		Vehicle v8 = new Vehicle("Abc147", "Mercedes", "2007", "categ4", "./statique/img/car5.jpg", 2,
+				VehicleStatus.REPARATION);
 
 		List<Vehicle> listV = new ArrayList<>();
 		listV.add(v1);
 		listV.add(v2);
 		listV.add(v3);
 		listV.add(v4);
+		
+		listV.add(v5);
+		listV.add(v6);
+		listV.add(v7);
+		listV.add(v8);
 
 		for (Vehicle vehicle : listV) {
 			vehicleRepo.save(vehicle);
