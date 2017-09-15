@@ -41,6 +41,7 @@ export default class AdvertBookingCtrl {
   $onInit() {
     this.AdvertBookingService.findAll().then(res => {
       res.data.forEach(function(element) {
+        console.log(element.dateFirst);
         this.idUser = JSON.parse(
           this.$sessionStorage.get("userConnected")
         ).registrationNumber;
@@ -76,6 +77,7 @@ export default class AdvertBookingCtrl {
 
   today() {
     this.dateFirst = new Date();
+    console.log(this.dateFirst);
   }
 
   clear() {
@@ -86,13 +88,14 @@ export default class AdvertBookingCtrl {
     this.popup = true;
   }
 
-  setDate(year, month, day) {
-    this.dt = new Date(year, month, day);
-  }
-
   toggleMin() {
     this.inlineOptions.minDate = this.inlineOptions.minDate ? null : new Date();
     this.dateOptions.minDate = this.inlineOptions.minDate;
+  }
+
+  dateFirstChange() {
+    console.log(this.list)
+    this.newList = this.list.filter(advert => new Date(advert.dateFirst).getDay() == this.dateFirst.getDay())
   }
 }
 

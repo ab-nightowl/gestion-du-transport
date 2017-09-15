@@ -28,7 +28,7 @@
                             <div class="col-sm-4">
                                 <p class="input-group">
                                     <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.dateFirst" is-open="$ctrl.popup" datepicker-options="$ctrl.dateOptions"
-                                        ng-required="true" close-text="Close" />
+                                        ng-required="true" close-text="Close" ng-change="$ctrl.dateFirstChange()"/>
                                     <span class="input-group-btn center-block">
                                             <button type="button" class="btn btn-default" ng-click="$ctrl.openDate()"><i class="glyphicon glyphicon-calendar"></i></button>
                                     </span>
@@ -48,7 +48,7 @@
                         <td class="col-sm-2 col-sm-2">Places disponibles</td>
                         <td class="col-sm-2 col-sm-2"></td>
                     </tr>
-                    <tr ng-repeat="advert in $ctrl.list | addressFilter:$ctrl.addressDeparture | filter: $ctrl.dt">
+                    <tr ng-repeat="advert in $ctrl.newList | addressFilter:$ctrl.addressDeparture">
                         <td class="col-sm-2 col-sm-2">{{advert.dateFirst | date:"yyyy/MM/dd H:mm"}}</td>
                         <td class="col-sm-1 col-sm-1">{{advert.addressDeparture}}</td>
                         <td class="col-sm-2 col-sm-2">{{advert.addressArrival}}</td>
