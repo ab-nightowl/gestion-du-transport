@@ -43,6 +43,12 @@ public class VehicleController {
 				VehicleStatus.SERVICE);
 		Vehicle v4 = new Vehicle("Abc999", "Mercedes", "2017", "categ4", "./statique/img/car8.jpg", 1,
 				VehicleStatus.OUTOFORDER);
+		Vehicle v5 = new Vehicle("Abc999", "Toyota", "2016", "categ2", "./statique/img/car6.jpg", 3,
+				VehicleStatus.SERVICE);
+		Vehicle v6 = new Vehicle("Abc999", "Audi", "2012", "categ5", "./statique/img/car7.jpg", 4,
+				VehicleStatus.OUTOFORDER);
+		Vehicle v7 = new Vehicle("Abc999", "Mercedes", "2005", "categ4", "./statique/img/car8.jpg", 4,
+				VehicleStatus.REPARATION);
 
 		List<Vehicle> listV = new ArrayList<>();
 		listV.add(v1);
